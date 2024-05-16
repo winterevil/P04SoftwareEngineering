@@ -89,7 +89,7 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
 
         btnCancel.setBackground(new java.awt.Color(255, 255, 255));
         btnCancel.setForeground(new java.awt.Color(11, 87, 208));
-        btnCancel.setText("Cancel");
+        btnCancel.setText("Back");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
@@ -245,7 +245,9 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        LoginInterface login = new LoginInterface();
+        dispose();
+        login.setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed

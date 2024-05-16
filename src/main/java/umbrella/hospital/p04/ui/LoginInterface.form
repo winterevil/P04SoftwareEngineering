@@ -100,10 +100,9 @@
                                   <Component id="jLabel7" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="72" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtEmail" min="-2" pref="174" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtEmail" pref="174" max="32767" attributes="0"/>
                                   <Component id="lblPassword" min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Component id="txtPassword" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
                                   <Component id="lblEmail" min="-2" pref="37" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="popupExample1" min="-2" max="-2" attributes="0"/>
@@ -111,6 +110,7 @@
                                       <Component id="btnSignin" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="lblForgotPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jpwPassword" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -124,12 +124,12 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtEmail" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEmail" min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtPassword" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="jpwPassword" min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="chkShow" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblForgotPassword" min="-2" max="-2" attributes="0"/>
@@ -180,11 +180,6 @@
             <Component class="java.awt.TextField" name="txtEmail">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="java.awt.TextField" name="txtPassword">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="chkShow">
@@ -276,6 +271,19 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="jpwPassword">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="12" style="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jpwPasswordActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
