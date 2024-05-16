@@ -4,6 +4,8 @@
  */
 package umbrella.hospital.p04.ui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Admin
@@ -31,7 +33,6 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
         lblName = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         txtName = new java.awt.TextField();
-        txtPassword = new java.awt.TextField();
         btnSignup = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -42,6 +43,7 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
         txtEmail = new java.awt.TextField();
         lblAddress = new javax.swing.JLabel();
         txtAddress = new java.awt.TextField();
+        jpwPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,17 +64,9 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
         lblPassword.setForeground(new java.awt.Color(0, 0, 0));
         lblPassword.setText("Password:");
 
-        txtName.setText("Enter your name...");
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
-            }
-        });
-
-        txtPassword.setText("Enter your password...");
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
             }
         });
 
@@ -114,7 +108,6 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
         lblEmail.setForeground(new java.awt.Color(0, 0, 0));
         lblEmail.setText("Email:");
 
-        txtEmail.setText("Enter your email...");
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
@@ -125,10 +118,17 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
         lblAddress.setForeground(new java.awt.Color(0, 0, 0));
         lblAddress.setText("Address:");
 
-        txtAddress.setText("Enter your address...");
         txtAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAddressActionPerformed(evt);
+            }
+        });
+
+        jpwPassword.setBackground(new java.awt.Color(255, 255, 255));
+        jpwPassword.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jpwPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jpwPasswordActionPerformed(evt);
             }
         });
 
@@ -151,12 +151,12 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
                         .addComponent(btnCancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSignup))
-                    .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                     .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                     .addComponent(txtAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                    .addComponent(lblAddress))
+                    .addComponent(lblAddress)
+                    .addComponent(jpwPassword))
                 .addGap(49, 49, 49))
         );
         SignupLayout.setVerticalGroup(
@@ -175,11 +175,11 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblAddress)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPassword)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jpwPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(SignupLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -234,28 +234,47 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
         LoginInterface login = new LoginInterface();
         dispose();
         login.setVisible(true);
-        
+
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
         // TODO add your handling code here:
+        if (txtName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in Name");
+        } else if (txtEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in Email");
+        } else if (txtAddress.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in Address");
+        } else if (jpwPassword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in Password");
+        } else if (txtEmail.getText().equals("patient@gmail.com")) {
+            LoginInterface login = new LoginInterface();
+            dispose();
+            login.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Email has been used", "Message", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnSignupActionPerformed
-
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
+        txtEmail.requestFocusInWindow();
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
+        txtAddress.requestFocusInWindow();
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
+        jpwPassword.requestFocusInWindow();
     }//GEN-LAST:event_txtAddressActionPerformed
+
+    private void jpwPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpwPasswordActionPerformed
+        // TODO add your handling code here:
+        btnSignup.doClick();
+    }//GEN-LAST:event_jpwPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -304,6 +323,7 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jpwPassword;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblName;
@@ -311,6 +331,5 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
     private java.awt.TextField txtAddress;
     private java.awt.TextField txtEmail;
     private java.awt.TextField txtName;
-    private java.awt.TextField txtPassword;
     // End of variables declaration//GEN-END:variables
 }
