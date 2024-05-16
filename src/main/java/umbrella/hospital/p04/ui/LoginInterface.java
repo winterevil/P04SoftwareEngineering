@@ -33,7 +33,6 @@ public class LoginInterface extends javax.swing.JFrame {
         lblEmail = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         txtEmail = new java.awt.TextField();
-        txtPassword = new java.awt.TextField();
         chkShow = new javax.swing.JCheckBox();
         lblForgotPassword = new javax.swing.JLabel();
         btnSignin = new javax.swing.JButton();
@@ -42,6 +41,7 @@ public class LoginInterface extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         popupExample1 = new umbrella.hospital.p04.ui.PopupExample();
+        jpwPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,12 +65,6 @@ public class LoginInterface extends javax.swing.JFrame {
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
-            }
-        });
-
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
             }
         });
 
@@ -114,6 +108,14 @@ public class LoginInterface extends javax.swing.JFrame {
 
         popupExample1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jpwPassword.setBackground(new java.awt.Color(255, 255, 255));
+        jpwPassword.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jpwPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jpwPasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout SigninLayout = new javax.swing.GroupLayout(Signin);
         Signin.setLayout(SigninLayout);
         SigninLayout.setHorizontalGroup(
@@ -131,16 +133,16 @@ public class LoginInterface extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                        .addGroup(SigninLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(SigninLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                             .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SigninLayout.createSequentialGroup()
                                 .addComponent(popupExample1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSignin))
-                            .addComponent(lblForgotPassword))))
+                            .addComponent(lblForgotPassword)
+                            .addComponent(jpwPassword))))
                 .addGap(74, 74, 74))
         );
         SigninLayout.setVerticalGroup(
@@ -149,12 +151,12 @@ public class LoginInterface extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addComponent(jpwPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chkShow)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblForgotPassword)
@@ -211,11 +213,11 @@ public class LoginInterface extends javax.swing.JFrame {
 
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
         // TODO add your handling code here:
-        if (txtEmail.getText().equals("")) {
+        if (txtEmail.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Username");
-        } else if (txtPassword.getText().equals("")) {
+        } else if (jpwPassword.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
-        } else if (txtEmail.getText().equals("patient@gmail.com") && txtPassword.getText().equals("patient123")) {
+        } else if (txtEmail.getText().equals("patient@gmail.com") && jpwPassword.getText().equals("patient123")) {
 //            MainFrame mf = new MainFrame();
 //            this.setVisible(false);
 //            mf.setVisible(true);
@@ -224,24 +226,24 @@ public class LoginInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSigninActionPerformed
 
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-        btnSignin.doClick();
-    }//GEN-LAST:event_txtPasswordActionPerformed
-
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-        txtPassword.requestFocusInWindow();
+        jpwPassword.requestFocusInWindow();
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void chkShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkShowActionPerformed
         // TODO add your handling code here:
         if (chkShow.isSelected()) {
-            txtPassword.setEchoChar((char) 0);
+            jpwPassword.setEchoChar((char) 0);
         } else {
-            txtPassword.setEchoChar('*');
+            jpwPassword.setEchoChar('*');
         }
     }//GEN-LAST:event_chkShowActionPerformed
+
+    private void jpwPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpwPasswordActionPerformed
+        // TODO add your handling code here:
+        btnSignin.doClick();
+    }//GEN-LAST:event_jpwPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,11 +289,11 @@ public class LoginInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jpwPassword;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblForgotPassword;
     private javax.swing.JLabel lblPassword;
     private umbrella.hospital.p04.ui.PopupExample popupExample1;
     private java.awt.TextField txtEmail;
-    private java.awt.TextField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

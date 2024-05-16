@@ -108,7 +108,7 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Your health is our goal");
+        jLabel7.setText("Our goal is your health");
 
         lblEmail.setBackground(new java.awt.Color(255, 255, 255));
         lblEmail.setForeground(new java.awt.Color(0, 0, 0));

@@ -23,12 +23,16 @@ public class PopupExample extends JPanel {
         final JPopupMenu popup = new JPopupMenu();
         popup.add(new JMenuItem(new AbstractAction("Doctor") {
             public void actionPerformed(ActionEvent e) {
-                
+                SignupInterfaceDoctor signupDoctor = new SignupInterfaceDoctor();
+                signupDoctor.setVisible(true);
+                SwingUtilities.getWindowAncestor(PopupExample.this).dispose();
             }
         }));
         popup.add(new JMenuItem(new AbstractAction("Patient") {
             public void actionPerformed(ActionEvent e) {
-                
+                SignupInterfacePatient signupPatient = new SignupInterfacePatient();
+                signupPatient.setVisible(true);
+                SwingUtilities.getWindowAncestor(PopupExample.this).dispose();
             }
         }));
 
