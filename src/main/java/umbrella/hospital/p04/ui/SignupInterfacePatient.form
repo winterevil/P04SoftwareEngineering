@@ -65,7 +65,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                   <Component id="Signup" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="47" max="32767" attributes="0"/>
+                  <EmptySpace pref="46" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -102,7 +102,6 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnSignup" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="txtPassword" alignment="0" pref="174" max="32767" attributes="0"/>
                           <Component id="lblName" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="lblEmail" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="txtEmail" pref="174" max="32767" attributes="0"/>
@@ -110,6 +109,7 @@
                           <Component id="lblAddress" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDOB" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jdcDOB" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jpwPassword" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   </Group>
@@ -138,8 +138,6 @@
                               <Component id="jdcDOB" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtPassword" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -151,7 +149,9 @@
                               <Component id="jLabel6" min="-2" pref="101" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jpwPassword" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnSignup" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -185,19 +185,8 @@
               </Properties>
             </Component>
             <Component class="java.awt.TextField" name="txtName">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Enter your name..."/>
-              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNameActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="java.awt.TextField" name="txtPassword">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Enter your password..."/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSignup">
@@ -284,9 +273,6 @@
               </Properties>
             </Component>
             <Component class="java.awt.TextField" name="txtEmail">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Enter your email..."/>
-              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
               </Events>
@@ -303,9 +289,6 @@
               </Properties>
             </Component>
             <Component class="java.awt.TextField" name="txtAddress">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Enter your address..."/>
-              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAddressActionPerformed"/>
               </Events>
@@ -327,6 +310,19 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="jpwPassword">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="12" style="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jpwPasswordActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

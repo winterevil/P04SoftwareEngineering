@@ -102,12 +102,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnSignup" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="txtPassword" alignment="0" pref="174" max="32767" attributes="0"/>
                           <Component id="lblName" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="lblEmail" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="txtEmail" pref="174" max="32767" attributes="0"/>
                           <Component id="txtAddress" pref="174" max="32767" attributes="0"/>
                           <Component id="lblAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jpwPassword" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   </Group>
@@ -129,11 +129,11 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtAddress" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtAddress" min="-2" pref="20" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtPassword" min="-2" max="-2" attributes="0"/>
+                              <Component id="jpwPassword" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -179,19 +179,8 @@
               </Properties>
             </Component>
             <Component class="java.awt.TextField" name="txtName">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Enter your name..."/>
-              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNameActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="java.awt.TextField" name="txtPassword">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Enter your password..."/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSignup">
@@ -278,9 +267,6 @@
               </Properties>
             </Component>
             <Component class="java.awt.TextField" name="txtEmail">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Enter your email..."/>
-              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
               </Events>
@@ -297,11 +283,21 @@
               </Properties>
             </Component>
             <Component class="java.awt.TextField" name="txtAddress">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Enter your address..."/>
-              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAddressActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="jpwPassword">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="12" style="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jpwPasswordActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
