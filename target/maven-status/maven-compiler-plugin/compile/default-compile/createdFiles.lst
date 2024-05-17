@@ -1,4 +1,5 @@
 umbrella\hospital\p04\ui\SignupInterfacePatient$1.class
+umbrella\hospital\p04\dao\PatientDAO.class
 umbrella\hospital\p04\ui\PopupExample$2.class
 umbrella\hospital\p04\ui\PanelRound.class
 umbrella\hospital\p04\ui\SignupInterfacePatient$6.class
@@ -8,7 +9,9 @@ umbrella\hospital\p04\ui\SignupInterfaceDoctor$7.class
 umbrella\hospital\p04\ui\SignupInterfacePatient$3.class
 umbrella\hospital\p04\ui\LoginInterface$3.class
 umbrella\hospital\p04\ui\SignupInterfacePatient$4.class
+umbrella\hospital\p04\dao\ObjectManager.class
 umbrella\hospital\p04\ui\LoginInterface$4.class
+umbrella\hospital\p04\dao\DoctorDAO.class
 umbrella\hospital\p04\ui\SignupInterfacePatient.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$4.class
 InvalidSensorDataException.class
@@ -20,7 +23,9 @@ umbrella\hospital\p04\ui\PopupExample$1.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$1.class
 umbrella\hospital\p04\ui\SignupInterfacePatient$2.class
 PredefinedSensors.class
+umbrella\hospital\p04\controller\UserManager.class
 umbrella\hospital\p04\P04.class
+umbrella\hospital\p04\dao\ObjectDAO.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$3.class
 umbrella\hospital\p04\ui\LoginInterface.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor.class

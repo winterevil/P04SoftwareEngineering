@@ -5,6 +5,7 @@
 package umbrella.hospital.p04.ui;
 
 import javax.swing.JOptionPane;
+import umbrella.hospital.p04.controller.UserManager;
 
 /**
  *
@@ -252,17 +253,24 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
 
     private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
         // TODO add your handling code here:
-        if (txtName.getText().isEmpty()) {
+        String name = txtName.getText();
+        String email = txtEmail.getText();
+        String address = txtAddress.getText();
+        String dob = jdcDOB.getToolTipText();
+        String password = jpwPassword.toString();
+
+        if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Name");
-        } else if (txtEmail.getText().isEmpty()) {
+        } else if (email.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Email");
-        } else if (txtAddress.getText().isEmpty()) {
+        } else if (address.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Address");
-        } else if (jdcDOB.getToolTipText().isEmpty()) {
+        } else if (dob.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in DOB");
-        } else if (jpwPassword.getText().isEmpty()) {
+        } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
-        } else if (txtEmail.getText().equals("patient@gmail.com")) {
+        } else if (UserManager.findDoctorByEmail(email) == null) {
+            UserManager.SignUpPatient(name, email, address, dob, password);
             LoginInterface login = new LoginInterface();
             dispose();
             login.setVisible(true);

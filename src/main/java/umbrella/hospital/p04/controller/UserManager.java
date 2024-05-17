@@ -12,6 +12,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class UserManager {
+
     private static ArrayList<Patient> patientList = PatientDAO.getInstance().Read();
     private static ArrayList<Doctor> doctorList = DoctorDAO.getInstance().Read();
 
@@ -154,7 +155,6 @@ public class UserManager {
         DoctorDAO.getInstance().Save(doctorList);
     }
 
-
     private static void restoreDoctorList() {
         doctorList = DoctorDAO.getInstance().Read();
     }
@@ -162,7 +162,6 @@ public class UserManager {
     private static void restorePatientList() {
         patientList = PatientDAO.getInstance().Read();
     }
-
 
     public static ArrayList getPatientList() {
         return patientList;
