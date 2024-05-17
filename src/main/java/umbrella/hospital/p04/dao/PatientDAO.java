@@ -5,13 +5,19 @@ import umbrella.hospital.p04.model.Patient;
 import java.util.*;
 import java.io.*;
 
-public class PatientDAO extends ObjectDAO{
+public class PatientDAO extends ObjectDAO {
     private static final String filePath = System.getProperty("user.dir") + "/src/main/java/umbrella/hospital/p04/data/patients.csv";
     private static PatientDAO instance;
 
     public PatientDAO() {
         super(filePath);
         File file = new File(filePath);
+        File parentDir = file.getParentFile();
+
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
+        }
+
         if (!file.exists()) {
             try {
                 file.createNewFile();

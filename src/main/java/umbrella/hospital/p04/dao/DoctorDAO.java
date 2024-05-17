@@ -12,7 +12,13 @@ public class DoctorDAO extends ObjectDAO{
     public DoctorDAO() {
         super(filePath);
         File file = new File(filePath);
-        if(!file.exists()){
+         File parentDir = file.getParentFile();
+
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
+        }
+
+        if (!file.exists()) {
             try {
                 file.createNewFile();
             } catch (IOException e) {
