@@ -253,7 +253,7 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please fill in Address");
         } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
-        } else if (UserManager.findDoctorByEmail(email) == null) {
+        } else if (UserManager.findPatientByEmail(email) == null && UserManager.findDoctorByEmail(email) == null) {
             UserManager.SignUpDoctor(name, email, address, password);
             LoginInterface login = new LoginInterface();
             dispose();

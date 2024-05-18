@@ -4,6 +4,7 @@
  */
 package umbrella.hospital.p04.ui;
 
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import umbrella.hospital.p04.controller.UserManager;
 
@@ -253,10 +254,11 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
 
     private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
         // TODO add your handling code here:
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM-dd-yyyy");
         String name = txtName.getText();
         String email = txtEmail.getText();
         String address = txtAddress.getText();
-        String dob = jdcDOB.getToolTipText();
+        String dob = sdf.format(jdcDOB.getDate());
         String password = jpwPassword.toString();
 
         if (name.isEmpty()) {
@@ -269,8 +271,9 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please fill in DOB");
         } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
-        } else if (UserManager.findDoctorByEmail(email) == null) {
-            UserManager.SignUpPatient(name, email, address, dob, password);
+        } else if (UserManager.findPatientByEmail(email) == null && UserManager.findDoctorByEmail(email) == null) {
+            System.out.println(dob);
+            UserManager.SignUpPatient(name, email, address, password, dob);
             LoginInterface login = new LoginInterface();
             dispose();
             login.setVisible(true);
