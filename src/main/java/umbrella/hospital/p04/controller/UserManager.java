@@ -100,6 +100,18 @@ public class UserManager {
         return null;
     }
 
+    public static String login(String email, String password) {
+        Patient patient = loginPatient(email, password);
+        if (patient != null) {
+            return "Patient";
+        }
+        Doctor doctor = loginDoctor(email, password);
+        if (doctor != null) {
+            return "Doctor";
+        }
+        return null;
+    }
+
     public static Patient loginPatient(String email, String password) {
         String hashedPassword = hashPasswordWithMD5(password);
         restorePatientList();
@@ -122,14 +134,22 @@ public class UserManager {
         return null;
     }
 
-    public static void SignUpPatient(String name, String email, String address, String password, String dayOfBirth) {
+    public static boolean SignUpPatient(String name, String email, String address, String password, String dayOfBirth) {
+        if (findPatientByEmail(email) != null || findDoctorByEmail(email) != null) {
+            return false;
+        }
         Patient patient = new Patient(name, email, address, hashPasswordWithMD5(password), dayOfBirth);
         addPatient(patient);
+        return true;
     }
 
-    public static void SignUpDoctor(String name, String email, String address, String password) {
+    public static boolean SignUpDoctor(String name, String email, String address, String password) {
+        if (findDoctorByEmail(email) != null || findPatientByEmail(email) != null) {
+            return false;
+        }
         Doctor doctor = new Doctor(name, email, address, hashPasswordWithMD5(password));
         addDoctor(doctor);
+        return true;
     }
 
     public static void changePassword(String email, String newPassword) {
