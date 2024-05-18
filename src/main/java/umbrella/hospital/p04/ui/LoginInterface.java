@@ -5,6 +5,7 @@
 package umbrella.hospital.p04.ui;
 
 import javax.swing.JOptionPane;
+import umbrella.hospital.p04.controller.UserManager;
 
 /**
  *
@@ -213,11 +214,14 @@ public class LoginInterface extends javax.swing.JFrame {
 
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
         // TODO add your handling code here:
-        if (txtEmail.getText().isEmpty()) {
+        String email = txtEmail.getText();
+        String password = jpwPassword.toString();
+
+        if (email.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Username");
-        } else if (jpwPassword.getText().isEmpty()) {
+        } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
-        } else if (txtEmail.getText().equals("patient@gmail.com") && jpwPassword.getText().equals("patient123")) {
+        } else if (UserManager.login(email, password) == "Patient") {
 //            MainFrame mf = new MainFrame();
 //            this.setVisible(false);
 //            mf.setVisible(true);
@@ -229,7 +233,7 @@ public class LoginInterface extends javax.swing.JFrame {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
         jpwPassword.requestFocusInWindow();
-       
+
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void chkShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkShowActionPerformed
