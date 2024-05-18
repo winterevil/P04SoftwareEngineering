@@ -19,6 +19,14 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
      */
     public SignupInterfacePatient() {
         initComponents();
+        UserManager.restorePatientList();
+        UserManager.restoreDoctorList();
+        for (int i = 0; i < UserManager.getPatientList().size();i++){
+            System.out.println(UserManager.getPatientList().get(i).toString());
+        }
+        for (int i = 0; i < UserManager.getDoctorList().size();i++){
+            System.out.println(UserManager.getDoctorList().get(i).toString());
+        }
     }
 
     /**
@@ -254,8 +262,6 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
 
     private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
         // TODO add your handling code here:
-        UserManager.restorePatientList();
-        UserManager.restoreDoctorList();
         System.out.println(UserManager.count());
         SimpleDateFormat sdf = new SimpleDateFormat("MMM-dd-yyyy");
         String name = txtName.getText();
@@ -275,7 +281,6 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
         } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
         } else if (UserManager.SignUpPatient(name, email, address, password, dob) == true) {
-            UserManager.SignUpPatient(name, email, address, password, dob);
             LoginInterface login = new LoginInterface();
             dispose();
             login.setVisible(true);

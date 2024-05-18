@@ -48,12 +48,12 @@ public class DoctorDAO extends ObjectDAO{
             reader.readLine();
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length >= 6) {
+                if (parts.length >= 4) {
                     int count = 0;
                     String name = parts[count++];
                     String email = parts[count++];
-                    String password = parts[count++];
-                    String address = parts[count];
+                    String address = parts[count++];
+                    String password = parts[count];
                     doctors.add(new Doctor(name, email, address, password));
                 }
             }

@@ -255,8 +255,7 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please fill in Address");
         } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
-        } else if (UserManager.SignUpDoctor(name, email, address, password)) {
-            UserManager.SignUpDoctor(name, email, address, password);
+        } else if (UserManager.SignUpDoctor(name, email, address, password) == true) {
             LoginInterface login = new LoginInterface();
             dispose();
             login.setVisible(true);

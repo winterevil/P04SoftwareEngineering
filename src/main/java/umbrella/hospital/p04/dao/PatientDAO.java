@@ -48,14 +48,15 @@ public class PatientDAO extends ObjectDAO {
             reader = new BufferedReader(new FileReader(filePath));
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                int counter = 0;
-                String name = parts[counter++];
-                String email = parts[counter++];
-                String password = parts[counter++];
-                String address = parts[counter++];
-                String dateOfBirth = parts[counter];
-                patients.add(new Patient(name, email, address, password, dateOfBirth));
-
+                if (parts.length >= 5) {
+                    int counter = 0;
+                    String name = parts[counter++];
+                    String email = parts[counter++];
+                    String address = parts[counter++];
+                    String password = parts[counter++];
+                    String dateOfBirth = parts[counter];
+                    patients.add(new Patient(name, email, address, password, dateOfBirth));
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
