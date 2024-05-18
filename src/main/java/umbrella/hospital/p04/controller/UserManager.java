@@ -5,7 +5,6 @@ import umbrella.hospital.p04.dao.PatientDAO;
 import umbrella.hospital.p04.model.Doctor;
 import umbrella.hospital.p04.model.Patient;
 
-import javax.print.Doc;
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -88,6 +87,17 @@ public class UserManager {
             }
         }
         saveDoctorList();
+    }
+    public static String login(String email, String password) {
+        Patient patient = loginPatient(email, password);
+        if (patient != null) {
+            return "Patient";
+        }
+        Doctor doctor = loginDoctor(email, password);
+        if (doctor != null) {
+            return "Doctor";
+        }
+        return null;
     }
 
     public static Patient loginPatient(String email, String password) {
