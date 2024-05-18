@@ -225,6 +225,8 @@ public class LoginInterface extends javax.swing.JFrame {
 //            MainFrame mf = new MainFrame();
 //            this.setVisible(false);
 //            mf.setVisible(true);
+        } else if (UserManager.login(email, password) == "Doctor") {
+
         } else {
             JOptionPane.showMessageDialog(this, "Wrong name or password", "Message", JOptionPane.ERROR_MESSAGE);
         }

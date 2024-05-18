@@ -6,6 +6,7 @@ import java.util.*;
 import java.io.*;
 
 public class PatientDAO extends ObjectDAO {
+
     private static final String filePath = System.getProperty("user.dir") + "/src/main/java/umbrella/hospital/p04/data/patients.csv";
     private static PatientDAO instance;
 
@@ -45,18 +46,16 @@ public class PatientDAO extends ObjectDAO {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(filePath));
-            reader.readLine();
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length >= 6) {
-                    int counter = 0;
-                    String name = parts[counter++];
-                    String email = parts[counter++];
-                    String password = parts[counter++];
-                    String address = parts[counter++];
-                    String dateOfBirth = parts[counter];
-                    patients.add(new Patient(name, email, address, password, dateOfBirth));
-                }
+                int counter = 0;
+                String name = parts[counter++];
+                String email = parts[counter++];
+                String password = parts[counter++];
+                String address = parts[counter++];
+                String dateOfBirth = parts[counter];
+                patients.add(new Patient(name, email, address, password, dateOfBirth));
+
             }
         } catch (IOException e) {
             e.printStackTrace();

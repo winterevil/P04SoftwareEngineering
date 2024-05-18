@@ -16,8 +16,6 @@ public class UserManager {
     private static ArrayList<Doctor> doctorList = DoctorDAO.getInstance().Read();
 
     public UserManager() {
-        patientList = new ArrayList<>();
-        doctorList = new ArrayList<>();
         restorePatientList();
         restoreDoctorList();
     }
@@ -50,6 +48,7 @@ public class UserManager {
             if (patient.getEmail().equals(email)) {
                 return patient;
             }
+            System.out.println(patient.getEmail() + "=" + email);
         }
         return null;
     }
@@ -88,17 +87,6 @@ public class UserManager {
         }
         saveDoctorList();
     }
-    public static String login(String email, String password) {
-        Patient patient = loginPatient(email, password);
-        if (patient != null) {
-            return "Patient";
-        }
-        Doctor doctor = loginDoctor(email, password);
-        if (doctor != null) {
-            return "Doctor";
-        }
-        return null;
-    }
 
     public static String login(String email, String password) {
         Patient patient = loginPatient(email, password);
@@ -135,7 +123,7 @@ public class UserManager {
     }
 
     public static boolean SignUpPatient(String name, String email, String address, String password, String dayOfBirth) {
-        if (findPatientByEmail(email) != null || findDoctorByEmail(email) != null) {
+        if (findPatientByEmail(email) != null && findDoctorByEmail(email) != null) {
             return false;
         }
         Patient patient = new Patient(name, email, address, hashPasswordWithMD5(password), dayOfBirth);
@@ -144,12 +132,16 @@ public class UserManager {
     }
 
     public static boolean SignUpDoctor(String name, String email, String address, String password) {
-        if (findDoctorByEmail(email) != null || findPatientByEmail(email) != null) {
+        if (findDoctorByEmail(email) != null && findPatientByEmail(email) != null) {
             return false;
         }
         Doctor doctor = new Doctor(name, email, address, hashPasswordWithMD5(password));
         addDoctor(doctor);
         return true;
+    }
+
+    public static int count() {
+        return patientList.size();
     }
 
     public static void changePassword(String email, String newPassword) {
@@ -185,11 +177,11 @@ public class UserManager {
         DoctorDAO.getInstance().Save(doctorList);
     }
 
-    private static void restoreDoctorList() {
+    public static void restoreDoctorList() {
         doctorList = DoctorDAO.getInstance().Read();
     }
 
-    private static void restorePatientList() {
+    public static void restorePatientList() {
         patientList = PatientDAO.getInstance().Read();
     }
 

@@ -18,6 +18,8 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
      */
     public SignupInterfaceDoctor() {
         initComponents();
+        UserManager.restorePatientList();
+        UserManager.restoreDoctorList();
     }
 
     /**
@@ -244,7 +246,7 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String address = txtAddress.getText();
         String password = jpwPassword.toString();
-        
+
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Name");
         } else if (email.isEmpty()) {
@@ -253,7 +255,7 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please fill in Address");
         } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
-        } else if (UserManager.findPatientByEmail(email) == null && UserManager.findDoctorByEmail(email) == null) {
+        } else if (UserManager.SignUpDoctor(name, email, address, password)) {
             UserManager.SignUpDoctor(name, email, address, password);
             LoginInterface login = new LoginInterface();
             dispose();

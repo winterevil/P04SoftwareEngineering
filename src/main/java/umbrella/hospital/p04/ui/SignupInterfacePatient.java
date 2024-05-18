@@ -254,6 +254,9 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
 
     private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
         // TODO add your handling code here:
+        UserManager.restorePatientList();
+        UserManager.restoreDoctorList();
+        System.out.println(UserManager.count());
         SimpleDateFormat sdf = new SimpleDateFormat("MMM-dd-yyyy");
         String name = txtName.getText();
         String email = txtEmail.getText();
@@ -271,7 +274,7 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please fill in DOB");
         } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
-        } else if (UserManager.findPatientByEmail(email) == null && UserManager.findDoctorByEmail(email) == null) {
+        } else if (UserManager.SignUpPatient(name, email, address, password, dob) == true) {
             UserManager.SignUpPatient(name, email, address, password, dob);
             LoginInterface login = new LoginInterface();
             dispose();
