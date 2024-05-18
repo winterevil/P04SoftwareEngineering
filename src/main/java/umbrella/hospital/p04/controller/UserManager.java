@@ -5,7 +5,6 @@ import umbrella.hospital.p04.dao.PatientDAO;
 import umbrella.hospital.p04.model.Doctor;
 import umbrella.hospital.p04.model.Patient;
 
-import javax.print.Doc;
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
