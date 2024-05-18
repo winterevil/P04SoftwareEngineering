@@ -88,6 +88,17 @@ public class UserManager {
         }
         saveDoctorList();
     }
+    public static String login(String email, String password) {
+        Patient patient = loginPatient(email, password);
+        if (patient != null) {
+            return "Patient";
+        }
+        Doctor doctor = loginDoctor(email, password);
+        if (doctor != null) {
+            return "Doctor";
+        }
+        return null;
+    }
 
     public static Patient loginPatient(String email, String password) {
         String hashedPassword = hashPasswordWithMD5(password);
