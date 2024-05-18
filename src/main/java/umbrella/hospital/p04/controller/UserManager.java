@@ -123,7 +123,7 @@ public class UserManager {
     }
 
     public static boolean SignUpPatient(String name, String email, String address, String password, String dayOfBirth) {
-        if (findPatientByEmail(email) != null) {
+        if (findPatientByEmail(email) != null || findDoctorByEmail(email) != null) {
             return false;
         }
         Patient patient = new Patient(name, email, address, hashPasswordWithMD5(password), dayOfBirth);
@@ -132,7 +132,7 @@ public class UserManager {
     }
 
     public static boolean SignUpDoctor(String name, String email, String address, String password) {
-        if (findDoctorByEmail(email) != null) {
+        if (findDoctorByEmail(email) != null || findPatientByEmail(email) != null) {
             return false;
         }
         Doctor doctor = new Doctor(name, email, address, hashPasswordWithMD5(password));
