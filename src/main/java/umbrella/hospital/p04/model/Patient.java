@@ -60,6 +60,6 @@ public class Patient {
 
     @Override
     public String toString() {
-        return name + ", " + email + ", " + address + ", " + password + ", " + dayOfBirth + "\n";
+        return name + "," + email + "," + address + "," + password + "," + dayOfBirth + "\n";
     }
 }

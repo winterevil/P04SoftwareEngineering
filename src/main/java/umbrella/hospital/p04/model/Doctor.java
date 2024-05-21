@@ -50,6 +50,6 @@ public class Doctor {
 
     @Override
     public String toString() {
-        return name + ", " + email + ", " + address + ", " + password + "\n";
+        return name + "," + email + "," + address + "," + password + "\n";
     }
 }

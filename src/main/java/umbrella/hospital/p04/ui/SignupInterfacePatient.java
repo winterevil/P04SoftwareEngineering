@@ -4,7 +4,9 @@
  */
 package umbrella.hospital.p04.ui;
 
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+import umbrella.hospital.p04.controller.UserManager;
 
 /**
  *
@@ -17,6 +19,14 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
      */
     public SignupInterfacePatient() {
         initComponents();
+        UserManager.restorePatientList();
+        UserManager.restoreDoctorList();
+        for (int i = 0; i < UserManager.getPatientList().size(); i++) {
+            System.out.println(UserManager.getPatientList().get(i).toString());
+        }
+        for (int i = 0; i < UserManager.getDoctorList().size(); i++) {
+            System.out.println(UserManager.getDoctorList().get(i).toString());
+        }
     }
 
     /**
@@ -252,17 +262,25 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
 
     private void btnSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignupActionPerformed
         // TODO add your handling code here:
-        if (txtName.getText().isEmpty()) {
+        System.out.println(UserManager.count());
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM-dd-yyyy");
+        String name = txtName.getText();
+        String email = txtEmail.getText();
+        String address = txtAddress.getText();
+        String dob = sdf.format(jdcDOB.getDate());
+        String password = String.valueOf(jpwPassword.getPassword());
+
+        if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Name");
-        } else if (txtEmail.getText().isEmpty()) {
+        } else if (email.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Email");
-        } else if (txtAddress.getText().isEmpty()) {
+        } else if (address.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Address");
-        } else if (jdcDOB.getToolTipText().isEmpty()) {
+        } else if (dob.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in DOB");
-        } else if (jpwPassword.getText().isEmpty()) {
+        } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
-        } else if (txtEmail.getText().equals("patient@gmail.com")) {
+        } else if (UserManager.SignUpPatient(name, email, address, password, dob) == true) {
             LoginInterface login = new LoginInterface();
             dispose();
             login.setVisible(true);
