@@ -26,8 +26,8 @@ public abstract class ObjectDAO<T> {
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
-            for (T object : objects) {
-                String line = object.toString();
+            for (int i = 0; i < objects.size(); i++) {
+                String line = objects.get(i).toString();
                 bw.write(line);
             }
             bw.flush();

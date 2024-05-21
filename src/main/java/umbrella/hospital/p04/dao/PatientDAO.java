@@ -5,13 +5,20 @@ import umbrella.hospital.p04.model.Patient;
 import java.util.*;
 import java.io.*;
 
-public class PatientDAO extends ObjectDAO{
+public class PatientDAO extends ObjectDAO {
+
     private static final String filePath = System.getProperty("user.dir") + "/src/main/java/umbrella/hospital/p04/data/patients.csv";
     private static PatientDAO instance;
 
     public PatientDAO() {
         super(filePath);
         File file = new File(filePath);
+        File parentDir = file.getParentFile();
+
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
+        }
+
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -39,15 +46,14 @@ public class PatientDAO extends ObjectDAO{
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(filePath));
-            reader.readLine();
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length >= 6) {
+                if (parts.length >= 5) {
                     int counter = 0;
                     String name = parts[counter++];
                     String email = parts[counter++];
-                    String password = parts[counter++];
                     String address = parts[counter++];
+                    String password = parts[counter++];
                     String dateOfBirth = parts[counter];
                     patients.add(new Patient(name, email, address, password, dateOfBirth));
                 }

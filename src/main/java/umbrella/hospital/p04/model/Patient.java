@@ -57,4 +57,9 @@ public class Patient {
     public void setDayOfBirth(String dayOfBirth) {
         this.dayOfBirth = dayOfBirth;
     }
+
+    @Override
+    public String toString() {
+        return name + "," + email + "," + address + "," + password + "," + dayOfBirth + "\n";
+    }
 }

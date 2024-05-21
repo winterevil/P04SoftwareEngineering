@@ -12,7 +12,13 @@ public class DoctorDAO extends ObjectDAO{
     public DoctorDAO() {
         super(filePath);
         File file = new File(filePath);
-        if(!file.exists()){
+         File parentDir = file.getParentFile();
+
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
+        }
+
+        if (!file.exists()) {
             try {
                 file.createNewFile();
             } catch (IOException e) {
@@ -39,15 +45,14 @@ public class DoctorDAO extends ObjectDAO{
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(filePath));
-            reader.readLine();
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length >= 6) {
+                if (parts.length >= 4) {
                     int count = 0;
                     String name = parts[count++];
                     String email = parts[count++];
-                    String password = parts[count++];
-                    String address = parts[count];
+                    String address = parts[count++];
+                    String password = parts[count];
                     doctors.add(new Doctor(name, email, address, password));
                 }
             }
