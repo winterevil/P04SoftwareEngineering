@@ -215,18 +215,20 @@ public class LoginInterface extends javax.swing.JFrame {
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
         // TODO add your handling code here:
         String email = txtEmail.getText();
-        String password = jpwPassword.toString();
+        String password = String.valueOf(jpwPassword.getPassword());
 
         if (email.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Username");
         } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
-        } else if (UserManager.login(email, password) == "Patient") {
-//            MainFrame mf = new MainFrame();
-//            this.setVisible(false);
-//            mf.setVisible(true);
-        } else if (UserManager.login(email, password) == "Doctor") {
-
+        } else if (UserManager.login(email, password).equals("Patient")) {
+            PatientMainInterface patientmf = new PatientMainInterface();
+            this.setVisible(false);
+            patientmf.setVisible(true);
+        } else if (UserManager.login(email, password).equals("Doctor")) {
+            DoctorMainInterface doctormf = new DoctorMainInterface();
+            this.setVisible(false);
+            doctormf.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Wrong name or password", "Message", JOptionPane.ERROR_MESSAGE);
         }

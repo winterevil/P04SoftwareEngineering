@@ -21,10 +21,10 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
         initComponents();
         UserManager.restorePatientList();
         UserManager.restoreDoctorList();
-        for (int i = 0; i < UserManager.getPatientList().size();i++){
+        for (int i = 0; i < UserManager.getPatientList().size(); i++) {
             System.out.println(UserManager.getPatientList().get(i).toString());
         }
-        for (int i = 0; i < UserManager.getDoctorList().size();i++){
+        for (int i = 0; i < UserManager.getDoctorList().size(); i++) {
             System.out.println(UserManager.getDoctorList().get(i).toString());
         }
     }
@@ -268,7 +268,7 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String address = txtAddress.getText();
         String dob = sdf.format(jdcDOB.getDate());
-        String password = jpwPassword.toString();
+        String password = String.valueOf(jpwPassword.getPassword());
 
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Name");

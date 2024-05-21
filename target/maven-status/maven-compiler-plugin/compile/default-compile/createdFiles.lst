@@ -4,8 +4,10 @@ umbrella\hospital\p04\ui\PopupExample$2.class
 umbrella\hospital\p04\ui\PanelRound.class
 umbrella\hospital\p04\ui\SignupInterfacePatient$6.class
 umbrella\hospital\p04\model\Patient.class
+umbrella\hospital\p04\ui\DoctorMainInterface$1.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$2.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$7.class
+umbrella\hospital\p04\ui\PatientMainInterface.class
 umbrella\hospital\p04\ui\SignupInterfacePatient$3.class
 umbrella\hospital\p04\ui\LoginInterface$3.class
 umbrella\hospital\p04\ui\SignupInterfacePatient$4.class
@@ -22,11 +24,13 @@ umbrella\hospital\p04\model\Doctor.class
 umbrella\hospital\p04\ui\PopupExample$1.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$1.class
 umbrella\hospital\p04\ui\SignupInterfacePatient$2.class
+umbrella\hospital\p04\ui\PatientMainInterface$1.class
 PredefinedSensors.class
 umbrella\hospital\p04\controller\UserManager.class
 umbrella\hospital\p04\P04.class
 umbrella\hospital\p04\dao\ObjectDAO.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$3.class
+umbrella\hospital\p04\ui\DoctorMainInterface.class
 umbrella\hospital\p04\ui\LoginInterface.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor.class
 umbrella\hospital\p04\ui\LoginInterface$2.class

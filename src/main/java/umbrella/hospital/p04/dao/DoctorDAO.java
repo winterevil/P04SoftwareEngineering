@@ -45,7 +45,6 @@ public class DoctorDAO extends ObjectDAO{
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(filePath));
-            reader.readLine();
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length >= 4) {

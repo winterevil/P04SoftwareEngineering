@@ -245,7 +245,7 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
         String name = txtName.getText();
         String email = txtEmail.getText();
         String address = txtAddress.getText();
-        String password = jpwPassword.toString();
+        String password = String.valueOf(jpwPassword.getPassword());
 
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Name");
