@@ -272,14 +272,12 @@ public class ForgotPassword extends javax.swing.JFrame {
         String verification;
         if (doctor != null) {
             verification = doctor.getCode();
-            if (verification == null) {
-                JOptionPane.showConfirmDialog(this, "Wrong verification code", "Message", JOptionPane.ERROR_MESSAGE);
-            }
         } else {
+            assert patient != null;
             verification = patient.getCode();
-            if (verification == null) {
-                JOptionPane.showConfirmDialog(this, "Wrong verification code", "Message", JOptionPane.ERROR_MESSAGE);
-            }
+        }
+        if (verification == null) {
+            JOptionPane.showConfirmDialog(this, "Wrong verification code", "Message", JOptionPane.ERROR_MESSAGE);
         }
         if (verification == null) {
             JOptionPane.showMessageDialog(this, "Wrong email code", "Message", JOptionPane.ERROR_MESSAGE);
@@ -335,6 +333,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         if (doctor != null) {
             doctor.setCode(code);
         } else {
+            assert patient != null;
             patient.setCode(code);
         }
         sm.sendEmail(doctor, patient);
