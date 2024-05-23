@@ -101,7 +101,6 @@
                               </Group>
                               <EmptySpace pref="72" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtEmail" pref="174" max="32767" attributes="0"/>
                                   <Component id="lblPassword" min="-2" pref="60" max="-2" attributes="0"/>
                                   <Component id="lblEmail" min="-2" pref="37" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
@@ -110,7 +109,8 @@
                                       <Component id="btnSignin" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="lblForgotPassword" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jpwPassword" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jpwPassword" alignment="0" pref="174" max="32767" attributes="0"/>
+                                  <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -124,8 +124,8 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtEmail" min="-2" pref="20" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtEmail" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jpwPassword" min="-2" pref="26" max="-2" attributes="0"/>
@@ -177,11 +177,6 @@
                 <Property name="text" type="java.lang.String" value="Password:"/>
               </Properties>
             </Component>
-            <Component class="java.awt.TextField" name="txtEmail">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JCheckBox" name="chkShow">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -206,6 +201,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Forgot your password?"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblForgotPasswordMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSignin">
               <Properties>
@@ -283,6 +281,16 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jpwPasswordActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtEmail">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

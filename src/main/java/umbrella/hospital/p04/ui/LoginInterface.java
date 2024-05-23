@@ -33,7 +33,6 @@ public class LoginInterface extends javax.swing.JFrame {
         Signin = new umbrella.hospital.p04.ui.PanelRound();
         lblEmail = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
-        txtEmail = new java.awt.TextField();
         chkShow = new javax.swing.JCheckBox();
         lblForgotPassword = new javax.swing.JLabel();
         btnSignin = new javax.swing.JButton();
@@ -43,6 +42,7 @@ public class LoginInterface extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         popupExample1 = new umbrella.hospital.p04.ui.PopupExample();
         jpwPassword = new javax.swing.JPasswordField();
+        txtEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,12 +63,6 @@ public class LoginInterface extends javax.swing.JFrame {
         lblPassword.setForeground(new java.awt.Color(0, 0, 0));
         lblPassword.setText("Password:");
 
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
-
         chkShow.setBackground(new java.awt.Color(255, 255, 255));
         chkShow.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         chkShow.setText("Show Password");
@@ -81,6 +75,11 @@ public class LoginInterface extends javax.swing.JFrame {
         lblForgotPassword.setBackground(new java.awt.Color(255, 255, 255));
         lblForgotPassword.setForeground(new java.awt.Color(0, 0, 255));
         lblForgotPassword.setText("Forgot your password?");
+        lblForgotPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblForgotPasswordMouseClicked(evt);
+            }
+        });
 
         btnSignin.setBackground(new java.awt.Color(11, 87, 208));
         btnSignin.setForeground(new java.awt.Color(255, 255, 255));
@@ -117,6 +116,13 @@ public class LoginInterface extends javax.swing.JFrame {
             }
         });
 
+        txtEmail.setBackground(new java.awt.Color(255, 255, 255));
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout SigninLayout = new javax.swing.GroupLayout(Signin);
         Signin.setLayout(SigninLayout);
         SigninLayout.setHorizontalGroup(
@@ -135,7 +141,6 @@ public class LoginInterface extends javax.swing.JFrame {
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addGroup(SigninLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                             .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SigninLayout.createSequentialGroup()
@@ -143,7 +148,8 @@ public class LoginInterface extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSignin))
                             .addComponent(lblForgotPassword)
-                            .addComponent(jpwPassword))))
+                            .addComponent(jpwPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                            .addComponent(txtEmail))))
                 .addGap(74, 74, 74))
         );
         SigninLayout.setVerticalGroup(
@@ -152,8 +158,8 @@ public class LoginInterface extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpwPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,12 +240,6 @@ public class LoginInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSigninActionPerformed
 
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-        jpwPassword.requestFocusInWindow();
-
-    }//GEN-LAST:event_txtEmailActionPerformed
-
     private void chkShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkShowActionPerformed
         // TODO add your handling code here:
         if (chkShow.isSelected()) {
@@ -253,6 +253,18 @@ public class LoginInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         btnSignin.doClick();
     }//GEN-LAST:event_jpwPasswordActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+        jpwPassword.requestFocusInWindow();
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void lblForgotPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblForgotPasswordMouseClicked
+        // TODO add your handling code here:
+        ForgotPassword forgot = new ForgotPassword();
+        this.dispose();
+        forgot.setVisible(true);
+    }//GEN-LAST:event_lblForgotPasswordMouseClicked
 
     /**
      * @param args the command line arguments
@@ -303,6 +315,6 @@ public class LoginInterface extends javax.swing.JFrame {
     private javax.swing.JLabel lblForgotPassword;
     private javax.swing.JLabel lblPassword;
     private umbrella.hospital.p04.ui.PopupExample popupExample1;
-    private java.awt.TextField txtEmail;
+    private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables
 }
