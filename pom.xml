@@ -40,5 +40,10 @@
             <artifactId>AbsoluteLayout</artifactId>
             <version>SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-all</artifactId>
+            <version>1.17</version>
+        </dependency>
     </dependencies>
 </project>
