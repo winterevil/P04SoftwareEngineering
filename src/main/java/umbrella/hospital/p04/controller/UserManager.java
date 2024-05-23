@@ -11,12 +11,11 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class UserManager {
+
     private static ArrayList<Patient> patientList = PatientDAO.getInstance().Read();
     private static ArrayList<Doctor> doctorList = DoctorDAO.getInstance().Read();
 
     public UserManager() {
-        patientList = new ArrayList<>();
-        doctorList = new ArrayList<>();
         restorePatientList();
         restoreDoctorList();
     }
@@ -140,6 +139,10 @@ public class UserManager {
         return true;
     }
 
+    public static int count() {
+        return patientList.size();
+    }
+
     public static void changePassword(String email, String newPassword) {
         Patient patient = findPatientByEmail(email);
         if (patient != null) {
@@ -173,15 +176,13 @@ public class UserManager {
         DoctorDAO.getInstance().Save(doctorList);
     }
 
-
-    private static void restoreDoctorList() {
+    public static void restoreDoctorList() {
         doctorList = DoctorDAO.getInstance().Read();
     }
 
-    private static void restorePatientList() {
+    public static void restorePatientList() {
         patientList = PatientDAO.getInstance().Read();
     }
-
 
     public static ArrayList getPatientList() {
         return patientList;
