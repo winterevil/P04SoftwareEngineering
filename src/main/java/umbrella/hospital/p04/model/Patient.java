@@ -6,6 +6,7 @@ public class Patient {
     private String address;
     private String password;
     private String dayOfBirth;
+    private String code;
 
     public Patient() {
     }
@@ -56,6 +57,14 @@ public class Patient {
 
     public void setDayOfBirth(String dayOfBirth) {
         this.dayOfBirth = dayOfBirth;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @Override
