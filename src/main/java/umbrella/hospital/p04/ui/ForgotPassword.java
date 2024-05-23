@@ -124,6 +124,11 @@ public class ForgotPassword extends javax.swing.JFrame {
         lblCode.setText("Verification Code:");
 
         txtCode.setBackground(new java.awt.Color(255, 255, 255));
+        txtCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodeActionPerformed(evt);
+            }
+        });
 
         btnSend.setBackground(new java.awt.Color(11, 87, 208));
         btnSend.setForeground(new java.awt.Color(255, 255, 255));
@@ -272,14 +277,13 @@ public class ForgotPassword extends javax.swing.JFrame {
         String verification;
         if (doctor != null) {
             verification = doctor.getCode();
-            if (verification == null) {
-                JOptionPane.showConfirmDialog(this, "Wrong verification code", "Message", JOptionPane.ERROR_MESSAGE);
-            }
         } else {
+            assert patient != null;
             verification = patient.getCode();
-            if (verification == null) {
-                JOptionPane.showConfirmDialog(this, "Wrong verification code", "Message", JOptionPane.ERROR_MESSAGE);
-            }
+        }
+        if (verification == null) {
+            JOptionPane.showMessageDialog(this, "Wrong verification code", "Message", JOptionPane.ERROR_MESSAGE);
+            return;
         }
         if (verification == null) {
             JOptionPane.showMessageDialog(this, "Wrong email code", "Message", JOptionPane.ERROR_MESSAGE);
@@ -290,7 +294,7 @@ public class ForgotPassword extends javax.swing.JFrame {
                 this.dispose();
                 login.setVisible(true);
             } else {
-                JOptionPane.showConfirmDialog(this, "Wrong verification code", "Message", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Wrong verification code", "Message", JOptionPane.ERROR_MESSAGE);
             }
         }
 
@@ -313,7 +317,7 @@ public class ForgotPassword extends javax.swing.JFrame {
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-        jpwPassword.requestFocusInWindow();
+        txtCode.requestFocusInWindow();
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -339,6 +343,11 @@ public class ForgotPassword extends javax.swing.JFrame {
         }
         sm.sendEmail(doctor, patient);
     }//GEN-LAST:event_btnSendActionPerformed
+
+    private void txtCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeActionPerformed
+        // TODO add your handling code here:
+        jpwPassword.requestFocusInWindow();
+    }//GEN-LAST:event_txtCodeActionPerformed
 
     /**
      * @param args the command line arguments

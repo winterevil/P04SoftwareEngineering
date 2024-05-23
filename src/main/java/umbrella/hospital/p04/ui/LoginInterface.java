@@ -4,6 +4,7 @@
  */
 package umbrella.hospital.p04.ui;
 
+import java.util.Objects;
 import javax.swing.JOptionPane;
 import umbrella.hospital.p04.controller.UserManager;
 
@@ -227,11 +228,11 @@ public class LoginInterface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please fill in Username");
         } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
-        } else if (UserManager.login(email, password).equals("Patient")) {
+        } else if (Objects.equals(UserManager.login(email, password), "Patient")) {
             PatientMainInterface patientmf = new PatientMainInterface();
             this.setVisible(false);
             patientmf.setVisible(true);
-        } else if (UserManager.login(email, password).equals("Doctor")) {
+        } else if (Objects.equals(UserManager.login(email, password), "Doctor")) {
             DoctorMainInterface doctormf = new DoctorMainInterface();
             this.setVisible(false);
             doctormf.setVisible(true);
