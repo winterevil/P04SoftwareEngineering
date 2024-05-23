@@ -1,7 +1,9 @@
 D:\CSE305\P04SoftwareEngineering\src\main\java\umbrella\hospital\p04\ui\SignupInterfacePatient.java
+D:\CSE305\P04SoftwareEngineering\src\main\java\umbrella\hospital\p04\login\SendEmail.java
 D:\CSE305\P04SoftwareEngineering\src\main\java\umbrella\hospital\p04\ui\SignupInterfaceDoctor.java
 D:\CSE305\P04SoftwareEngineering\src\main\java\umbrella\hospital\p04\P04.java
 D:\CSE305\P04SoftwareEngineering\src\main\java\umbrella\hospital\p04\ui\LoginInterface.java
+D:\CSE305\P04SoftwareEngineering\src\main\java\umbrella\hospital\p04\ui\ForgotPassword.java
 D:\CSE305\P04SoftwareEngineering\src\main\java\umbrella\hospital\p04\dao\ObjectManager.java
 D:\CSE305\P04SoftwareEngineering\src\main\java\umbrella\hospital\p04\model\PredefinedSensors.java
 D:\CSE305\P04SoftwareEngineering\src\main\java\umbrella\hospital\p04\ui\PopupExample.java

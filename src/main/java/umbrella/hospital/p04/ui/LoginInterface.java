@@ -75,6 +75,11 @@ public class LoginInterface extends javax.swing.JFrame {
         lblForgotPassword.setBackground(new java.awt.Color(255, 255, 255));
         lblForgotPassword.setForeground(new java.awt.Color(0, 0, 255));
         lblForgotPassword.setText("Forgot your password?");
+        lblForgotPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblForgotPasswordMouseClicked(evt);
+            }
+        });
 
         btnSignin.setBackground(new java.awt.Color(11, 87, 208));
         btnSignin.setForeground(new java.awt.Color(255, 255, 255));
@@ -253,6 +258,13 @@ public class LoginInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         jpwPassword.requestFocusInWindow();
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void lblForgotPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblForgotPasswordMouseClicked
+        // TODO add your handling code here:
+        ForgotPassword forgot = new ForgotPassword();
+        this.dispose();
+        forgot.setVisible(true);
+    }//GEN-LAST:event_lblForgotPasswordMouseClicked
 
     /**
      * @param args the command line arguments

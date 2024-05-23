@@ -41,9 +41,9 @@
             <version>SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.xmlgraphics</groupId>
-            <artifactId>batik-all</artifactId>
-            <version>1.17</version>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.4.0.v201005080615</version>
         </dependency>
     </dependencies>
 </project>
