@@ -4,8 +4,13 @@
  */
 package umbrella.hospital.p04.ui;
 
-import javax.swing.JOptionPane;
 import umbrella.hospital.p04.controller.UserManager;
+
+import javax.swing.*;
+import java.util.Objects;
+
+import umbrella.hospital.p04.model.Doctor;
+import umbrella.hospital.p04.model.Patient;
 
 /**
  *
@@ -227,16 +232,24 @@ public class LoginInterface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please fill in Username");
         } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
-        } else if (UserManager.login(email, password).equals("Patient")) {
+        } else if (Objects.equals(UserManager.login(email, password), "Patient")) {
             PatientMainInterface patientmf = new PatientMainInterface();
             this.setVisible(false);
             patientmf.setVisible(true);
-        } else if (UserManager.login(email, password).equals("Doctor")) {
+            Patient pt= UserManager.findPatientByEmail(email);
+            javax.swing.JLabel lblPatientName = patientmf.lblPatientName;
+            assert pt != null;
+            lblPatientName.setText(pt.getName());
+            patientmf.setPatient(pt);
+        } else if (Objects.equals(UserManager.login(email, password), "Doctor")) {
             DoctorMainInterface doctormf = new DoctorMainInterface();
             this.setVisible(false);
             doctormf.setVisible(true);
+            Doctor dt = UserManager.findDoctorByEmail(email);
+            assert dt != null;
+            doctormf.setDoctor(dt);
         } else {
-            JOptionPane.showMessageDialog(this, "Wrong name or password", "Message", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "You have entered an invalid username or password", "Message", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSigninActionPerformed
 
