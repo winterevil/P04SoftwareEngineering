@@ -4,11 +4,15 @@
  */
 package umbrella.hospital.p04.ui;
 
+import umbrella.hospital.p04.model.Doctor;
+
 /**
  *
  * @author Admin
  */
 public class DoctorMainInterface extends javax.swing.JFrame {
+
+    private static Doctor doctor;
 
     /**
      * Creates new form DoctorMainInterface
@@ -118,8 +122,6 @@ public class DoctorMainInterface extends javax.swing.JFrame {
             }
         });
 
-        lblSearch.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Search.png")); // NOI18N
-
         javax.swing.GroupLayout SearchLayout = new javax.swing.GroupLayout(Search);
         Search.setLayout(SearchLayout);
         SearchLayout.setHorizontalGroup(
@@ -137,11 +139,9 @@ public class DoctorMainInterface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(SearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                    .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(lblSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
-
-        lblNoti.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Alarm.png")); // NOI18N
 
         Avatar.setBackground(new java.awt.Color(187, 187, 187));
         Avatar.setRoundBottomLeft(100);
@@ -174,10 +174,7 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         lblPressureIndex.setForeground(new java.awt.Color(0, 0, 0));
         lblPressureIndex.setText("199/67");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\pressure.png")); // NOI18N
-
         btnEditPressure.setBackground(new java.awt.Color(255, 255, 255));
-        btnEditPressure.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\edit.png")); // NOI18N
         btnEditPressure.setBorder(null);
         btnEditPressure.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,10 +235,7 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         lblHeartIndex.setForeground(new java.awt.Color(0, 0, 0));
         lblHeartIndex.setText("200");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\heart.png")); // NOI18N
-
         btnEditHeart.setBackground(new java.awt.Color(255, 255, 255));
-        btnEditHeart.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\edit.png")); // NOI18N
         btnEditHeart.setBorder(null);
         btnEditHeart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,10 +296,7 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         lblTemperatureIndex.setForeground(new java.awt.Color(0, 0, 0));
         lblTemperatureIndex.setText("200");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Temperature.png")); // NOI18N
-
         btnEditTemperature.setBackground(new java.awt.Color(255, 255, 255));
-        btnEditTemperature.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\edit.png")); // NOI18N
         btnEditTemperature.setBorder(null);
         btnEditTemperature.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -367,8 +358,6 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         lblAlertMessage.setForeground(new java.awt.Color(255, 255, 255));
         lblAlertMessage.setText("Need Attention");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\alert.png")); // NOI18N
-
         javax.swing.GroupLayout AlertLayout = new javax.swing.GroupLayout(Alert);
         Alert.setLayout(AlertLayout);
         AlertLayout.setHorizontalGroup(
@@ -401,8 +390,6 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         Profile.setRoundTopLeft(20);
         Profile.setRoundTopRight(20);
 
-        lblAvatarPatient.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\round.png")); // NOI18N
-
         lblPatient.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         lblPatient.setForeground(new java.awt.Color(0, 0, 0));
         lblPatient.setText("Patient");
@@ -415,13 +402,9 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(130, 131, 133));
         jLabel11.setText("years");
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Location.png")); // NOI18N
-
         lblAddress.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         lblAddress.setForeground(new java.awt.Color(130, 131, 133));
         lblAddress.setText("Lê Văn Hưu, TPHCM");
-
-        jLabel14.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Line 1.png")); // NOI18N
 
         lblDoctor.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
         lblDoctor.setForeground(new java.awt.Color(0, 0, 0));
@@ -430,8 +413,6 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         lblDoctorName.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         lblDoctorName.setForeground(new java.awt.Color(0, 0, 0));
         lblDoctorName.setText("Doctor Strange");
-
-        lblAvatarDoctor.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Ellipse 4.png")); // NOI18N
 
         javax.swing.GroupLayout ProfileLayout = new javax.swing.GroupLayout(Profile);
         Profile.setLayout(ProfileLayout);
@@ -508,8 +489,6 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(13, 164, 255));
         jLabel8.setText("Overview");
-
-        jLabel10.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Rectangle 9.png")); // NOI18N
 
         javax.swing.GroupLayout OverviewLayout = new javax.swing.GroupLayout(Overview);
         Overview.setLayout(OverviewLayout);
@@ -701,6 +680,9 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         });
     }
 
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private umbrella.hospital.p04.ui.PanelRound Alert;
     private umbrella.hospital.p04.ui.PanelRound Avatar;

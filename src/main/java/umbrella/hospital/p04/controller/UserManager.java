@@ -169,11 +169,11 @@ public class UserManager {
     }
 
     public static void savePatientList() {
-        PatientDAO.getInstance().Save(patientList);
+        PatientDAO.savePatients(patientList);
     }
 
     public static void saveDoctorList() {
-        DoctorDAO.getInstance().Save(doctorList);
+        DoctorDAO.saveDoctors(doctorList);
     }
 
     public static void restoreDoctorList() {

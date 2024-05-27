@@ -1,18 +1,21 @@
 package umbrella.hospital.p04.dao;
 
 import umbrella.hospital.p04.model.Doctor;
+import umbrella.hospital.p04.model.Patient;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
-public class DoctorDAO extends ObjectDAO{
-    private static final String filePath = System.getProperty("user.dir") + "/src/main/java/umbrella/hospital/p04/data/doctors.csv";
+public class DoctorDAO extends ObjectDAO {
+    private static final String filePath = System.getProperty("user.dir") + "/src/main/java/umbrella/hospital/p04/data/doctors.ser";
     private static DoctorDAO instance;
 
     public DoctorDAO() {
         super(filePath);
         File file = new File(filePath);
-         File parentDir = file.getParentFile();
+        File parentDir = file.getParentFile();
 
         if (!parentDir.exists()) {
             parentDir.mkdirs();
@@ -41,32 +44,36 @@ public class DoctorDAO extends ObjectDAO{
 
     public static ArrayList readDoctors() {
         ArrayList<Doctor> doctors = new ArrayList<>();
-        String line;
-        BufferedReader reader = null;
+        ObjectInputStream ois = null;
         try {
-            reader = new BufferedReader(new FileReader(filePath));
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length >= 4) {
-                    int count = 0;
-                    String name = parts[count++];
-                    String email = parts[count++];
-                    String address = parts[count++];
-                    String password = parts[count];
-                    doctors.add(new Doctor(name, email, address, password));
-                }
-            }
-        } catch (IOException e) {
+            ByteArrayInputStream bis = new ByteArrayInputStream(Files.readAllBytes(Paths.get(filePath)));
+            ois = new ObjectInputStream(bis);
+
+            doctors = (ArrayList<Doctor>) ois.readObject();
+
+            ois.close();
+            bis.close();
+        } catch (EOFException eofException) {
+            return doctors;
+        } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
         return doctors;
+    }
+
+    public static void saveDoctors(ArrayList<Doctor> doctors) {
+        try {
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = null;
+            oos = new ObjectOutputStream(bos);
+
+            oos.writeObject(doctors);
+            Files.write(Paths.get(filePath), bos.toByteArray());
+
+            oos.close();
+            bos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -4,11 +4,21 @@
  */
 package umbrella.hospital.p04.ui;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import umbrella.hospital.p04.model.Patient;
+import umbrella.hospital.p04.monitor.SensorMachineSimulation;
+
 /**
  *
  * @author Admin
  */
 public class PatientMainInterface extends javax.swing.JFrame {
+
+    private static Patient patient = null;
+    private static SensorMachineSimulation ssMc = new SensorMachineSimulation();
 
     /**
      * Creates new form PatientMainInterface
@@ -78,8 +88,6 @@ public class PatientMainInterface extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(239, 239, 239));
 
-        lblLogo.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Logo.png")); // NOI18N
-
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Hello,");
@@ -87,16 +95,6 @@ public class PatientMainInterface extends javax.swing.JFrame {
         lblPatientName.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblPatientName.setForeground(new java.awt.Color(0, 0, 0));
         lblPatientName.setText("Patient");
-
-        lblNoti.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Noti.png")); // NOI18N
-
-        lblAvatar.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Avt.png")); // NOI18N
-
-        lblHeart.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\LButton.png")); // NOI18N
-
-        lblMessage.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\mess.png")); // NOI18N
-
-        lblOut.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Out.png")); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 40)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
@@ -127,8 +125,6 @@ public class PatientMainInterface extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("bpm");
         Overview.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Group 5.png")); // NOI18N
         Overview.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 240));
 
         BloodPressure.setBackground(new java.awt.Color(255, 255, 255));
@@ -136,8 +132,6 @@ public class PatientMainInterface extends javax.swing.JFrame {
         BloodPressure.setRoundBottomRight(20);
         BloodPressure.setRoundTopLeft(20);
         BloodPressure.setRoundTopRight(20);
-
-        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Drop of Blood.png")); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -150,8 +144,6 @@ public class PatientMainInterface extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("mmHg");
-
-        jLabel13.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Covid 19 vaccine.png")); // NOI18N
 
         javax.swing.GroupLayout BloodPressureLayout = new javax.swing.GroupLayout(BloodPressure);
         BloodPressure.setLayout(BloodPressureLayout);
@@ -197,8 +189,6 @@ public class PatientMainInterface extends javax.swing.JFrame {
         Temperature.setRoundBottomRight(20);
         Temperature.setRoundTopLeft(20);
         Temperature.setRoundTopRight(20);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Icon.png")); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
@@ -248,7 +238,6 @@ public class PatientMainInterface extends javax.swing.JFrame {
         HeartRate.setRoundTopRight(20);
 
         jLabel14.setBackground(new java.awt.Color(0, 104, 255));
-        jLabel14.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Group 6.png")); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
@@ -261,8 +250,6 @@ public class PatientMainInterface extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("bpm");
-
-        jLabel18.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Female medic listening to the heartbeat.png")); // NOI18N
 
         javax.swing.GroupLayout HeartRateLayout = new javax.swing.GroupLayout(HeartRate);
         HeartRate.setLayout(HeartRateLayout);
@@ -304,8 +291,6 @@ public class PatientMainInterface extends javax.swing.JFrame {
         HeartStat.setRoundBottomRight(20);
         HeartStat.setRoundTopLeft(20);
         HeartStat.setRoundTopRight(20);
-
-        jLabel19.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Icon2.png")); // NOI18N
 
         jLabel20.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
@@ -353,13 +338,9 @@ public class PatientMainInterface extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("Health analysis");
 
-        jLabel23.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Line 1.png")); // NOI18N
-
         jLabel24.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(0, 0, 0));
         jLabel24.setText("Your doctor");
-
-        lblAvatarDoctor.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Ellipse 4.png")); // NOI18N
 
         lblNameDoctor.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         lblNameDoctor.setForeground(new java.awt.Color(0, 0, 0));
@@ -447,7 +428,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
                                         .addComponent(jLabel12))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel10)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(BloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(412, 412, 412)
@@ -533,7 +514,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -557,8 +538,26 @@ public class PatientMainInterface extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PatientMainInterface().setVisible(true);
+                ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+                Runnable updateDataTask = new Runnable() {
+                    @Override
+                    public void run() {
+                        ssMc.run();
+                        lblPressure.setText(ssMc.getBloodPressureString());
+                        lblHeartRateOverview.setText(String.valueOf(ssMc.getAverageHeartRate()));
+                        lblRate.setText(String.valueOf(ssMc.getHeartRate()));
+                        lblTemperature.setText(String.valueOf(ssMc.getTemperature()));
+                        lblStat.setText(ssMc.getGeneralHealthStatus());
+                    }
+                };
+                int intervalSeconds = 2;
+                scheduler.scheduleAtFixedRate(updateDataTask, 0, intervalSeconds, TimeUnit.SECONDS);
             }
         });
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -597,16 +596,16 @@ public class PatientMainInterface extends javax.swing.JFrame {
     private javax.swing.JLabel lblAvatar;
     private javax.swing.JLabel lblAvatarDoctor;
     private javax.swing.JLabel lblHeart;
-    private javax.swing.JLabel lblHeartRateOverview;
+    private static javax.swing.JLabel lblHeartRateOverview;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblMessage;
     private javax.swing.JLabel lblNameDoctor;
     private javax.swing.JLabel lblNoti;
     private javax.swing.JLabel lblOut;
-    private javax.swing.JLabel lblPatientName;
-    private javax.swing.JLabel lblPressure;
-    private javax.swing.JLabel lblRate;
-    private javax.swing.JLabel lblStat;
-    private javax.swing.JLabel lblTemperature;
+    public javax.swing.JLabel lblPatientName;
+    private static javax.swing.JLabel lblPressure;
+    private static javax.swing.JLabel lblRate;
+    private static javax.swing.JLabel lblStat;
+    private static javax.swing.JLabel lblTemperature;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,8 @@
 package umbrella.hospital.p04.model;
 
-public class Doctor {
+import java.io.Serializable;
+
+public class Doctor implements Serializable {
     private String name;
     private String email;
     private String address;
