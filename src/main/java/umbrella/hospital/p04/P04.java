@@ -4,6 +4,8 @@
 
 package umbrella.hospital.p04;
 
+import umbrella.hospital.p04.chat.theServer;
+
 /**
  *
  * @author Admin
@@ -11,6 +13,8 @@ package umbrella.hospital.p04;
 public class P04 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        theServer server = new theServer();
+        
+        server.setVisible(true);
     }
 }

@@ -8,6 +8,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import umbrella.hospital.p04.chat.theClient;
+import umbrella.hospital.p04.chat.theServer;
 import umbrella.hospital.p04.model.Patient;
 import umbrella.hospital.p04.monitor.SensorMachineSimulation;
 
@@ -82,6 +84,8 @@ public class PatientMainInterface extends javax.swing.JFrame {
         lblAvatarDoctor = new javax.swing.JLabel();
         lblNameDoctor = new javax.swing.JLabel();
         btnConsult = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txaAnalysis = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -351,6 +355,15 @@ public class PatientMainInterface extends javax.swing.JFrame {
         btnConsult.setForeground(new java.awt.Color(255, 255, 255));
         btnConsult.setText("Consult Now ");
         btnConsult.setBorder(null);
+        btnConsult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultActionPerformed(evt);
+            }
+        });
+
+        txaAnalysis.setColumns(20);
+        txaAnalysis.setRows(5);
+        jScrollPane1.setViewportView(txaAnalysis);
 
         javax.swing.GroupLayout InformationLayout = new javax.swing.GroupLayout(Information);
         Information.setLayout(InformationLayout);
@@ -364,8 +377,10 @@ public class PatientMainInterface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(InformationLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)))
+                        .addGroup(InformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)))
                 .addGroup(InformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(InformationLayout.createSequentialGroup()
                         .addComponent(jLabel24)
@@ -393,10 +408,15 @@ public class PatientMainInterface extends javax.swing.JFrame {
                             .addComponent(jLabel22))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(InformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAvatarDoctor)
-                            .addComponent(lblNameDoctor))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnConsult, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(InformationLayout.createSequentialGroup()
+                                .addGroup(InformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAvatarDoctor)
+                                    .addComponent(lblNameDoctor))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnConsult, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InformationLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
 
@@ -450,7 +470,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
                                 .addGap(65, 65, 65)
                                 .addComponent(jLabel21)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Information, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(44, 44, 44))
@@ -506,6 +526,13 @@ public class PatientMainInterface extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultActionPerformed
+        // TODO add your handling code here:
+        theClient client = new theClient();
+        
+        client.setVisible(true);
+    }//GEN-LAST:event_btnConsultActionPerformed
 
     /**
      * @param args the command line arguments
@@ -593,6 +620,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAvatar;
     private javax.swing.JLabel lblAvatarDoctor;
     private javax.swing.JLabel lblHeart;
@@ -607,5 +635,6 @@ public class PatientMainInterface extends javax.swing.JFrame {
     private static javax.swing.JLabel lblRate;
     private static javax.swing.JLabel lblStat;
     private static javax.swing.JLabel lblTemperature;
+    private javax.swing.JTextArea txaAnalysis;
     // End of variables declaration//GEN-END:variables
 }

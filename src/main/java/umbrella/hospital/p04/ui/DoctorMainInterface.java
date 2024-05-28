@@ -4,6 +4,8 @@
  */
 package umbrella.hospital.p04.ui;
 
+import umbrella.hospital.p04.chat.theClient;
+import umbrella.hospital.p04.chat.theServer;
 import umbrella.hospital.p04.model.Doctor;
 
 /**
@@ -19,6 +21,9 @@ public class DoctorMainInterface extends javax.swing.JFrame {
      */
     public DoctorMainInterface() {
         initComponents();
+        theClient client = new theClient();
+
+        client.setVisible(true);
     }
 
     /**
