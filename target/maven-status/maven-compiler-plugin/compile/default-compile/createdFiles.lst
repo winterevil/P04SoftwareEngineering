@@ -44,9 +44,11 @@ umbrella\hospital\p04\model\Patient.class
 umbrella\hospital\p04\ui\DoctorMainInterface$1.class
 umbrella\hospital\p04\ui\ForgotPassword$4.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$7.class
+umbrella\hospital\p04\ui\ForgotPassword$8.class
 umbrella\hospital\p04\ui\PatientMainInterface.class
 umbrella\hospital\p04\ui\SignupInterfacePatient$3.class
 umbrella\hospital\p04\monitor\SensorMachineSimulation.class
+umbrella\hospital\p04\chat\theClient$9.class
 umbrella\hospital\p04\ui\ForgotPassword$1.class
 umbrella\hospital\p04\dao\DoctorDAO.class
 umbrella\hospital\p04\ui\SignupInterfacePatient.class
@@ -62,6 +64,7 @@ umbrella\hospital\p04\controller\UserManager.class
 umbrella\hospital\p04\ui\ForgotPassword$7.class
 umbrella\hospital\p04\ui\ForgotPassword$3.class
 umbrella\hospital\p04\monitor\SensorMonitor.class
+umbrella\hospital\p04\ui\PatientMainInterface$3.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$3.class
 umbrella\hospital\p04\ui\DoctorMainInterface$2.class
 umbrella\hospital\p04\ui\LoginInterface$2.class

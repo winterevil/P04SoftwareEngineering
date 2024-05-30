@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import umbrella.hospital.p04.chat.theClient;
 import umbrella.hospital.p04.model.Patient;
 import umbrella.hospital.p04.monitor.SensorMachineSimulation;
 
@@ -353,6 +354,11 @@ public class PatientMainInterface extends javax.swing.JFrame {
         btnConsult.setForeground(new java.awt.Color(255, 255, 255));
         btnConsult.setText("Consult Now ");
         btnConsult.setBorder(null);
+        btnConsult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultActionPerformed(evt);
+            }
+        });
 
         txaDescription.setColumns(20);
         txaDescription.setLineWrap(true);
@@ -520,7 +526,14 @@ public class PatientMainInterface extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultActionPerformed
+        // TODO add your handling code here:
+        theClient client = new theClient();
+        client.setVisible(true);
+    }//GEN-LAST:event_btnConsultActionPerformed
 
     /**
      * @param args the command line arguments

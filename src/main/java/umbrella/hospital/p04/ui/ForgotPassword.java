@@ -124,6 +124,11 @@ public class ForgotPassword extends javax.swing.JFrame {
         lblCode.setText("Verification Code:");
 
         txtCode.setBackground(new java.awt.Color(255, 255, 255));
+        txtCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodeActionPerformed(evt);
+            }
+        });
 
         btnSend.setBackground(new java.awt.Color(11, 87, 208));
         btnSend.setForeground(new java.awt.Color(255, 255, 255));
@@ -245,6 +250,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
@@ -339,6 +345,10 @@ public class ForgotPassword extends javax.swing.JFrame {
         sm.sendEmail(doctor, patient);
     }//GEN-LAST:event_btnSendActionPerformed
 
+    private void txtCodeActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        jpwPassword.requestFocusInWindow();
+    }
     /**
      * @param args the command line arguments
      */

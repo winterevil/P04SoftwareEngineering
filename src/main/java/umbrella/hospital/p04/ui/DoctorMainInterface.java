@@ -7,6 +7,7 @@ package umbrella.hospital.p04.ui;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import umbrella.hospital.p04.chat.theClient;
 import umbrella.hospital.p04.model.Doctor;
 import umbrella.hospital.p04.monitor.SensorMachineSimulation;
 
@@ -24,6 +25,10 @@ public class DoctorMainInterface extends javax.swing.JFrame {
      */
     public DoctorMainInterface() {
         initComponents();
+        
+        theClient client = new theClient();
+        client.setVisible(true);
+        
     }
 
     /**
@@ -85,7 +90,7 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txaDescription = new javax.swing.JTextArea();
-        Chat = new umbrella.hospital.p04.ui.PanelRound();
+        panelRound1 = new umbrella.hospital.p04.ui.PanelRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -528,21 +533,21 @@ public class DoctorMainInterface extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Chat.setBackground(new java.awt.Color(255, 255, 255));
-        Chat.setRoundBottomLeft(20);
-        Chat.setRoundBottomRight(20);
-        Chat.setRoundTopLeft(20);
-        Chat.setRoundTopRight(20);
+        panelRound1.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound1.setRoundBottomLeft(20);
+        panelRound1.setRoundBottomRight(20);
+        panelRound1.setRoundTopLeft(20);
+        panelRound1.setRoundTopRight(20);
 
-        javax.swing.GroupLayout ChatLayout = new javax.swing.GroupLayout(Chat);
-        Chat.setLayout(ChatLayout);
-        ChatLayout.setHorizontalGroup(
-            ChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
+        panelRound1.setLayout(panelRound1Layout);
+        panelRound1Layout.setHorizontalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        ChatLayout.setVerticalGroup(
-            ChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 138, Short.MAX_VALUE)
+        panelRound1Layout.setVerticalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 168, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout MainLayout = new javax.swing.GroupLayout(Main);
@@ -584,7 +589,7 @@ public class DoctorMainInterface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Alert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Chat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         MainLayout.setVerticalGroup(
@@ -618,12 +623,12 @@ public class DoctorMainInterface extends javax.swing.JFrame {
                     .addComponent(Temperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Alert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(MainLayout.createSequentialGroup()
                         .addComponent(Profile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Overview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Chat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -644,8 +649,10 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
@@ -724,7 +731,6 @@ public class DoctorMainInterface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private umbrella.hospital.p04.ui.PanelRound Alert;
     private umbrella.hospital.p04.ui.PanelRound Avatar;
-    private umbrella.hospital.p04.ui.PanelRound Chat;
     private umbrella.hospital.p04.ui.PanelRound Heart;
     private javax.swing.JPanel Main;
     private umbrella.hospital.p04.ui.PanelRound Overview;
@@ -771,6 +777,7 @@ public class DoctorMainInterface extends javax.swing.JFrame {
     private javax.swing.JLabel lblTime;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblYear;
+    private umbrella.hospital.p04.ui.PanelRound panelRound1;
     public javax.swing.JTextArea txaDescription;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables

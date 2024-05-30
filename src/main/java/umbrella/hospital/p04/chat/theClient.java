@@ -1,6 +1,5 @@
 package umbrella.hospital.p04.chat;
 
-
 import java.awt.Color;
 import java.io.*;
 import java.net.Socket;
@@ -34,7 +33,9 @@ public class theClient extends javax.swing.JFrame {
     }
 
     public void userAdd(String data) {
+
         users.add(data);
+
     }
 
     public void userRemove(String data) {
@@ -43,10 +44,12 @@ public class theClient extends javax.swing.JFrame {
 
     public void writeUsers() {
         String[] tempList = new String[(users.size())];
+
         users.toArray(tempList);
         for (String token : tempList) {
 
         }
+
     }
 
     public void sendDisconnect() {
@@ -105,16 +108,20 @@ public class theClient extends javax.swing.JFrame {
 
         sentMessage.setBackground(new java.awt.Color(240, 240, 240));
         sentMessage.setColumns(20);
-        sentMessage.setFont(new java.awt.Font("Segoe Script", 1, 11)); // NOI18N
+        sentMessage.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         sentMessage.setRows(5);
         jScrollPane1.setViewportView(sentMessage);
 
         Message.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        Message.setText("Your messages");
         Message.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Message.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 MessageMouseEntered(evt);
+            }
+        });
+        Message.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MessageActionPerformed(evt);
             }
         });
         Message.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -387,14 +394,14 @@ public class theClient extends javax.swing.JFrame {
             case "Input yuor name":
                 break;
             default:
-              try {
-                theWriter.println(username + " : " + Message.getText() + ":" + "Chat");
-                theWriter.flush();
-            } catch (Exception ex) {
-                sentMessage.append("You're not connected. \n");
-            }
-            Message.setText("");
-            Message.requestFocus();
+                try {
+                    theWriter.println(username + " : " + Message.getText() + ":" + "Chat");
+                    theWriter.flush();
+                } catch (Exception ex) {
+                    sentMessage.append("You're not connected. \n");
+                }
+                Message.setText("");
+                Message.requestFocus();
 
         }
 
@@ -496,6 +503,11 @@ public class theClient extends javax.swing.JFrame {
         // TODO add your handling code here:\
 
     }//GEN-LAST:event_MessageKeyTyped
+
+    private void MessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MessageActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_MessageActionPerformed
 
     /**
      * @param args the command line arguments

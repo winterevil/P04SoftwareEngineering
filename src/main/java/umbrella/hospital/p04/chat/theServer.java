@@ -1,6 +1,5 @@
 package umbrella.hospital.p04.chat;
 
-
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -110,7 +109,7 @@ public class theServer extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         dataStored.setColumns(20);
-        dataStored.setFont(new java.awt.Font("Segoe Script", 1, 11)); // NOI18N
+        dataStored.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         dataStored.setRows(5);
         dataStored.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane1.setViewportView(dataStored);
@@ -390,16 +389,19 @@ public class theServer extends javax.swing.JFrame {
     public void userAdd(String data) {
         String message, add = ": :Connect", done = "Server: :Done", name = data;
         dataStored.append("Before " + name + " added. \n");
-        users.add(name);
-        dataStored.append("After " + name + " added. \n");
-        String[] tempList = new String[(users.size())];
-        users.toArray(tempList);
 
-        for (String token : tempList) {
-            message = (token + add);
-            tellEveryone(message);
-        }
-        tellEveryone(done);
+            users.add(name);
+
+            dataStored.append("After " + name + " added. \n");
+            String[] tempList = new String[(users.size())];
+            users.toArray(tempList);
+
+            for (String token : tempList) {
+                message = (token + add);
+                tellEveryone(message);
+            }
+            tellEveryone(done);
+        
     }
 
     public void userRemove(String data) {
