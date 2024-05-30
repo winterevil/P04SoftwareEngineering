@@ -17,7 +17,7 @@ import umbrella.hospital.p04.monitor.SensorMachineSimulation;
 public class DoctorMainInterface extends javax.swing.JFrame {
 
     private static Doctor doctor;
-    public SensorMachineSimulation ssMc = null;
+    public SensorMachineSimulation ssMc = new SensorMachineSimulation();
 
     /**
      * Creates new form DoctorMainInterface
@@ -498,7 +498,9 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         jLabel8.setText("Overview");
 
         txaDescription.setColumns(20);
+        txaDescription.setLineWrap(true);
         txaDescription.setRows(5);
+        txaDescription.setEnabled(false);
         jScrollPane1.setViewportView(txaDescription);
 
         javax.swing.GroupLayout OverviewLayout = new javax.swing.GroupLayout(Overview);
