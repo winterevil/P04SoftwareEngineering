@@ -4,11 +4,13 @@
  */
 package umbrella.hospital.p04.ui;
 
+import java.awt.Color;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import umbrella.hospital.p04.model.Doctor;
 import umbrella.hospital.p04.monitor.SensorMachineSimulation;
+import umbrella.hospital.p04.system.GetDateInformation;
 
 /**
  *
@@ -695,6 +697,7 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DoctorMainInterface().setVisible(true);
+                
             }
         });
     }
@@ -717,6 +720,29 @@ public class DoctorMainInterface extends javax.swing.JFrame {
             }
         };
         int intervalSeconds = 2;
+        scheduler.scheduleAtFixedRate(updateDataTask, 0, intervalSeconds, TimeUnit.SECONDS);
+    }
+
+    public void startTime() {
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        Runnable updateDataTask = new Runnable() {
+            @Override
+            public void run() {
+                GetDateInformation gDI = new GetDateInformation();
+                lblYear.setText(gDI.getYear());
+                lblDate.setText(gDI.getDay());
+                lblTime.setText(gDI.getTime());
+                String clock = gDI.getAMPM();
+                if (clock.equals("AM")) {
+                    lblAM.setForeground(Color.getHSBColor(0, 0, 0));
+                    lblPM.setForeground(Color.getHSBColor(187, 187, 187));
+                } else {
+                    lblPM.setForeground(Color.getHSBColor(0, 0, 0));
+                    lblAM.setForeground(Color.getHSBColor(187, 187, 187));
+                }
+            }
+        };
+        int intervalSeconds = 1;
         scheduler.scheduleAtFixedRate(updateDataTask, 0, intervalSeconds, TimeUnit.SECONDS);
     }
 
@@ -750,29 +776,29 @@ public class DoctorMainInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblAM;
+    private static javax.swing.JLabel lblAM;
     public javax.swing.JLabel lblAddress;
     public javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblAlert;
     public javax.swing.JLabel lblAlertMessage;
     private javax.swing.JLabel lblAvatarDoctor;
     private javax.swing.JLabel lblAvatarPatient;
-    private javax.swing.JLabel lblDate;
+    private static javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblDoctor;
     public javax.swing.JLabel lblDoctorName;
     private javax.swing.JLabel lblHeart;
     public javax.swing.JLabel lblHeartIndex;
     private javax.swing.JLabel lblNoti;
-    private javax.swing.JLabel lblPM;
+    private static javax.swing.JLabel lblPM;
     public javax.swing.JLabel lblPatient;
     private javax.swing.JLabel lblPressure;
     public javax.swing.JLabel lblPressureIndex;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblTemperature;
     public javax.swing.JLabel lblTemperatureIndex;
-    private javax.swing.JLabel lblTime;
+    private static javax.swing.JLabel lblTime;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblYear;
+    public static javax.swing.JLabel lblYear;
     public javax.swing.JTextArea txaDescription;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables

@@ -11,6 +11,7 @@ import java.util.Objects;
 
 import umbrella.hospital.p04.model.Doctor;
 import umbrella.hospital.p04.model.Patient;
+import umbrella.hospital.p04.system.CalculateAge;
 
 /**
  *
@@ -263,6 +264,8 @@ public class LoginInterface extends javax.swing.JFrame {
             doctormf.lblDoctorName.setText(dt.getName());
             doctormf.lblPatient.setText(dt.getAssignedPatient().getName());
             doctormf.lblAddress.setText(dt.getAssignedPatient().getAddress());
+            String age = new CalculateAge().calculateAge(pt.getDayOfBirth());
+            doctormf.lblAge.setText(age);
             if (dt.getSensorMachineSimulation() == null || pt.getSensorMachineSimulation() == null) {
                 if (pt.getSensorMachineSimulation() == null) {
                     dt.setSensorMachineSimulation(doctormf.ssMc);
@@ -273,6 +276,7 @@ public class LoginInterface extends javax.swing.JFrame {
             }
             doctormf.setDoctor(dt);
             doctormf.startSensorMachineSimulation();
+            doctormf.startTime();
         } else if (Objects.equals(UserManager.login(email, password), "No Doctor")) {
             JOptionPane.showMessageDialog(this, "No Doctor available", "Message", JOptionPane.ERROR_MESSAGE);
         } else if (Objects.equals(UserManager.login(email, password), "No Patient")) {

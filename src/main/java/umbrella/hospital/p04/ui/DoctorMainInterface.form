@@ -177,6 +177,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="2024"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lblDate">
           <Properties>
@@ -188,6 +191,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Tue, 26 Nov"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lblTime">
           <Properties>
@@ -199,6 +205,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="01:30"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lblAM">
           <Properties>
@@ -210,6 +219,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="AM"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lblPM">
           <Properties>
@@ -218,6 +230,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="PM"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
         </Component>
         <Container class="umbrella.hospital.p04.ui.PanelRound" name="Search">
           <Properties>

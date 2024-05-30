@@ -47,6 +47,7 @@ umbrella\hospital\p04\ui\SignupInterfaceDoctor$7.class
 umbrella\hospital\p04\ui\PatientMainInterface.class
 umbrella\hospital\p04\ui\SignupInterfacePatient$3.class
 umbrella\hospital\p04\monitor\SensorMachineSimulation.class
+umbrella\hospital\p04\system\CalculateAge.class
 umbrella\hospital\p04\ui\ForgotPassword$1.class
 umbrella\hospital\p04\dao\DoctorDAO.class
 umbrella\hospital\p04\ui\SignupInterfacePatient.class
