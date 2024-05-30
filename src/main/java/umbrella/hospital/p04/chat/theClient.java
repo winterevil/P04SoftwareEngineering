@@ -109,7 +109,7 @@ public class theClient extends javax.swing.JFrame {
         sentMessage.setRows(5);
         jScrollPane1.setViewportView(sentMessage);
 
-        Message.setFont(new java.awt.Font("Segoe Script", 1, 11)); // NOI18N
+        Message.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         Message.setText("Your messages");
         Message.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Message.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -203,7 +203,7 @@ public class theClient extends javax.swing.JFrame {
         );
 
         client_Name.setBackground(new java.awt.Color(240, 240, 240));
-        client_Name.setFont(new java.awt.Font("Segoe Script", 1, 11)); // NOI18N
+        client_Name.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         client_Name.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         client_Name.setText("Client name");
         client_Name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));

@@ -132,7 +132,7 @@
         <Component class="javax.swing.JTextField" name="Message">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe Script" size="11" style="1"/>
+              <Font name="SansSerif" size="11" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Your messages"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -257,7 +257,7 @@
               <Color blue="f0" green="f0" red="f0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe Script" size="11" style="1"/>
+              <Font name="SansSerif" size="11" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Client name"/>

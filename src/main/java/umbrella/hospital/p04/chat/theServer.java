@@ -224,7 +224,7 @@ public class theServer extends javax.swing.JFrame {
         );
 
         server.setBackground(new java.awt.Color(153, 153, 153));
-        server.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        server.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         server.setText("Server");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
