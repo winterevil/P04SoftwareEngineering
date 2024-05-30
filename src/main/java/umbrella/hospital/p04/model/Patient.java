@@ -1,5 +1,7 @@
 package umbrella.hospital.p04.model;
 
+import umbrella.hospital.p04.monitor.SensorMachineSimulation;
+
 import java.io.Serializable;
 
 public class Patient implements Serializable {
@@ -9,6 +11,9 @@ public class Patient implements Serializable {
     private String password;
     private String dayOfBirth;
     private String code;
+    private Doctor assignedDoctor;
+    private String assignedDoctorEmail;
+    private transient SensorMachineSimulation sensorMachineSimulation;
 
     public Patient() {
     }
@@ -69,8 +74,33 @@ public class Patient implements Serializable {
         this.code = code;
     }
 
+    public Doctor getAssignedDoctor() {
+        return assignedDoctor;
+    }
+
+    public void setAssignedDoctor(Doctor assignedDoctor) {
+        this.assignedDoctor = assignedDoctor;
+    }
+
+    public String getAssignedDoctorEmail() {
+        return assignedDoctorEmail;
+    }
+
+    public void setAssignedDoctorEmail(String assignedDoctorEmail) {
+        this.assignedDoctorEmail = assignedDoctorEmail;
+    }
+
+    public SensorMachineSimulation getSensorMachineSimulation() {
+        return sensorMachineSimulation;
+    }
+
+    public void setSensorMachineSimulation(SensorMachineSimulation sensorMachineSimulation) {
+        this.sensorMachineSimulation = sensorMachineSimulation;
+    }
+
     @Override
     public String toString() {
-        return name + "," + email + "," + address + "," + password + "," + dayOfBirth + "\n";
+        assignedDoctorEmail = assignedDoctor != null ? assignedDoctor.getEmail() : null;
+        return name + "," + email + "," + address + "," + password + "," + dayOfBirth + "," + assignedDoctorEmail + "\n";
     }
 }

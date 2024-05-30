@@ -8,7 +8,8 @@ import umbrella.hospital.p04.model.Patient;
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class UserManager {
 
@@ -90,10 +91,16 @@ public class UserManager {
     public static String login(String email, String password) {
         Patient patient = loginPatient(email, password);
         if (patient != null) {
-            return "Patient";
+//            if (assignedDoctor(patient)) {
+            assignedDoctor(patient);
+               return "Patient";
+//            } else {
+//                return "No Doctor";
+//            }
         }
         Doctor doctor = loginDoctor(email, password);
         if (doctor != null) {
+            getPatient(doctor);
             return "Doctor";
         }
         return null;
@@ -101,7 +108,7 @@ public class UserManager {
 
     public static Patient loginPatient(String email, String password) {
         String hashedPassword = hashPasswordWithMD5(password);
-        restorePatientList();
+        //restorePatientList();
         for (Patient patient : patientList) {
             if (patient.getEmail().equals(email) && patient.getPassword().equals(hashedPassword)) {
                 return patient;
@@ -112,7 +119,7 @@ public class UserManager {
 
     public static Doctor loginDoctor(String email, String password) {
         String hashedPassword = hashPasswordWithMD5(password);
-        restoreDoctorList();
+        //restoreDoctorList();
         for (Doctor doctor : doctorList) {
             if (doctor.getEmail().equals(email) && doctor.getPassword().equals(hashedPassword)) {
                 return doctor;
@@ -198,5 +205,50 @@ public class UserManager {
 
     public static void setDoctorList(ArrayList doctorList) {
         UserManager.doctorList = doctorList;
+    }
+
+    public static boolean assignedDoctor(Patient patient) {
+        if (doctorList.isEmpty()) {
+            return false;
+        }
+
+        if (patient.getAssignedDoctorEmail() != null) {
+            patient.setAssignedDoctor(findDoctorByEmail(patient.getAssignedDoctorEmail()));
+            Doctor doctor = findDoctorByEmail(patient.getAssignedDoctorEmail());
+            if (doctor != null) {
+                doctor.setAssignedPatient(patient);
+                saveDoctorList();
+                savePatientList();
+                return true;
+            }
+            return true;
+        }
+
+        for (Doctor doctor : doctorList) {
+            if (doctor.getAssignedPatient() == null) {
+                doctor.setAssignedPatient(patient);
+                patient.setAssignedDoctor(doctor);
+                saveDoctorList();
+                savePatientList();
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static void getPatient(Doctor doctor) {
+       if (doctor.getAssignedPatientEmail() != null) {
+            doctor.setAssignedPatient(findPatientByEmail(doctor.getAssignedPatientEmail()));
+            Patient patient = findPatientByEmail(doctor.getAssignedPatientEmail());
+            if (patient != null) {
+                patient.setAssignedDoctor(doctor);
+                saveDoctorList();
+                savePatientList();
+                return;
+            }
+            saveDoctorList();
+            savePatientList();
+        }
     }
 }

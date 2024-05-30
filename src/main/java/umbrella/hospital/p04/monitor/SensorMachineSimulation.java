@@ -11,7 +11,7 @@ public class SensorMachineSimulation {
     private static final HealthAnalysis healthAnalysis = new HealthAnalysis();
     private static final SensorData sensorData = new SensorData();
     private static final List<Float> temperatureList = new ArrayList<>();
-    private static final List<float[]> bloodPressureList = new ArrayList<float[]>();
+    private static final List<float[]> bloodPressureList = new ArrayList<>();
     private static final List<Integer> heartRateList = new ArrayList<>();
     private float averageTemperature;
     private float[] averageBloodPressure;
