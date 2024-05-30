@@ -95,6 +95,7 @@ public class LoginInterface extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.jpg")); // NOI18N
         jLabel5.setToolTipText("");
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -102,6 +103,7 @@ public class LoginInterface extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Sign In");
 
+        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Online doctor and medical services.png")); // NOI18N
         jLabel6.setText("jLabel6");
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
@@ -219,7 +221,6 @@ public class LoginInterface extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
@@ -236,14 +237,21 @@ public class LoginInterface extends javax.swing.JFrame {
             //this.setVisible(false);
             patientmf.setVisible(true);
             Patient pt = UserManager.findPatientByEmail(email);
-            //Doctor dt = UserManager.findDoctorByEmail(pt.getAssignedDoctorEmail());
+            Doctor dt = UserManager.findDoctorByEmail(pt.getAssignedDoctor().getEmail());
             javax.swing.JLabel lblPatientName = patientmf.lblPatientName;
             assert pt != null;
             lblPatientName.setText(pt.getName());
             javax.swing.JLabel lblDoctorName = patientmf.lblNameDoctor;
             lblDoctorName.setText(pt.getAssignedDoctor().getName());
             patientmf.setPatient(pt);
-            pt.setSensorMachineSimulation(patientmf.ssMc);
+            if (dt.getSensorMachineSimulation() == null || pt.getSensorMachineSimulation() == null) {
+                if (dt.getSensorMachineSimulation() == null) {
+                    pt.setSensorMachineSimulation(patientmf.ssMc);
+                } else {
+                    patientmf.ssMc = dt.getSensorMachineSimulation();
+                    pt.setSensorMachineSimulation(dt.getSensorMachineSimulation());
+                }
+            }
             patientmf.startSensorMachineSimulation();
         } else if (Objects.equals(UserManager.login(email, password), "Doctor")) {
             //this.setVisible(false);
@@ -255,12 +263,20 @@ public class LoginInterface extends javax.swing.JFrame {
             doctormf.lblDoctorName.setText(dt.getName());
             doctormf.lblPatient.setText(dt.getAssignedPatient().getName());
             doctormf.lblAddress.setText(dt.getAssignedPatient().getAddress());
-            doctormf.ssMc = pt.getSensorMachineSimulation();
+            if (dt.getSensorMachineSimulation() == null || pt.getSensorMachineSimulation() == null) {
+                if (pt.getSensorMachineSimulation() == null) {
+                    dt.setSensorMachineSimulation(doctormf.ssMc);
+                } else {
+                    doctormf.ssMc = pt.getSensorMachineSimulation();
+                    dt.setSensorMachineSimulation(pt.getSensorMachineSimulation());
+                }
+            }
             doctormf.setDoctor(dt);
             doctormf.startSensorMachineSimulation();
-//        } else if (Objects.equals(UserManager.login(email, password), "No Doctor")) {
-//            JOptionPane.showMessageDialog(this, "No Doctor available", "Message", JOptionPane.ERROR_MESSAGE);
-//        }
+        } else if (Objects.equals(UserManager.login(email, password), "No Doctor")) {
+            JOptionPane.showMessageDialog(this, "No Doctor available", "Message", JOptionPane.ERROR_MESSAGE);
+        } else if (Objects.equals(UserManager.login(email, password), "No Patient")) {
+            JOptionPane.showMessageDialog(this, "No Patient available", "Message", JOptionPane.ERROR_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "You have entered an invalid username or password", "Message", JOptionPane.ERROR_MESSAGE);
         }

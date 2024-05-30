@@ -91,17 +91,19 @@ public class UserManager {
     public static String login(String email, String password) {
         Patient patient = loginPatient(email, password);
         if (patient != null) {
-//            if (assignedDoctor(patient)) {
-            assignedDoctor(patient);
-               return "Patient";
-//            } else {
-//                return "No Doctor";
-//            }
+            if (assignedDoctor(patient)) {
+                return "Patient";
+            } else {
+                return "No Doctor";
+            }
         }
         Doctor doctor = loginDoctor(email, password);
         if (doctor != null) {
-            getPatient(doctor);
-            return "Doctor";
+            if(getPatient(doctor)){
+                return "Doctor";
+            } else{
+                return "No Patient";
+            }
         }
         return null;
     }
@@ -212,15 +214,7 @@ public class UserManager {
             return false;
         }
 
-        if (patient.getAssignedDoctorEmail() != null) {
-            patient.setAssignedDoctor(findDoctorByEmail(patient.getAssignedDoctorEmail()));
-            Doctor doctor = findDoctorByEmail(patient.getAssignedDoctorEmail());
-            if (doctor != null) {
-                doctor.setAssignedPatient(patient);
-                saveDoctorList();
-                savePatientList();
-                return true;
-            }
+        if (patient.getAssignedDoctor() != null) {
             return true;
         }
 
@@ -237,18 +231,24 @@ public class UserManager {
         return false;
     }
 
-    private static void getPatient(Doctor doctor) {
-       if (doctor.getAssignedPatientEmail() != null) {
-            doctor.setAssignedPatient(findPatientByEmail(doctor.getAssignedPatientEmail()));
-            Patient patient = findPatientByEmail(doctor.getAssignedPatientEmail());
-            if (patient != null) {
+    private static boolean getPatient(Doctor doctor) {
+        if (patientList.isEmpty()) {
+            return false;
+        }
+        if (doctor.getAssignedPatient() != null) {
+            return true;
+        }
+
+        for (Patient patient : patientList) {
+            if (patient.getAssignedDoctor() == null) {
+                doctor.setAssignedPatient(patient);
                 patient.setAssignedDoctor(doctor);
                 saveDoctorList();
                 savePatientList();
-                return;
+                return true;
             }
-            saveDoctorList();
-            savePatientList();
         }
+
+        return false;
     }
 }

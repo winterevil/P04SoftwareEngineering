@@ -366,6 +366,12 @@ public class PatientMainInterface extends javax.swing.JFrame {
         txaDescription.setEnabled(false);
         jScrollPane1.setViewportView(txaDescription);
 
+        txaDescription.setColumns(20);
+        txaDescription.setLineWrap(true);
+        txaDescription.setRows(5);
+        txaDescription.setEnabled(false);
+        jScrollPane1.setViewportView(txaDescription);
+
         javax.swing.GroupLayout InformationLayout = new javax.swing.GroupLayout(Information);
         Information.setLayout(InformationLayout);
         InformationLayout.setHorizontalGroup(
