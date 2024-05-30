@@ -234,20 +234,34 @@ public class LoginInterface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
         } else if (Objects.equals(UserManager.login(email, password), "Patient")) {
             PatientMainInterface patientmf = new PatientMainInterface();
-            this.setVisible(false);
+            //this.setVisible(false);
             patientmf.setVisible(true);
-            Patient pt= UserManager.findPatientByEmail(email);
+            Patient pt = UserManager.findPatientByEmail(email);
+            //Doctor dt = UserManager.findDoctorByEmail(pt.getAssignedDoctorEmail());
             javax.swing.JLabel lblPatientName = patientmf.lblPatientName;
             assert pt != null;
             lblPatientName.setText(pt.getName());
+            javax.swing.JLabel lblDoctorName = patientmf.lblNameDoctor;
+            lblDoctorName.setText(pt.getAssignedDoctor().getName());
             patientmf.setPatient(pt);
+            pt.setSensorMachineSimulation(patientmf.ssMc);
+            patientmf.startSensorMachineSimulation();
         } else if (Objects.equals(UserManager.login(email, password), "Doctor")) {
+            //this.setVisible(false);
             DoctorMainInterface doctormf = new DoctorMainInterface();
-            this.setVisible(false);
             doctormf.setVisible(true);
             Doctor dt = UserManager.findDoctorByEmail(email);
-            assert dt != null;
+            Patient pt = UserManager.findPatientByEmail(dt.getAssignedPatient().getEmail());
             doctormf.setDoctor(dt);
+            doctormf.lblDoctorName.setText(dt.getName());
+            doctormf.lblPatient.setText(dt.getAssignedPatient().getName());
+            doctormf.lblAddress.setText(dt.getAssignedPatient().getAddress());
+            doctormf.ssMc = pt.getSensorMachineSimulation();
+            doctormf.setDoctor(dt);
+            doctormf.startSensorMachineSimulation();
+//        } else if (Objects.equals(UserManager.login(email, password), "No Doctor")) {
+//            JOptionPane.showMessageDialog(this, "No Doctor available", "Message", JOptionPane.ERROR_MESSAGE);
+//        }
         } else {
             JOptionPane.showMessageDialog(this, "You have entered an invalid username or password", "Message", JOptionPane.ERROR_MESSAGE);
         }
