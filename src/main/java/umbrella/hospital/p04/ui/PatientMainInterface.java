@@ -90,6 +90,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(239, 239, 239));
+        jPanel1.setPreferredSize(new java.awt.Dimension(788, 512));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -366,12 +367,6 @@ public class PatientMainInterface extends javax.swing.JFrame {
         txaDescription.setEnabled(false);
         jScrollPane1.setViewportView(txaDescription);
 
-        txaDescription.setColumns(20);
-        txaDescription.setLineWrap(true);
-        txaDescription.setRows(5);
-        txaDescription.setEnabled(false);
-        jScrollPane1.setViewportView(txaDescription);
-
         javax.swing.GroupLayout InformationLayout = new javax.swing.GroupLayout(Information);
         Information.setLayout(InformationLayout);
         InformationLayout.setHorizontalGroup(
@@ -526,7 +521,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblOut))
                             .addComponent(Overview, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
