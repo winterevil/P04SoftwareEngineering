@@ -443,9 +443,9 @@ public class theServer extends javax.swing.JFrame {
             try {
                 PrintWriter writer = (PrintWriter) it.next();
                 writer.println(message);
-                dataStored.append("Sending: " + message + "\n");
+                //dataStored.append("Sending: " + message + "\n");
                 writer.flush();
-                dataStored.setCaretPosition(dataStored.getDocument().getLength());
+                //dataStored.setCaretPosition(dataStored.getDocument().getLength());
 
             } catch (Exception ex) {
                 dataStored.append("Error telling everyone. \n");

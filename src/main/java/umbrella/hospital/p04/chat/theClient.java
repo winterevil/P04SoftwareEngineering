@@ -27,6 +27,13 @@ public class theClient extends javax.swing.JFrame {
     BufferedReader theReader;
     PrintWriter theWriter;
 
+    public theClient(Socket socket) {
+        initComponents();
+        this.theSocket = socket;
+        isConnected = true; // Đánh dấu rằng đã kết nối
+        ListenThread(); // Bắt đầu luồng lắng nghe tin nhắn
+    }
+
     public void ListenThread() {
         Thread IncomingReader = new Thread(new Message());
         IncomingReader.start();
@@ -72,6 +79,11 @@ public class theClient extends javax.swing.JFrame {
         isConnected = false;
         client_Name.setEditable(true);
 
+    }
+
+    public void disconnectOnClose() {
+        sendDisconnect();
+        Disconnect();
     }
 
     public theClient() {
@@ -351,7 +363,7 @@ public class theClient extends javax.swing.JFrame {
 
     private void isConnnectedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_isConnnectedMouseClicked
         // TODO add your handling code here:
-        
+
         switch (client_Name.getText()) {
             case "":
                 client_Name.setText("Input your name!!");

@@ -20,6 +20,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
 
     private static Patient patient = null;
     public SensorMachineSimulation ssMc = new SensorMachineSimulation();
+
     theClient client = new theClient();
 
     /**
@@ -642,14 +643,14 @@ public class PatientMainInterface extends javax.swing.JFrame {
 
     private void btnConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultActionPerformed
         // TODO add your handling code here:
-        
+
         client.setVisible(true);
     }//GEN-LAST:event_btnConsultActionPerformed
 
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
         // TODO add your handling code here:
         this.dispose();
-        client.Disconnect();
+        client.disconnectOnClose();
         client.dispose();
         LoginInterface login = new LoginInterface();
         login.setVisible(true);
