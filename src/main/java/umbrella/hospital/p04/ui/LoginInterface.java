@@ -238,7 +238,7 @@ public class LoginInterface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
         } else if (Objects.equals(UserManager.login(email, password), "Patient")) {
             PatientMainInterface patientmf = new PatientMainInterface();
-            //this.setVisible(false);
+            this.setVisible(false);
             patientmf.setVisible(true);
             Patient pt = UserManager.findPatientByEmail(email);
             Doctor dt = UserManager.findDoctorByEmail(pt.getAssignedDoctor().getEmail());
@@ -258,7 +258,7 @@ public class LoginInterface extends javax.swing.JFrame {
             }
             patientmf.startSensorMachineSimulation();
         } else if (Objects.equals(UserManager.login(email, password), "Doctor")) {
-            //this.setVisible(false);
+            this.setVisible(false);
             DoctorMainInterface doctormf = new DoctorMainInterface();
             doctormf.setVisible(true);
             Doctor dt = UserManager.findDoctorByEmail(email);

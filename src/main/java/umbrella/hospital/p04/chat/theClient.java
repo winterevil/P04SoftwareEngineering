@@ -93,14 +93,14 @@ public class theClient extends javax.swing.JFrame {
         Message = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        disConnect = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        isConnnected = new javax.swing.JLabel();
+        disConnect = new javax.swing.JLabel();
         client_Name = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         Send = new javax.swing.JLabel();
+        isConnnected = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -151,8 +151,22 @@ public class theClient extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
         disConnect.setBackground(new java.awt.Color(255, 0, 0));
         disConnect.setForeground(new java.awt.Color(255, 0, 0));
+        disConnect.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\unlink.png")); // NOI18N
         disConnect.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 disConnectMouseClicked(evt);
@@ -165,58 +179,35 @@ public class theClient extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(disConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(disConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-
-        isConnnected.setBackground(new java.awt.Color(0, 255, 0));
-        isConnnected.setForeground(new java.awt.Color(0, 255, 0));
-        isConnnected.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                isConnnectedMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                isConnnectedMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                isConnnectedMouseExited(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(isConnnected, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(disConnect)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(isConnnected, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(disConnect))
         );
 
         client_Name.setBackground(new java.awt.Color(240, 240, 240));
         client_Name.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         client_Name.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        client_Name.setText("Client name");
+        client_Name.setText("Your name");
         client_Name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         client_Name.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 client_NameMouseExited(evt);
+            }
+        });
+        client_Name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                client_NameActionPerformed(evt);
             }
         });
         client_Name.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -231,6 +222,7 @@ public class theClient extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.png")); // NOI18N
         jLabel4.setText(".");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -241,6 +233,7 @@ public class theClient extends javax.swing.JFrame {
         Send.setBackground(new java.awt.Color(0, 0, 255));
         Send.setForeground(new java.awt.Color(0, 0, 255));
         Send.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Send.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\chat.png")); // NOI18N
         Send.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SendMouseClicked(evt);
@@ -257,14 +250,30 @@ public class theClient extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Send, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+            .addComponent(Send, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(Send, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(Send)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        isConnnected.setBackground(new java.awt.Color(0, 255, 0));
+        isConnnected.setForeground(new java.awt.Color(0, 255, 0));
+        isConnnected.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\api.png")); // NOI18N
+        isConnnected.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                isConnnectedMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                isConnnectedMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                isConnnectedMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -284,12 +293,16 @@ public class theClient extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(client_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(10, 10, 10)
+                                .addComponent(isConnnected)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -298,13 +311,16 @@ public class theClient extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(client_Name, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(client_Name)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(isConnnected))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -313,10 +329,10 @@ public class theClient extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(21, Short.MAX_VALUE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Message))
+                        .addContainerGap(12, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -340,7 +356,7 @@ public class theClient extends javax.swing.JFrame {
             case "":
                 client_Name.setText("Input your name!!");
                 break;
-            case "Client name":
+            case "Your name":
                 client_Name.setText("Input your name!!");
                 break;
             case "Input your name!!":
@@ -390,9 +406,9 @@ public class theClient extends javax.swing.JFrame {
                 Message.setText("Type your message here");
                 Message.requestFocus();
                 break;
-            case "Client name":
+            case "Your name":
                 break;
-            case "Input yuor name":
+            case "Input your name":
                 break;
             default:
                 try {
@@ -417,7 +433,7 @@ public class theClient extends javax.swing.JFrame {
 
     private void client_NameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_client_NameKeyPressed
         // TODO add your handling code here:
-        if (client_Name.getText().equals("Client name"))
+        if (client_Name.getText().equals("Your name"))
             client_Name.setText("");
     }//GEN-LAST:event_client_NameKeyPressed
 
@@ -429,7 +445,7 @@ public class theClient extends javax.swing.JFrame {
     private void isConnnectedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_isConnnectedMouseExited
         // TODO add your handling code here:
         OOP.NormalWhite(jPanel4);
-        //tf_username.setText("Client name");
+        //tf_username.setText("Your name");
     }//GEN-LAST:event_isConnnectedMouseExited
 
     private void disConnectMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_disConnectMouseEntered
@@ -454,10 +470,10 @@ public class theClient extends javax.swing.JFrame {
     private void client_NameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_client_NameKeyTyped
         // TODO add your handling code here:     
         switch (client_Name.getText()) {
-            case "Client name":
+            case "Your name":
                 client_Name.setText("");
                 break;
-            case "Input yuor name!!":
+            case "Input your name!!":
                 client_Name.setText("");
             default:
         }
@@ -467,7 +483,7 @@ public class theClient extends javax.swing.JFrame {
         // TODO add your handling code here:
         switch (client_Name.getText()) {
             case "":
-                client_Name.setText("Client name");
+                client_Name.setText("Your name");
                 break;
             default:
                 String name = client_Name.getText();
@@ -509,6 +525,10 @@ public class theClient extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_MessageActionPerformed
+
+    private void client_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_NameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_client_NameActionPerformed
 
     /**
      * @param args the command line arguments

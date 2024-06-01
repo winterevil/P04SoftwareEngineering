@@ -93,7 +93,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txaDescription = new javax.swing.JTextArea();
         panelRound1 = new umbrella.hospital.p04.ui.PanelRound();
-        jLabel25 = new javax.swing.JLabel();
+        lblLogin = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         lblLogout = new javax.swing.JLabel();
@@ -483,9 +483,14 @@ public class PatientMainInterface extends javax.swing.JFrame {
         panelRound1.setRoundTopRight(50);
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel25.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.png")); // NOI18N
-        jLabel25.setText("jLabel25");
-        panelRound1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
+        lblLogin.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.png")); // NOI18N
+        lblLogin.setText("jLabel25");
+        lblLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLoginMouseClicked(evt);
+            }
+        });
+        panelRound1.add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 50));
 
         jLabel32.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\LButton.png")); // NOI18N
         jLabel32.setText("jLabel32");
@@ -644,10 +649,17 @@ public class PatientMainInterface extends javax.swing.JFrame {
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
         // TODO add your handling code here:
         this.dispose();
+        client.Disconnect();
         client.dispose();
         LoginInterface login = new LoginInterface();
         login.setVisible(true);
     }//GEN-LAST:event_lblLogoutMouseClicked
+
+    private void lblLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoginMouseClicked
+        // TODO add your handling code here:
+        LoginInterface login = new LoginInterface();
+        login.setVisible(true);
+    }//GEN-LAST:event_lblLoginMouseClicked
 
     /**
      * @param args the command line arguments
@@ -735,7 +747,6 @@ public class PatientMainInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -757,6 +768,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
     private javax.swing.JLabel lblAvatarDoctor;
     private javax.swing.JLabel lblHeart;
     private static javax.swing.JLabel lblHeartRateOverview;
+    private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblMessage;

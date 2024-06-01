@@ -3,6 +3,7 @@ umbrella\hospital\p04\ui\DoctorMainInterface$6.class
 umbrella\hospital\p04\ui\DoctorMainInterface$3.class
 umbrella\hospital\p04\ui\LoginInterface$4.class
 umbrella\hospital\p04\model\PredefinedSensors.class
+umbrella\hospital\p04\chat\theClient$10.class
 umbrella\hospital\p04\monitor\BloodPressureSensor$1.class
 umbrella\hospital\p04\ui\ForgotPassword$5.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$1.class
@@ -23,6 +24,7 @@ umbrella\hospital\p04\controller\SensorManager.class
 umbrella\hospital\p04\ui\SignupInterfacePatient$6.class
 umbrella\hospital\p04\model\Patient.class
 umbrella\hospital\p04\ui\DoctorMainInterface$1.class
+umbrella\hospital\p04\ui\PatientMainInterface$5.class
 umbrella\hospital\p04\ui\ForgotPassword$8.class
 umbrella\hospital\p04\ui\PatientMainInterface.class
 umbrella\hospital\p04\chat\theServer$ClientHandler.class
@@ -31,6 +33,7 @@ umbrella\hospital\p04\chat\theClient$6.class
 umbrella\hospital\p04\ui\ForgotPassword$1.class
 umbrella\hospital\p04\dao\DoctorDAO.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$4.class
+umbrella\hospital\p04\ui\DoctorMainInterface$8.class
 umbrella\hospital\p04\ui\LoginInterface$1.class
 umbrella\hospital\p04\ui\SignupInterfacePatient$7.class
 umbrella\hospital\p04\chat\Source.class
@@ -70,6 +73,7 @@ umbrella\hospital\p04\chat\theClient.class
 umbrella\hospital\p04\ui\LoginInterface.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor.class
 umbrella\hospital\p04\ui\DoctorMainInterface$4.class
+umbrella\hospital\p04\ui\DoctorMainInterface$7.class
 umbrella\hospital\p04\ui\PopupExample$3.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$5.class
 umbrella\hospital\p04\chat\theServer$1.class
