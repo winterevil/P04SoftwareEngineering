@@ -18,6 +18,9 @@ public class theServer extends javax.swing.JFrame {
     Source OOP = new Source();
     ArrayList clientOutputStreams;
     ArrayList<String> users;
+    int connectedClients = 0;
+
+    private boolean acceptingConnections = false;
 
     public class ClientHandler implements Runnable {
 
@@ -39,6 +42,13 @@ public class theServer extends javax.swing.JFrame {
 
         @Override
         public void run() {
+
+            if (connectedClients >= 2) {
+                // Gửi tin nhắn cho client rằng kết nối không được chấp nhận
+                client.println("Server: Connection not accepted. Server is not accepting new connections.");
+                client.flush();
+                return;
+            }
 
             String message, chat = "Chat";
             String[] data;
@@ -68,8 +78,8 @@ public class theServer extends javax.swing.JFrame {
                         default:
                             dataStored.append("No Conditions were met. \n");
                     }
-
                 }
+
             } catch (Exception ex) {
                 dataStored.append("Lost a connection. \n");
                 ex.printStackTrace();
@@ -280,6 +290,8 @@ public class theServer extends javax.swing.JFrame {
         Thread starter = new Thread(new StartServer());
         starter.start();
 
+        acceptingConnections = true;
+
         dataStored.append("Server started...\n");
     }//GEN-LAST:event_lblStartMouseClicked
 
@@ -288,6 +300,7 @@ public class theServer extends javax.swing.JFrame {
         OOP.serverNormal(server);
         try {
             Thread.sleep(50);
+            acceptingConnections = false;
             tellEveryone("Server:is stopping and all users will be disconnected.\n:Chat");
             dataStored.append("Server stopping... \n");
         } catch (InterruptedException ex) {
@@ -387,24 +400,30 @@ public class theServer extends javax.swing.JFrame {
     }
 
     public void userAdd(String data) {
+        if (connectedClients >= 2) {
+            dataStored.append("Connection limit reached. Cannot add more users.\n");
+            return;
+        }
+        connectedClients++;
         String message, add = ": :Connect", done = "Server: :Done", name = data;
         dataStored.append("Before " + name + " added. \n");
 
-            users.add(name);
+        users.add(name);
 
-            dataStored.append("After " + name + " added. \n");
-            String[] tempList = new String[(users.size())];
-            users.toArray(tempList);
+        dataStored.append("After " + name + " added. \n");
+        String[] tempList = new String[(users.size())];
+        users.toArray(tempList);
 
-            for (String token : tempList) {
-                message = (token + add);
-                tellEveryone(message);
-            }
-            tellEveryone(done);
-        
+        for (String token : tempList) {
+            message = (token + add);
+            tellEveryone(message);
+        }
+        tellEveryone(done);
+
     }
 
     public void userRemove(String data) {
+        connectedClients--;
         String message, add = ": :Connect", done = "Server: :Done", name = data;
         users.remove(name);
         String[] tempList = new String[(users.size())];
@@ -461,6 +480,11 @@ public class theServer extends javax.swing.JFrame {
 
                 while (true) {
                     Socket clientSock = serverSock.accept();
+                    if (connectedClients >= 2) {
+                        dataStored.append("Connection limit reached. Waiting for a client to disconnect.\n");
+                        continue;
+                    }
+
                     PrintWriter writer = new PrintWriter(clientSock.getOutputStream());
                     clientOutputStreams.add(writer);
 

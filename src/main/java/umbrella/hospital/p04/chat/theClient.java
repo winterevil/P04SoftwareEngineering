@@ -335,7 +335,7 @@ public class theClient extends javax.swing.JFrame {
 
     private void isConnnectedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_isConnnectedMouseClicked
         // TODO add your handling code here:
-
+        
         switch (client_Name.getText()) {
             case "":
                 client_Name.setText("Input your name!!");
@@ -346,6 +346,7 @@ public class theClient extends javax.swing.JFrame {
             case "Input your name!!":
                 break;
             default:
+
                 jLabel5.setForeground(Color.GREEN);
                 if (isConnected == false) {
                     username = client_Name.getText();
@@ -576,7 +577,7 @@ public class theClient extends javax.swing.JFrame {
                             sentMessage.append(data[0] + ":" + data[1] + "\n");
                             sentMessage.setCaretPosition(sentMessage.getDocument().getLength());
                             break;
-                        case "Connnect":
+                        case "Connect":
                             sentMessage.removeAll();
                             userAdd(data[0]);
                             break;
