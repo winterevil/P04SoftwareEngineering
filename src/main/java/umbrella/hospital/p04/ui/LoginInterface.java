@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 
 import umbrella.hospital.p04.model.Doctor;
 import umbrella.hospital.p04.model.Patient;
+import umbrella.hospital.p04.system.CalculateAge;
 
 /**
  *
@@ -238,7 +239,7 @@ public class LoginInterface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
         } else if (Objects.equals(UserManager.login(email, password), "Patient")) {
             PatientMainInterface patientmf = new PatientMainInterface();
-            this.setVisible(false);
+            //this.setVisible(false);
             patientmf.setVisible(true);
             Patient pt = UserManager.findPatientByEmail(email);
             Doctor dt = UserManager.findDoctorByEmail(pt.getAssignedDoctor().getEmail());
@@ -258,7 +259,7 @@ public class LoginInterface extends javax.swing.JFrame {
             }
             patientmf.startSensorMachineSimulation();
         } else if (Objects.equals(UserManager.login(email, password), "Doctor")) {
-            this.setVisible(false);
+            //this.setVisible(false);
             DoctorMainInterface doctormf = new DoctorMainInterface();
             doctormf.setVisible(true);
             Doctor dt = UserManager.findDoctorByEmail(email);
@@ -267,6 +268,8 @@ public class LoginInterface extends javax.swing.JFrame {
             doctormf.lblDoctorName.setText(dt.getName());
             doctormf.lblPatient.setText(dt.getAssignedPatient().getName());
             doctormf.lblAddress.setText(dt.getAssignedPatient().getAddress());
+            String age = new CalculateAge().calculateAge(pt.getDayOfBirth());
+            doctormf.lblAge.setText(age);
             if (dt.getSensorMachineSimulation() == null || pt.getSensorMachineSimulation() == null) {
                 if (pt.getSensorMachineSimulation() == null) {
                     dt.setSensorMachineSimulation(doctormf.ssMc);
@@ -277,6 +280,7 @@ public class LoginInterface extends javax.swing.JFrame {
             }
             doctormf.setDoctor(dt);
             doctormf.startSensorMachineSimulation();
+            doctormf.startTime();
         } else if (Objects.equals(UserManager.login(email, password), "No Doctor")) {
             JOptionPane.showMessageDialog(this, "No Doctor available", "Message", JOptionPane.ERROR_MESSAGE);
         } else if (Objects.equals(UserManager.login(email, password), "No Patient")) {
