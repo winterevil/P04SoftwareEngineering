@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
+import umbrella.hospital.p04.model.Doctor;
+import umbrella.hospital.p04.model.Patient;
 
 
 /*
@@ -20,6 +22,8 @@ public class theClient extends javax.swing.JFrame {
     Source OOP = new Source();
     String username, address = "localhost";
     ArrayList<String> users = new ArrayList();
+    private Patient patient = new Patient();
+    private Doctor doctor = new Doctor();
 
     Boolean isConnected = false;
 

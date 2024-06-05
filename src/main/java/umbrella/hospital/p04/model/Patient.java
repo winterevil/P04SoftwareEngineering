@@ -14,6 +14,7 @@ public class Patient implements Serializable {
     private Doctor assignedDoctor;
     private String assignedDoctorEmail;
     private transient SensorMachineSimulation sensorMachineSimulation;
+    private float fee;
 
     public Patient() {
     }
@@ -96,6 +97,14 @@ public class Patient implements Serializable {
 
     public void setSensorMachineSimulation(SensorMachineSimulation sensorMachineSimulation) {
         this.sensorMachineSimulation = sensorMachineSimulation;
+    }
+
+    public float getFee() {
+        return fee;
+    }
+
+    public void setFee(float fee) {
+        this.fee = fee;
     }
 
     @Override

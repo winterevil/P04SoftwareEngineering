@@ -406,11 +406,11 @@ public class theServer extends javax.swing.JFrame {
         }
         connectedClients++;
         String message, add = ": :Connect", done = "Server: :Done", name = data;
-        dataStored.append("Before " + name + " added. \n");
+        //dataStored.append("Before " + name + " added. \n");
 
         users.add(name);
 
-        dataStored.append("After " + name + " added. \n");
+        //dataStored.append("After " + name + " added. \n");
         String[] tempList = new String[(users.size())];
         users.toArray(tempList);
 

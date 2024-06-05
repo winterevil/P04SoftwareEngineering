@@ -1,5 +1,6 @@
 umbrella\hospital\p04\ui\PanelRound.class
 umbrella\hospital\p04\ui\DoctorMainInterface$6.class
+umbrella\hospital\p04\ui\Payment$2.class
 umbrella\hospital\p04\ui\DoctorMainInterface$3.class
 umbrella\hospital\p04\ui\LoginInterface$4.class
 umbrella\hospital\p04\model\PredefinedSensors.class
@@ -22,16 +23,17 @@ umbrella\hospital\p04\model\Patient.class
 umbrella\hospital\p04\ui\DoctorMainInterface$1.class
 umbrella\hospital\p04\ui\PatientMainInterface.class
 umbrella\hospital\p04\ui\ForgotPassword$1.class
+umbrella\hospital\p04\ui\Payment.class
 umbrella\hospital\p04\dao\DoctorDAO.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$4.class
 umbrella\hospital\p04\ui\LoginInterface$1.class
+umbrella\hospital\p04\ui\PatientMainInterface$6.class
 umbrella\hospital\p04\ui\SignupInterfacePatient$7.class
 umbrella\hospital\p04\model\Doctor.class
 umbrella\hospital\p04\ui\ForgotPassword$7.class
 umbrella\hospital\p04\monitor\SensorMonitor.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$3.class
 umbrella\hospital\p04\ui\DoctorMainInterface$2.class
-umbrella\hospital\p04\ui\DoctorMainInterface$9.class
 umbrella\hospital\p04\ui\LoginInterface$2.class
 umbrella\hospital\p04\dao\SensorDAO.class
 umbrella\hospital\p04\monitor\SensorData.class
@@ -51,6 +53,7 @@ umbrella\hospital\p04\monitor\TemperatureSensor$1.class
 umbrella\hospital\p04\monitor\SensorData$HealthState.class
 umbrella\hospital\p04\monitor\SensorSimulation$1.class
 umbrella\hospital\p04\ui\LoginInterface$6.class
+umbrella\hospital\p04\ui\Payment$1.class
 umbrella\hospital\p04\ui\LoginInterface.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor.class
 umbrella\hospital\p04\ui\DoctorMainInterface$4.class
@@ -67,6 +70,7 @@ umbrella\hospital\p04\ui\SignupInterfacePatient.class
 umbrella\hospital\p04\ui\PatientMainInterface$2.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$6.class
 umbrella\hospital\p04\ui\PopupExample$1.class
+umbrella\hospital\p04\ui\Payment$3.class
 umbrella\hospital\p04\ui\DoctorMainInterface$5.class
 umbrella\hospital\p04\controller\UserManager.class
 umbrella\hospital\p04\ui\ForgotPassword$3.class

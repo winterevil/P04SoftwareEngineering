@@ -17,7 +17,7 @@ import umbrella.hospital.p04.monitor.SensorMachineSimulation;
  * @author Admin
  */
 public class PatientMainInterface extends javax.swing.JFrame {
-
+    
     private static Patient patient = null;
     public SensorMachineSimulation ssMc = new SensorMachineSimulation();
     theClient client = new theClient();
@@ -90,11 +90,10 @@ public class PatientMainInterface extends javax.swing.JFrame {
         btnConsult = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txaDescription = new javax.swing.JTextArea();
-        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
         lblLogin = new javax.swing.JLabel();
-        lblSample = new javax.swing.JLabel();
         lblSample1 = new javax.swing.JLabel();
-        lblSample2 = new javax.swing.JLabel();
+        lblPayment = new javax.swing.JLabel();
         lblSample3 = new javax.swing.JLabel();
         lblLogout = new javax.swing.JLabel();
 
@@ -396,7 +395,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
         btnConsult.setBackground(new java.awt.Color(0, 104, 255));
         btnConsult.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         btnConsult.setForeground(new java.awt.Color(255, 255, 255));
-        btnConsult.setText("Consult Now ");
+        btnConsult.setText("Consult Now ($20)");
         btnConsult.setBorder(null);
         btnConsult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -410,7 +409,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
         txaDescription.setEnabled(false);
         jScrollPane1.setViewportView(txaDescription);
 
-        jLabel29.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Ellipse 4.png")); // NOI18N
+        jLabel30.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\doctor.jpg")); // NOI18N
 
         javax.swing.GroupLayout InformationLayout = new javax.swing.GroupLayout(Information);
         Information.setLayout(InformationLayout);
@@ -437,11 +436,10 @@ public class PatientMainInterface extends javax.swing.JFrame {
                                 .addGroup(InformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(InformationLayout.createSequentialGroup()
                                         .addComponent(lblAvatarDoctor)
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InformationLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jLabel29)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel30)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                                 .addComponent(lblNameDoctor))
                             .addComponent(btnConsult, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
@@ -465,8 +463,8 @@ public class PatientMainInterface extends javax.swing.JFrame {
                                 .addGap(5, 5, 5)
                                 .addGroup(InformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblNameDoctor)
-                                    .addComponent(jLabel29))
-                                .addGap(18, 18, 18)
+                                    .addComponent(jLabel30))
+                                .addGap(22, 22, 22)
                                 .addComponent(btnConsult, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(InformationLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -482,11 +480,14 @@ public class PatientMainInterface extends javax.swing.JFrame {
             }
         });
 
-        lblSample.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Noti.png")); // NOI18N
+        lblSample1.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\patient - Copy.jpg")); // NOI18N
 
-        lblSample1.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Avt.png")); // NOI18N
-
-        lblSample2.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\mess.png")); // NOI18N
+        lblPayment.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\payment-method.png")); // NOI18N
+        lblPayment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPaymentMouseClicked(evt);
+            }
+        });
 
         lblSample3.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\LButton.png")); // NOI18N
 
@@ -507,7 +508,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblSample3)
-                            .addComponent(lblSample2)
+                            .addComponent(lblPayment)
                             .addComponent(lblLogout))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -559,8 +560,6 @@ public class PatientMainInterface extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblAvatar))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblSample)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblSample1)
                                 .addGap(5, 5, 5)))))
                 .addGap(44, 44, 44))
@@ -571,8 +570,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblAvatar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSample))
+                        .addGap(51, 51, 51))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblNoti)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -618,7 +616,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
                                     .addComponent(lblMessage)
                                     .addComponent(lblSample3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblSample2)
+                                .addComponent(lblPayment)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblLogout)
                                 .addGap(11, 11, 11)
@@ -634,7 +632,12 @@ public class PatientMainInterface extends javax.swing.JFrame {
 
     private void btnConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultActionPerformed
         // TODO add your handling code here:
-        client.setVisible(true);
+        if (!client.isVisible()) {
+            client.setVisible(true);
+            float fee = patient.getFee() + 20;
+            patient.setFee(fee);
+        }
+
     }//GEN-LAST:event_btnConsultActionPerformed
 
     private void lblLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoginMouseClicked
@@ -651,6 +654,12 @@ public class PatientMainInterface extends javax.swing.JFrame {
         LoginInterface login = new LoginInterface();
         login.setVisible(true);
     }//GEN-LAST:event_lblLogoutMouseClicked
+
+    private void lblPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseClicked
+        // TODO add your handling code here:
+        Payment payment = new Payment(this.patient);
+        payment.setVisible(true);
+    }//GEN-LAST:event_lblPaymentMouseClicked
 
     /**
      * @param args the command line arguments
@@ -686,7 +695,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
             }
         });
     }
-
+    
     public void startSensorMachineSimulation() {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         Runnable updateDataTask = new Runnable() {
@@ -708,7 +717,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
         int intervalSeconds = 2;
         scheduler.scheduleAtFixedRate(updateDataTask, 0, intervalSeconds, TimeUnit.SECONDS);
     }
-
+    
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
@@ -742,8 +751,8 @@ public class PatientMainInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -764,11 +773,10 @@ public class PatientMainInterface extends javax.swing.JFrame {
     private javax.swing.JLabel lblNoti;
     private javax.swing.JLabel lblOut;
     public javax.swing.JLabel lblPatientName;
+    private javax.swing.JLabel lblPayment;
     private static javax.swing.JLabel lblPressure;
     private static javax.swing.JLabel lblRate;
-    private javax.swing.JLabel lblSample;
     private javax.swing.JLabel lblSample1;
-    private javax.swing.JLabel lblSample2;
     private javax.swing.JLabel lblSample3;
     private static javax.swing.JLabel lblStat;
     private static javax.swing.JLabel lblTemperature;
