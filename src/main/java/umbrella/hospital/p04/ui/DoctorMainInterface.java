@@ -8,7 +8,7 @@ import java.awt.Color;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import umbrella.hospital.p04.chat.theClient;
+import umbrella.hospital.p04.chat.Client;
 import umbrella.hospital.p04.model.Doctor;
 import umbrella.hospital.p04.monitor.SensorMachineSimulation;
 import umbrella.hospital.p04.system.GetDateInformation;
@@ -21,12 +21,13 @@ public class DoctorMainInterface extends javax.swing.JFrame {
 
     private static Doctor doctor;
     public SensorMachineSimulation ssMc = new SensorMachineSimulation();
-    theClient client = new theClient();
+    Client client = new Client();
 
     /**
      * Creates new form DoctorMainInterface
      */
     public DoctorMainInterface() {
+        setUndecorated(true);
         initComponents();
         client.setVisible(true);
     }

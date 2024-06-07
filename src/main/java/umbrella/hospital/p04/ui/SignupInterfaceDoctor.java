@@ -6,6 +6,7 @@ package umbrella.hospital.p04.ui;
 
 import javax.swing.JOptionPane;
 import umbrella.hospital.p04.controller.UserManager;
+import umbrella.hospital.p04.system.InputValidation;
 
 /**
  *
@@ -17,6 +18,7 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
      * Creates new form LoginInterface
      */
     public SignupInterfaceDoctor() {
+        setUndecorated(true);
         initComponents();
         UserManager.restorePatientList();
         UserManager.restoreDoctorList();
@@ -250,6 +252,14 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String address = txtAddress.getText();
         String password = String.valueOf(jpwPassword.getPassword());
+        if (!InputValidation.checkEmail(txtEmail)) {
+            JOptionPane.showMessageDialog(this, "Invalid email", "Message", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!InputValidation.checkCharacterCount(jpwPassword, 8)) {
+            JOptionPane.showMessageDialog(this, "Password must be at least 8 characters", "Message", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Name");

@@ -4,7 +4,7 @@
 
 package umbrella.hospital.p04;
 
-import umbrella.hospital.p04.chat.theServer;
+import umbrella.hospital.p04.chat.Server;
 import umbrella.hospital.p04.ui.LoginInterface;
 
 /**
@@ -14,7 +14,7 @@ import umbrella.hospital.p04.ui.LoginInterface;
 public class P04 {
 
     public static void main(String[] args) {
-        theServer server = new theServer();
+        Server server = new Server();
         
         server.setVisible(true);
         

@@ -4,6 +4,8 @@
  */
 package umbrella.hospital.p04.ui;
 
+import umbrella.hospital.p04.controller.UserManager;
+import umbrella.hospital.p04.model.Doctor;
 import umbrella.hospital.p04.model.Patient;
 import umbrella.hospital.p04.system.GetDateInformation;
 
@@ -20,6 +22,7 @@ public class Payment extends javax.swing.JFrame {
     GetDateInformation gDI = new GetDateInformation();
 
     public Payment(Patient patient) {
+        setUndecorated(true);
         initComponents();
         this.patient = patient;
         
@@ -290,6 +293,12 @@ public class Payment extends javax.swing.JFrame {
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
         // TODO add your handling code here:
         patient.setFee(0);
+        Doctor doctor = UserManager.findDoctorByEmail(patient.getAssignedDoctor().getEmail());
+        UserManager.deleteAssignedPatient(doctor);
+        UserManager.deleteAssignedDoctor(patient); 
+        UserManager.saveDoctorList();
+        UserManager.savePatientList();
+        this.dispose();
     }//GEN-LAST:event_btnPayActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed

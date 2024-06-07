@@ -17,7 +17,7 @@ import umbrella.hospital.p04.model.Patient;
  *
  * @author acer
  */
-public class theClient extends javax.swing.JFrame {
+public class Client extends javax.swing.JFrame {
 
     Source OOP = new Source();
     String username, address = "localhost";
@@ -31,7 +31,8 @@ public class theClient extends javax.swing.JFrame {
     BufferedReader theReader;
     PrintWriter theWriter;
 
-    public theClient(Socket socket) {
+    public Client(Socket socket) {
+        setUndecorated(true);
         initComponents();
         this.theSocket = socket;
         isConnected = true; // Đánh dấu rằng đã kết nối
@@ -90,7 +91,7 @@ public class theClient extends javax.swing.JFrame {
         Disconnect();
     }
 
-    public theClient() {
+    public Client() {
         initComponents();
     }
 
@@ -413,6 +414,7 @@ public class theClient extends javax.swing.JFrame {
         sendDisconnect();
         jLabel5.setForeground(Color.black);
         Disconnect();
+        this.dispose();
     }//GEN-LAST:event_disConnectMouseClicked
 
     private void SendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseClicked
@@ -563,20 +565,23 @@ public class theClient extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(theClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(theClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(theClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(theClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new theClient().setVisible(true);
+                new Client().setVisible(true);
             }
         });
     }

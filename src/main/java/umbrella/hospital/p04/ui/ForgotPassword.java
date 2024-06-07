@@ -23,6 +23,7 @@ public class ForgotPassword extends javax.swing.JFrame {
     private Patient patient = null;
 
     public ForgotPassword() {
+        setUndecorated(true);
         initComponents();
     }
 

@@ -13,7 +13,7 @@ import java.util.*;
  *
  * @author acer
  */
-public class theServer extends javax.swing.JFrame {
+public class Server extends javax.swing.JFrame {
 
     Source OOP = new Source();
     ArrayList clientOutputStreams;
@@ -88,7 +88,7 @@ public class theServer extends javax.swing.JFrame {
         }
     }
 
-    public theServer() {
+    public Server() {
         initComponents();
     }
 
@@ -308,6 +308,7 @@ public class theServer extends javax.swing.JFrame {
         }
 
         dataStored.setText("");
+        System.exit(0);
     }//GEN-LAST:event_lblStopMouseClicked
 
     private void lblStartMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStartMouseEntered
@@ -381,20 +382,21 @@ public class theServer extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(theServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Server.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(theServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Server.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(theServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Server.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(theServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Server.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new theServer().setVisible(true);
+                new Server().setVisible(true);
             }
         });
     }

@@ -62,12 +62,14 @@ umbrella\hospital\p04\ui\SignupInterfaceDoctor$5.class
 umbrella\hospital\p04\dao\PatientDAO.class
 umbrella\hospital\p04\ui\PopupExample$2.class
 umbrella\hospital\p04\ui\ForgotPassword$4.class
+umbrella\hospital\p04\system\InputValidation.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$7.class
 umbrella\hospital\p04\ui\SignupInterfacePatient$3.class
 umbrella\hospital\p04\monitor\SensorMachineSimulation.class
 umbrella\hospital\p04\system\CalculateAge.class
 umbrella\hospital\p04\ui\SignupInterfacePatient.class
 umbrella\hospital\p04\ui\PatientMainInterface$2.class
+umbrella\hospital\p04\ui\Payment$4.class
 umbrella\hospital\p04\ui\SignupInterfaceDoctor$6.class
 umbrella\hospital\p04\ui\PopupExample$1.class
 umbrella\hospital\p04\ui\Payment$3.class

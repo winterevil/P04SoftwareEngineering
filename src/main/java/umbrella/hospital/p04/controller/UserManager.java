@@ -231,6 +231,22 @@ public class UserManager {
         return false;
     }
 
+    public static void deleteAssignedDoctor(Patient patient) {
+        if (patient.getAssignedDoctor() != null) {
+            patient.setAssignedDoctor(null);
+            saveDoctorList();
+            savePatientList();
+        }
+    }
+
+    public static void deleteAssignedPatient(Doctor doctor) {
+        if (doctor.getAssignedPatient() != null) {
+            doctor.setAssignedPatient(null);
+            saveDoctorList();
+            savePatientList();
+        }
+    }
+
     private static boolean getPatient(Doctor doctor) {
         if (patientList.isEmpty()) {
             return false;

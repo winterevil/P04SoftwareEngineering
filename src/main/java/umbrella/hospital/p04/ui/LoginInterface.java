@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 import umbrella.hospital.p04.model.Doctor;
 import umbrella.hospital.p04.model.Patient;
 import umbrella.hospital.p04.system.CalculateAge;
+import umbrella.hospital.p04.system.InputValidation;
 
 /**
  *
@@ -28,6 +29,7 @@ public class LoginInterface extends javax.swing.JFrame {
      * Creates new form LoginInterface
      */
     public LoginInterface() {
+        setUndecorated(true);
         initComponents();
     }
 
@@ -232,14 +234,17 @@ public class LoginInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         String email = txtEmail.getText();
         String password = String.valueOf(jpwPassword.getPassword());
-
+        if (!InputValidation.checkEmail(txtEmail)) {
+            return;
+        }
+        
         if (email.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Username");
         } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Password");
         } else if (Objects.equals(UserManager.login(email, password), "Patient")) {
             PatientMainInterface patientmf = new PatientMainInterface();
-            //this.setVisible(false);
+            this.setVisible(false);
             patientmf.setVisible(true);
             Patient pt = UserManager.findPatientByEmail(email);
             Doctor dt = UserManager.findDoctorByEmail(pt.getAssignedDoctor().getEmail());
@@ -259,7 +264,7 @@ public class LoginInterface extends javax.swing.JFrame {
             }
             patientmf.startSensorMachineSimulation();
         } else if (Objects.equals(UserManager.login(email, password), "Doctor")) {
-            //this.setVisible(false);
+            this.setVisible(false);
             DoctorMainInterface doctormf = new DoctorMainInterface();
             doctormf.setVisible(true);
             Doctor dt = UserManager.findDoctorByEmail(email);

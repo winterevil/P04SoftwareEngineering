@@ -8,7 +8,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-import umbrella.hospital.p04.chat.theClient;
+import umbrella.hospital.p04.chat.Client;
+import umbrella.hospital.p04.controller.UserManager;
 import umbrella.hospital.p04.model.Patient;
 import umbrella.hospital.p04.monitor.SensorMachineSimulation;
 
@@ -20,12 +21,13 @@ public class PatientMainInterface extends javax.swing.JFrame {
     
     private static Patient patient = null;
     public SensorMachineSimulation ssMc = new SensorMachineSimulation();
-    theClient client = new theClient();
+    Client client = new Client();
 
     /**
      * Creates new form PatientMainInterface
      */
     public PatientMainInterface() {
+        setUndecorated(true);
         initComponents();
     }
 
@@ -621,10 +623,10 @@ public class PatientMainInterface extends javax.swing.JFrame {
                                 .addComponent(lblLogout)
                                 .addGap(11, 11, 11)
                                 .addComponent(lblOut)))))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 520));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 540));
 
         pack();
         setLocationRelativeTo(null);
@@ -636,6 +638,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
             client.setVisible(true);
             float fee = patient.getFee() + 20;
             patient.setFee(fee);
+            UserManager.savePatientList();
         }
 
     }//GEN-LAST:event_btnConsultActionPerformed
