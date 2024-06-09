@@ -12,7 +12,7 @@ public class Patient implements Serializable {
     private String dayOfBirth;
     private String code;
     private Doctor assignedDoctor;
-    private String assignedDoctorEmail;
+    //private String assignedDoctorEmail;
     private transient SensorMachineSimulation sensorMachineSimulation;
     private float fee;
 
@@ -83,13 +83,13 @@ public class Patient implements Serializable {
         this.assignedDoctor = assignedDoctor;
     }
 
-    public String getAssignedDoctorEmail() {
-        return assignedDoctorEmail;
-    }
+//    public String getAssignedDoctorEmail() {
+//        return assignedDoctorEmail;
+//    }
 
-    public void setAssignedDoctorEmail(String assignedDoctorEmail) {
-        this.assignedDoctorEmail = assignedDoctorEmail;
-    }
+//    public void setAssignedDoctorEmail(String assignedDoctorEmail) {
+//        this.assignedDoctorEmail = assignedDoctorEmail;
+//    }
 
     public SensorMachineSimulation getSensorMachineSimulation() {
         return sensorMachineSimulation;
@@ -107,9 +107,14 @@ public class Patient implements Serializable {
         this.fee = fee;
     }
 
+//    @Override
+//    public String toString() {
+//        assignedDoctorEmail = assignedDoctor != null ? assignedDoctor.getEmail() : null;
+//        return name + "," + email + "," + address + "," + password + "," + dayOfBirth + "," + assignedDoctorEmail + "\n";
+//    }
+    
     @Override
     public String toString() {
-        assignedDoctorEmail = assignedDoctor != null ? assignedDoctor.getEmail() : null;
-        return name + "," + email + "," + address + "," + password + "," + dayOfBirth + "," + assignedDoctorEmail + "\n";
+        return name + "," + email + "," + address + "," + password + "," + dayOfBirth + "," + "\n";
     }
 }

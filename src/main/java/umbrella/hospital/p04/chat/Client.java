@@ -32,7 +32,6 @@ public class Client extends javax.swing.JFrame {
     PrintWriter theWriter;
 
     public Client(Socket socket) {
-        setUndecorated(true);
         initComponents();
         this.theSocket = socket;
         isConnected = true; // Đánh dấu rằng đã kết nối

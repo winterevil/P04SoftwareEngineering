@@ -16,10 +16,10 @@ public class HealthAnalysis {
 
         if (!isTemperatureNormal(temperature)) {
             if (temperature > 37.5) {
-                issues.append("Fever: Your temperature is ").append(temperature).append(" °C, which is above the normal range. ");
+                issues.append("Fever: Your temperature is ").append(Math.floor(temperature)).append(" °C, which is above the normal range. ");
                 issues.append("A fever can be caused by various infections or other health conditions. Ensure you stay hydrated and rest. If the fever exceeds 39°C or persists for several days, seek medical advice. ");
             } else if (temperature < 36.0) {
-                issues.append("Hypothermia: Your temperature is ").append(temperature).append(" °C, which is below the normal range. ");
+                issues.append("Hypothermia: Your temperature is ").append(Math.floor(temperature)).append(" °C, which is below the normal range. ");
                 issues.append("Hypothermia can be dangerous, often caused by prolonged exposure to cold. Warm yourself gradually, avoiding direct heat sources. Seek medical attention if you experience severe symptoms. ");
             }
         }

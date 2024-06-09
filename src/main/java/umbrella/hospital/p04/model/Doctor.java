@@ -11,7 +11,7 @@ public class Doctor implements Serializable {
     private String password;
     private String code;
     private Patient assignedPatient;
-    private String assignedPatientEmail;
+    //private String assignedPatientEmail;
     private transient SensorMachineSimulation sensorMachineSimulation;
 
     public Doctor() {
@@ -72,13 +72,13 @@ public class Doctor implements Serializable {
         this.assignedPatient = assignedPatient;
     }
 
-    public String getAssignedPatientEmail() {
-        return assignedPatientEmail;
-    }
-
-    public void setAssignedPatientEmail(String assignedPatientEmail) {
-        this.assignedPatientEmail = assignedPatientEmail;
-    }
+//    public String getAssignedPatientEmail() {
+//        return assignedPatientEmail;
+//    }
+//
+//    public void setAssignedPatientEmail(String assignedPatientEmail) {
+//        this.assignedPatientEmail = assignedPatientEmail;
+//    }
 
     public SensorMachineSimulation getSensorMachineSimulation() {
         return sensorMachineSimulation;
@@ -88,9 +88,15 @@ public class Doctor implements Serializable {
         this.sensorMachineSimulation = sensorMachineSimulation;
     }
 
+//    @Override
+//    public String toString() {
+//        assignedPatientEmail = assignedPatient != null ? assignedPatient.getEmail() : null;
+//        return name + "," + email + "," + address + "," + password + "," + assignedPatientEmail + "\n";
+//    }
+    
     @Override
     public String toString() {
-        assignedPatientEmail = assignedPatient != null ? assignedPatient.getEmail() : null;
-        return name + "," + email + "," + address + "," + password + "," + assignedPatientEmail + "\n";
+       
+        return name + "," + email + "," + address + "," + password + ","  + "\n";
     }
 }
