@@ -4,9 +4,20 @@
  */
 package umbrella.hospital.p04.ui;
 
-import java.util.Objects;
-import javax.swing.JOptionPane;
+import java.io.File;
+import java.io.IOException;
 import umbrella.hospital.p04.controller.UserManager;
+
+import javax.swing.*;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+
+import umbrella.hospital.p04.model.Doctor;
+import umbrella.hospital.p04.model.Patient;
+import umbrella.hospital.p04.system.CalculateAge;
+import umbrella.hospital.p04.system.InputValidation;
 
 /**
  *
@@ -18,6 +29,7 @@ public class LoginInterface extends javax.swing.JFrame {
      * Creates new form LoginInterface
      */
     public LoginInterface() {
+        setUndecorated(true);
         initComponents();
     }
 
@@ -37,13 +49,13 @@ public class LoginInterface extends javax.swing.JFrame {
         chkShow = new javax.swing.JCheckBox();
         lblForgotPassword = new javax.swing.JLabel();
         btnSignin = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         popupExample1 = new umbrella.hospital.p04.ui.PopupExample();
         jpwPassword = new javax.swing.JPasswordField();
         txtEmail = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,9 +103,6 @@ public class LoginInterface extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.jpg")); // NOI18N
-        jLabel5.setToolTipText("");
-
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -124,39 +133,39 @@ public class LoginInterface extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Logo.png")); // NOI18N
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout SigninLayout = new javax.swing.GroupLayout(Signin);
         Signin.setLayout(SigninLayout);
         SigninLayout.setHorizontalGroup(
             SigninLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SigninLayout.createSequentialGroup()
-                .addGroup(SigninLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(SigninLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(chkShow))
-                    .addGroup(SigninLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(SigninLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                        .addGroup(SigninLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SigninLayout.createSequentialGroup()
-                                .addComponent(popupExample1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSignin))
-                            .addComponent(lblForgotPassword)
-                            .addComponent(jpwPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                            .addComponent(txtEmail))))
+                .addGap(47, 47, 47)
+                .addGroup(SigninLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGroup(SigninLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SigninLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SigninLayout.createSequentialGroup()
+                            .addComponent(popupExample1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnSignin))
+                        .addComponent(lblForgotPassword)
+                        .addComponent(jpwPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                        .addComponent(txtEmail))
+                    .addComponent(chkShow, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(74, 74, 74))
         );
         SigninLayout.setVerticalGroup(
             SigninLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SigninLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(SigninLayout.createSequentialGroup()
+                .addContainerGap(84, Short.MAX_VALUE)
                 .addComponent(lblEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,15 +183,15 @@ public class LoginInterface extends javax.swing.JFrame {
                     .addComponent(popupExample1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(SigninLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel5)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(1, 1, 1)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addComponent(jLabel6)
+                .addGap(0, 28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -217,13 +226,18 @@ public class LoginInterface extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
 
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
         // TODO add your handling code here:
         String email = txtEmail.getText();
         String password = String.valueOf(jpwPassword.getPassword());
-
+        if (!InputValidation.checkEmail(txtEmail)) {
+            return;
+        }
+        
         if (email.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Username");
         } else if (password.isEmpty()) {
@@ -232,12 +246,52 @@ public class LoginInterface extends javax.swing.JFrame {
             PatientMainInterface patientmf = new PatientMainInterface();
             this.setVisible(false);
             patientmf.setVisible(true);
+            Patient pt = UserManager.findPatientByEmail(email);
+            Doctor dt = UserManager.findDoctorByEmail(pt.getAssignedDoctor().getEmail());
+            javax.swing.JLabel lblPatientName = patientmf.lblPatientName;
+            assert pt != null;
+            lblPatientName.setText(pt.getName());
+            javax.swing.JLabel lblDoctorName = patientmf.lblNameDoctor;
+            lblDoctorName.setText(pt.getAssignedDoctor().getName());
+            patientmf.setPatient(pt);
+            if (dt.getSensorMachineSimulation() == null || pt.getSensorMachineSimulation() == null) {
+                if (dt.getSensorMachineSimulation() == null) {
+                    pt.setSensorMachineSimulation(patientmf.ssMc);
+                } else {
+                    patientmf.ssMc = dt.getSensorMachineSimulation();
+                    pt.setSensorMachineSimulation(dt.getSensorMachineSimulation());
+                }
+            }
+            patientmf.startSensorMachineSimulation();
         } else if (Objects.equals(UserManager.login(email, password), "Doctor")) {
-            DoctorMainInterface doctormf = new DoctorMainInterface();
             this.setVisible(false);
+            DoctorMainInterface doctormf = new DoctorMainInterface();
             doctormf.setVisible(true);
+            Doctor dt = UserManager.findDoctorByEmail(email);
+            Patient pt = UserManager.findPatientByEmail(dt.getAssignedPatient().getEmail());
+            doctormf.setDoctor(dt);
+            doctormf.lblDoctorName.setText(dt.getName());
+            doctormf.lblPatient.setText(dt.getAssignedPatient().getName());
+            doctormf.lblAddress.setText(dt.getAssignedPatient().getAddress());
+            String age = new CalculateAge().calculateAge(pt.getDayOfBirth());
+            doctormf.lblAge.setText(age);
+            if (dt.getSensorMachineSimulation() == null || pt.getSensorMachineSimulation() == null) {
+                if (pt.getSensorMachineSimulation() == null) {
+                    dt.setSensorMachineSimulation(doctormf.ssMc);
+                } else {
+                    doctormf.ssMc = pt.getSensorMachineSimulation();
+                    dt.setSensorMachineSimulation(pt.getSensorMachineSimulation());
+                }
+            }
+            doctormf.setDoctor(dt);
+            doctormf.startSensorMachineSimulation();
+            doctormf.startTime();
+        } else if (Objects.equals(UserManager.login(email, password), "No Doctor")) {
+            JOptionPane.showMessageDialog(this, "No Doctor available", "Message", JOptionPane.ERROR_MESSAGE);
+        } else if (Objects.equals(UserManager.login(email, password), "No Patient")) {
+            JOptionPane.showMessageDialog(this, "No Patient available", "Message", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Wrong name or password", "Message", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "You have entered an invalid username or password", "Message", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSigninActionPerformed
 
@@ -306,8 +360,8 @@ public class LoginInterface extends javax.swing.JFrame {
     private umbrella.hospital.p04.ui.PanelRound Signin;
     private javax.swing.JButton btnSignin;
     private javax.swing.JCheckBox chkShow;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;

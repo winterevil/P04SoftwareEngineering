@@ -1,12 +1,20 @@
 package umbrella.hospital.p04.model;
 
-public class Patient {
+import umbrella.hospital.p04.monitor.SensorMachineSimulation;
+
+import java.io.Serializable;
+
+public class Patient implements Serializable {
     private String name;
     private String email;
     private String address;
     private String password;
     private String dayOfBirth;
     private String code;
+    private Doctor assignedDoctor;
+    //private String assignedDoctorEmail;
+    private transient SensorMachineSimulation sensorMachineSimulation;
+    private float fee;
 
     public Patient() {
     }
@@ -67,8 +75,46 @@ public class Patient {
         this.code = code;
     }
 
+    public Doctor getAssignedDoctor() {
+        return assignedDoctor;
+    }
+
+    public void setAssignedDoctor(Doctor assignedDoctor) {
+        this.assignedDoctor = assignedDoctor;
+    }
+
+//    public String getAssignedDoctorEmail() {
+//        return assignedDoctorEmail;
+//    }
+
+//    public void setAssignedDoctorEmail(String assignedDoctorEmail) {
+//        this.assignedDoctorEmail = assignedDoctorEmail;
+//    }
+
+    public SensorMachineSimulation getSensorMachineSimulation() {
+        return sensorMachineSimulation;
+    }
+
+    public void setSensorMachineSimulation(SensorMachineSimulation sensorMachineSimulation) {
+        this.sensorMachineSimulation = sensorMachineSimulation;
+    }
+
+    public float getFee() {
+        return fee;
+    }
+
+    public void setFee(float fee) {
+        this.fee = fee;
+    }
+
+//    @Override
+//    public String toString() {
+//        assignedDoctorEmail = assignedDoctor != null ? assignedDoctor.getEmail() : null;
+//        return name + "," + email + "," + address + "," + password + "," + dayOfBirth + "," + assignedDoctorEmail + "\n";
+//    }
+    
     @Override
     public String toString() {
-        return name + "," + email + "," + address + "," + password + "," + dayOfBirth + "\n";
+        return name + "," + email + "," + address + "," + password + "," + dayOfBirth + "," + "\n";
     }
 }

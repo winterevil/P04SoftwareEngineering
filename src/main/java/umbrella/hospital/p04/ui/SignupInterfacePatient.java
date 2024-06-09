@@ -7,6 +7,7 @@ package umbrella.hospital.p04.ui;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import umbrella.hospital.p04.controller.UserManager;
+import umbrella.hospital.p04.system.InputValidation;
 
 /**
  *
@@ -18,6 +19,7 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
      * Creates new form LoginInterface
      */
     public SignupInterfacePatient() {
+        setUndecorated(true);
         initComponents();
         UserManager.restorePatientList();
         UserManager.restoreDoctorList();
@@ -94,7 +96,7 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.jpg")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Logo.png")); // NOI18N
         jLabel5.setToolTipText("");
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -159,11 +161,11 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
             SignupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SignupLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(SignupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(SignupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(116, 116, 116)
                 .addGroup(SignupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,14 +190,6 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(SignupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SignupLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(SignupLayout.createSequentialGroup()
                         .addComponent(lblName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,7 +212,15 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(SignupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSignup)
-                            .addComponent(btnCancel))))
+                            .addComponent(btnCancel)))
+                    .addGroup(SignupLayout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -254,6 +256,7 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -272,6 +275,14 @@ public class SignupInterfacePatient extends javax.swing.JFrame {
         String address = txtAddress.getText();
         String dob = sdf.format(jdcDOB.getDate());
         String password = String.valueOf(jpwPassword.getPassword());
+        if (!InputValidation.checkEmail(txtEmail)) {
+            JOptionPane.showMessageDialog(this, "Invalid email", "Message", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!InputValidation.checkCharacterCount(jpwPassword, 8)) {
+            JOptionPane.showMessageDialog(this, "Password must be at least 8 characters", "Message", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Name");

@@ -4,17 +4,32 @@
  */
 package umbrella.hospital.p04.ui;
 
+import java.awt.Color;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import umbrella.hospital.p04.chat.Client;
+import umbrella.hospital.p04.model.Doctor;
+import umbrella.hospital.p04.monitor.SensorMachineSimulation;
+import umbrella.hospital.p04.system.GetDateInformation;
+
 /**
  *
  * @author Admin
  */
 public class DoctorMainInterface extends javax.swing.JFrame {
 
+    private static Doctor doctor;
+    public SensorMachineSimulation ssMc = new SensorMachineSimulation();
+    Client client = new Client();
+
     /**
      * Creates new form DoctorMainInterface
      */
     public DoctorMainInterface() {
+        setUndecorated(true);
         initComponents();
+        client.setVisible(true);
     }
 
     /**
@@ -33,33 +48,32 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         lblTime = new javax.swing.JLabel();
         lblAM = new javax.swing.JLabel();
         lblPM = new javax.swing.JLabel();
-        Search = new umbrella.hospital.p04.ui.PanelRound();
-        txtSearch = new javax.swing.JTextField();
-        lblSearch = new javax.swing.JLabel();
-        lblNoti = new javax.swing.JLabel();
-        Avatar = new umbrella.hospital.p04.ui.PanelRound();
         Pressure = new umbrella.hospital.p04.ui.PanelRound();
         lblPressure = new javax.swing.JLabel();
         lblPressureIndex = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnEditPressure = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         Heart = new umbrella.hospital.p04.ui.PanelRound();
         lblHeart = new javax.swing.JLabel();
         lblHeartIndex = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnEditHeart = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         Temperature = new umbrella.hospital.p04.ui.PanelRound();
         lblTemperature = new javax.swing.JLabel();
         lblTemperatureIndex = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btnEditTemperature = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         Alert = new umbrella.hospital.p04.ui.PanelRound();
         lblAlert = new javax.swing.JLabel();
         lblAlertMessage = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         Profile = new umbrella.hospital.p04.ui.PanelRound();
         lblAvatarPatient = new javax.swing.JLabel();
         lblPatient = new javax.swing.JLabel();
@@ -71,10 +85,18 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         lblDoctor = new javax.swing.JLabel();
         lblDoctorName = new javax.swing.JLabel();
         lblAvatarDoctor = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         Overview = new umbrella.hospital.p04.ui.PanelRound();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        Chat = new umbrella.hospital.p04.ui.PanelRound();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txaDescription = new javax.swing.JTextArea();
+        lblLogin = new javax.swing.JLabel();
+        lblLogout = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,62 +126,6 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         lblPM.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         lblPM.setText("PM");
 
-        Search.setBackground(new java.awt.Color(255, 255, 255));
-        Search.setRoundBottomLeft(20);
-        Search.setRoundBottomRight(20);
-        Search.setRoundTopLeft(20);
-        Search.setRoundTopRight(20);
-
-        txtSearch.setBackground(new java.awt.Color(255, 255, 255));
-        txtSearch.setBorder(null);
-        txtSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchActionPerformed(evt);
-            }
-        });
-
-        lblSearch.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Search.png")); // NOI18N
-
-        javax.swing.GroupLayout SearchLayout = new javax.swing.GroupLayout(Search);
-        Search.setLayout(SearchLayout);
-        SearchLayout.setHorizontalGroup(
-            SearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SearchLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblSearch)
-                .addContainerGap(7, Short.MAX_VALUE))
-        );
-        SearchLayout.setVerticalGroup(
-            SearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(SearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                    .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        lblNoti.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Alarm.png")); // NOI18N
-
-        Avatar.setBackground(new java.awt.Color(187, 187, 187));
-        Avatar.setRoundBottomLeft(100);
-        Avatar.setRoundBottomRight(100);
-        Avatar.setRoundTopLeft(100);
-        Avatar.setRoundTopRight(100);
-
-        javax.swing.GroupLayout AvatarLayout = new javax.swing.GroupLayout(Avatar);
-        Avatar.setLayout(AvatarLayout);
-        AvatarLayout.setHorizontalGroup(
-            AvatarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 34, Short.MAX_VALUE)
-        );
-        AvatarLayout.setVerticalGroup(
-            AvatarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
         Pressure.setBackground(new java.awt.Color(255, 255, 255));
         Pressure.setRoundBottomLeft(20);
         Pressure.setRoundBottomRight(20);
@@ -174,10 +140,7 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         lblPressureIndex.setForeground(new java.awt.Color(0, 0, 0));
         lblPressureIndex.setText("199/67");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\pressure.png")); // NOI18N
-
         btnEditPressure.setBackground(new java.awt.Color(255, 255, 255));
-        btnEditPressure.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\edit.png")); // NOI18N
         btnEditPressure.setBorder(null);
         btnEditPressure.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,6 +151,9 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setText("mmHG");
+
+        jLabel16.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\pressure.png")); // NOI18N
+        jLabel16.setText("jLabel16");
 
         javax.swing.GroupLayout PressureLayout = new javax.swing.GroupLayout(Pressure);
         Pressure.setLayout(PressureLayout);
@@ -202,26 +168,31 @@ public class DoctorMainInterface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditPressure)
                 .addContainerGap())
         );
         PressureLayout.setVerticalGroup(
             PressureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PressureLayout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PressureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PressureLayout.createSequentialGroup()
                         .addComponent(lblPressure)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PressureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPressureIndex)
-                            .addComponent(jLabel2)))
-                    .addGroup(PressureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnEditPressure)
-                        .addComponent(jLabel4)))
-                .addGap(12, 12, 12))
+                        .addGap(45, 45, 45))
+                    .addGroup(PressureLayout.createSequentialGroup()
+                        .addGroup(PressureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(PressureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(lblPressureIndex))
+                            .addGroup(PressureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel16)
+                                .addComponent(btnEditPressure)
+                                .addComponent(jLabel4)))
+                        .addGap(14, 14, 14))))
         );
 
         Heart.setBackground(new java.awt.Color(255, 255, 255));
@@ -238,10 +209,7 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         lblHeartIndex.setForeground(new java.awt.Color(0, 0, 0));
         lblHeartIndex.setText("200");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\heart.png")); // NOI18N
-
         btnEditHeart.setBackground(new java.awt.Color(255, 255, 255));
-        btnEditHeart.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\edit.png")); // NOI18N
         btnEditHeart.setBorder(null);
         btnEditHeart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,6 +220,9 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("bpm");
+
+        jLabel17.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\heart.png")); // NOI18N
+        jLabel17.setText("jLabel17");
 
         javax.swing.GroupLayout HeartLayout = new javax.swing.GroupLayout(Heart);
         Heart.setLayout(HeartLayout);
@@ -265,26 +236,35 @@ public class DoctorMainInterface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblHeart))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEditHeart)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(HeartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(HeartLayout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEditHeart))
+                    .addGroup(HeartLayout.createSequentialGroup()
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         HeartLayout.setVerticalGroup(
             HeartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeartLayout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(HeartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(HeartLayout.createSequentialGroup()
                         .addComponent(lblHeart)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(HeartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblHeartIndex)
+                            .addComponent(jLabel1))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(HeartLayout.createSequentialGroup()
+                        .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(HeartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblHeartIndex)
-                            .addComponent(jLabel1)))
-                    .addGroup(HeartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnEditHeart)
-                        .addComponent(jLabel5)))
+                            .addComponent(btnEditHeart)
+                            .addComponent(jLabel5))))
                 .addGap(12, 12, 12))
         );
 
@@ -302,10 +282,7 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         lblTemperatureIndex.setForeground(new java.awt.Color(0, 0, 0));
         lblTemperatureIndex.setText("200");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Temperature.png")); // NOI18N
-
         btnEditTemperature.setBackground(new java.awt.Color(255, 255, 255));
-        btnEditTemperature.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\edit.png")); // NOI18N
         btnEditTemperature.setBorder(null);
         btnEditTemperature.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -315,40 +292,56 @@ public class DoctorMainInterface extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel3.setText("°F");
+        jLabel3.setText("°C");
+
+        jLabel18.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Temperature.png")); // NOI18N
+        jLabel18.setText("jLabel18");
 
         javax.swing.GroupLayout TemperatureLayout = new javax.swing.GroupLayout(Temperature);
         Temperature.setLayout(TemperatureLayout);
         TemperatureLayout.setHorizontalGroup(
             TemperatureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TemperatureLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
                 .addGroup(TemperatureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TemperatureLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
                         .addComponent(lblTemperatureIndex)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3))
-                    .addComponent(lblTemperature))
-                .addGap(9, 9, 9)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEditTemperature)
-                .addContainerGap())
+                        .addComponent(jLabel3)
+                        .addGap(16, 16, 16))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TemperatureLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblTemperature)))
+                .addGroup(TemperatureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TemperatureLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEditTemperature)
+                        .addContainerGap())
+                    .addGroup(TemperatureLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(12, Short.MAX_VALUE))))
         );
         TemperatureLayout.setVerticalGroup(
             TemperatureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TemperatureLayout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(TemperatureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(TemperatureLayout.createSequentialGroup()
                         .addComponent(lblTemperature)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(TemperatureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTemperatureIndex)
+                            .addComponent(jLabel3))
+                        .addGap(0, 5, Short.MAX_VALUE))
+                    .addGroup(TemperatureLayout.createSequentialGroup()
+                        .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(TemperatureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTemperatureIndex)
-                            .addComponent(jLabel3)))
-                    .addGroup(TemperatureLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnEditTemperature)
-                        .addComponent(jLabel6)))
+                            .addComponent(btnEditTemperature)
+                            .addComponent(jLabel6))))
                 .addGap(12, 12, 12))
         );
 
@@ -367,31 +360,45 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         lblAlertMessage.setForeground(new java.awt.Color(255, 255, 255));
         lblAlertMessage.setText("Need Attention");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\alert.png")); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\alert.png")); // NOI18N
+        jLabel19.setText("jLabel19");
 
         javax.swing.GroupLayout AlertLayout = new javax.swing.GroupLayout(Alert);
         Alert.setLayout(AlertLayout);
         AlertLayout.setHorizontalGroup(
             AlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AlertLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
                 .addGroup(AlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAlertMessage)
-                    .addComponent(lblAlert))
-                .addGap(9, 9, 9)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(AlertLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(lblAlert)
+                        .addGap(34, 34, 34))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AlertLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblAlertMessage)))
+                .addGroup(AlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AlertLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(AlertLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         AlertLayout.setVerticalGroup(
             AlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AlertLayout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(AlertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(AlertLayout.createSequentialGroup()
                         .addComponent(lblAlert)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblAlertMessage)
+                        .addGap(12, 12, 12))
+                    .addGroup(AlertLayout.createSequentialGroup()
+                        .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblAlertMessage))
-                    .addComponent(jLabel7))
+                        .addComponent(jLabel7)))
                 .addGap(12, 12, 12))
         );
 
@@ -400,8 +407,6 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         Profile.setRoundBottomRight(20);
         Profile.setRoundTopLeft(20);
         Profile.setRoundTopRight(20);
-
-        lblAvatarPatient.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\round.png")); // NOI18N
 
         lblPatient.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         lblPatient.setForeground(new java.awt.Color(0, 0, 0));
@@ -415,13 +420,9 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(130, 131, 133));
         jLabel11.setText("years");
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Location.png")); // NOI18N
-
         lblAddress.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         lblAddress.setForeground(new java.awt.Color(130, 131, 133));
         lblAddress.setText("Lê Văn Hưu, TPHCM");
-
-        jLabel14.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Line 1.png")); // NOI18N
 
         lblDoctor.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
         lblDoctor.setForeground(new java.awt.Color(0, 0, 0));
@@ -431,39 +432,55 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         lblDoctorName.setForeground(new java.awt.Color(0, 0, 0));
         lblDoctorName.setText("Doctor Strange");
 
-        lblAvatarDoctor.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Ellipse 4.png")); // NOI18N
+        jLabel20.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\patient - Copy.jpg")); // NOI18N
+        jLabel20.setText("jLabel20");
+
+        jLabel21.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Line 1.png")); // NOI18N
+
+        jLabel9.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\doctor.jpg")); // NOI18N
 
         javax.swing.GroupLayout ProfileLayout = new javax.swing.GroupLayout(Profile);
         Profile.setLayout(ProfileLayout);
         ProfileLayout.setHorizontalGroup(
             ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ProfileLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(lblAvatarPatient)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ProfileLayout.createSequentialGroup()
-                        .addGroup(ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAge)
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(lblAddress)))
-                    .addComponent(lblPatient))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)
+                        .addComponent(lblAvatarPatient)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel12))
+                    .addGroup(ProfileLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ProfileLayout.createSequentialGroup()
+                        .addGroup(ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(ProfileLayout.createSequentialGroup()
+                                .addComponent(lblAddress)
+                                .addGap(18, 18, 18))
+                            .addGroup(ProfileLayout.createSequentialGroup()
+                                .addComponent(lblPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(73, 73, 73)))
+                        .addGroup(ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)))
+                    .addGroup(ProfileLayout.createSequentialGroup()
+                        .addComponent(lblAge)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDoctor)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProfileLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblAvatarDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDoctorName)
-                        .addGap(21, 21, 21))))
+                        .addComponent(jLabel11)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ProfileLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(lblAvatarDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblDoctor)
+                    .addGroup(ProfileLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(10, 10, 10)
+                        .addComponent(lblDoctorName)))
+                .addGap(32, 32, 32))
         );
         ProfileLayout.setVerticalGroup(
             ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,22 +497,31 @@ public class DoctorMainInterface extends javax.swing.JFrame {
                         .addGroup(ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
                             .addComponent(lblAddress)))
-                    .addComponent(lblAvatarPatient))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(ProfileLayout.createSequentialGroup()
+                        .addComponent(lblAvatarPatient)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20)))
+                .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProfileLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ProfileLayout.createSequentialGroup()
                         .addComponent(lblDoctor)
                         .addGroup(ProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(ProfileLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblAvatarDoctor))
-                            .addGroup(ProfileLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
                                 .addComponent(lblDoctorName)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(jLabel14))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(ProfileLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9))))
+                    .addGroup(ProfileLayout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblAvatarDoctor)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -507,9 +533,17 @@ public class DoctorMainInterface extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(13, 164, 255));
-        jLabel8.setText("Overview");
+        jLabel8.setText("AI Overview");
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Rectangle 9.png")); // NOI18N
+        txaDescription.setColumns(20);
+        txaDescription.setForeground(new java.awt.Color(0, 0, 0));
+        txaDescription.setLineWrap(true);
+        txaDescription.setRows(5);
+        txaDescription.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txaDescription.setEnabled(false);
+        txaDescription.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        txaDescription.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(txaDescription);
 
         javax.swing.GroupLayout OverviewLayout = new javax.swing.GroupLayout(Overview);
         Overview.setLayout(OverviewLayout);
@@ -518,36 +552,42 @@ public class DoctorMainInterface extends javax.swing.JFrame {
             .addGroup(OverviewLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         OverviewLayout.setVerticalGroup(
             OverviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(OverviewLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(OverviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel8))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                    .addGroup(OverviewLayout.createSequentialGroup()
+                        .addGroup(OverviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel8))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
-        Chat.setBackground(new java.awt.Color(255, 255, 255));
-        Chat.setRoundBottomLeft(20);
-        Chat.setRoundBottomRight(20);
-        Chat.setRoundTopLeft(20);
-        Chat.setRoundTopRight(20);
+        lblLogin.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.png")); // NOI18N
+        lblLogin.setText("jLabel13");
+        lblLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLoginMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout ChatLayout = new javax.swing.GroupLayout(Chat);
-        Chat.setLayout(ChatLayout);
-        ChatLayout.setHorizontalGroup(
-            ChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        ChatLayout.setVerticalGroup(
-            ChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        lblLogout.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Out.png")); // NOI18N
+        lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLogoutMouseClicked(evt);
+            }
+        });
+
+        jLabel15.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\doctor - Copy.jpg")); // NOI18N
 
         javax.swing.GroupLayout MainLayout = new javax.swing.GroupLayout(Main);
         Main.setLayout(MainLayout);
@@ -555,8 +595,23 @@ public class DoctorMainInterface extends javax.swing.JFrame {
             MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(Overview, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainLayout.createSequentialGroup()
+                            .addComponent(Profile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Alert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainLayout.createSequentialGroup()
+                            .addComponent(Pressure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(Heart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(Temperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblLogout)
                     .addGroup(MainLayout.createSequentialGroup()
+                        .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTitle)
                         .addGap(61, 61, 61)
                         .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -566,93 +621,77 @@ public class DoctorMainInterface extends javax.swing.JFrame {
                         .addComponent(lblTime)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblPM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblPM)
                             .addComponent(lblAM))
-                        .addGap(18, 18, 18)
-                        .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblNoti, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Avatar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MainLayout.createSequentialGroup()
-                        .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(MainLayout.createSequentialGroup()
-                                    .addComponent(Pressure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(Heart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(Temperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(Overview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(Profile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Alert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Chat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         MainLayout.setVerticalGroup(
             MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MainLayout.createSequentialGroup()
-                .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(MainLayout.createSequentialGroup()
-                            .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainLayout.createSequentialGroup()
+                .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MainLayout.createSequentialGroup()
+                        .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(MainLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblYear)
+                                    .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblTitle)
+                                        .addComponent(lblLogin))))
+                            .addGroup(MainLayout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblAM)
+                                    .addComponent(jLabel13))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(MainLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblTime)
-                                .addComponent(lblDate)))
-                        .addGroup(MainLayout.createSequentialGroup()
-                            .addGap(19, 19, 19)
-                            .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblYear)
-                                .addComponent(lblTitle)))
-                        .addGroup(MainLayout.createSequentialGroup()
-                            .addGap(11, 11, 11)
-                            .addComponent(lblAM)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lblPM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Avatar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblNoti, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Pressure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Heart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Temperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Alert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                                .addComponent(lblDate)
+                                .addComponent(lblPM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(MainLayout.createSequentialGroup()
-                        .addComponent(Profile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Overview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Chat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addComponent(Pressure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Heart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Temperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Profile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Alert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(Overview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblLogout)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchActionPerformed
 
     private void btnEditPressureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPressureActionPerformed
         // TODO add your handling code here:
@@ -665,6 +704,21 @@ public class DoctorMainInterface extends javax.swing.JFrame {
     private void btnEditTemperatureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTemperatureActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditTemperatureActionPerformed
+
+    private void lblLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoginMouseClicked
+        // TODO add your handling code here:
+        LoginInterface login = new LoginInterface();
+        login.setVisible(true);
+    }//GEN-LAST:event_lblLoginMouseClicked
+
+    private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
+        // TODO add your handling code here:
+        client.disconnectOnClose();
+        client.dispose();
+        this.dispose();
+        LoginInterface login = new LoginInterface();
+        login.setVisible(true);
+    }//GEN-LAST:event_lblLogoutMouseClicked
 
     /**
      * @param args the command line arguments
@@ -697,20 +751,65 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DoctorMainInterface().setVisible(true);
+                
             }
         });
     }
 
+    public void startSensorMachineSimulation() {
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        Runnable updateDataTask = new Runnable() {
+            @Override
+            public void run() {
+                ssMc.run();
+                lblPressureIndex.setText(ssMc.getBloodPressureString());
+                lblHeartIndex.setText(String.valueOf(ssMc.getHeartRate()));
+                lblTemperatureIndex.setText(String.valueOf(ssMc.getTemperature()));
+                lblAlertMessage.setText(ssMc.getGeneralHealthStatus());
+                if (ssMc.getHealthIssues() == null) {
+                    txaDescription.setText("Waiting for initial result");
+                } else {
+                    txaDescription.setText(ssMc.getHealthIssues() + "\n" + ssMc.getHealthRecommendations());
+                }
+            }
+        };
+        int intervalSeconds = 2;
+        scheduler.scheduleAtFixedRate(updateDataTask, 0, intervalSeconds, TimeUnit.SECONDS);
+    }
+
+    public void startTime() {
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        Runnable updateDataTask = new Runnable() {
+            @Override
+            public void run() {
+                GetDateInformation gDI = new GetDateInformation();
+                lblYear.setText(gDI.getYear());
+                lblDate.setText(gDI.getDay());
+                lblTime.setText(gDI.getTime());
+                String clock = gDI.getAMPM();
+                if (clock.equals("AM")) {
+                    lblAM.setForeground(Color.getHSBColor(0, 0, 0));
+                    lblPM.setForeground(Color.getHSBColor(187, 187, 187));
+                } else {
+                    lblPM.setForeground(Color.getHSBColor(0, 0, 0));
+                    lblAM.setForeground(Color.getHSBColor(187, 187, 187));
+                }
+            }
+        };
+        int intervalSeconds = 1;
+        scheduler.scheduleAtFixedRate(updateDataTask, 0, intervalSeconds, TimeUnit.SECONDS);
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private umbrella.hospital.p04.ui.PanelRound Alert;
-    private umbrella.hospital.p04.ui.PanelRound Avatar;
-    private umbrella.hospital.p04.ui.PanelRound Chat;
     private umbrella.hospital.p04.ui.PanelRound Heart;
     private javax.swing.JPanel Main;
     private umbrella.hospital.p04.ui.PanelRound Overview;
     private umbrella.hospital.p04.ui.PanelRound Pressure;
     private umbrella.hospital.p04.ui.PanelRound Profile;
-    private umbrella.hospital.p04.ui.PanelRound Search;
     private umbrella.hospital.p04.ui.PanelRound Temperature;
     private javax.swing.JButton btnEditHeart;
     private javax.swing.JButton btnEditPressure;
@@ -719,37 +818,47 @@ public class DoctorMainInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel lblAM;
-    private javax.swing.JLabel lblAddress;
-    private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private static javax.swing.JLabel lblAM;
+    public javax.swing.JLabel lblAddress;
+    public javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblAlert;
-    private javax.swing.JLabel lblAlertMessage;
+    public javax.swing.JLabel lblAlertMessage;
     private javax.swing.JLabel lblAvatarDoctor;
     private javax.swing.JLabel lblAvatarPatient;
-    private javax.swing.JLabel lblDate;
+    private static javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblDoctor;
-    private javax.swing.JLabel lblDoctorName;
+    public javax.swing.JLabel lblDoctorName;
     private javax.swing.JLabel lblHeart;
-    private javax.swing.JLabel lblHeartIndex;
-    private javax.swing.JLabel lblNoti;
-    private javax.swing.JLabel lblPM;
-    private javax.swing.JLabel lblPatient;
+    public javax.swing.JLabel lblHeartIndex;
+    private javax.swing.JLabel lblLogin;
+    private javax.swing.JLabel lblLogout;
+    private static javax.swing.JLabel lblPM;
+    public javax.swing.JLabel lblPatient;
     private javax.swing.JLabel lblPressure;
-    private javax.swing.JLabel lblPressureIndex;
-    private javax.swing.JLabel lblSearch;
+    public javax.swing.JLabel lblPressureIndex;
     private javax.swing.JLabel lblTemperature;
-    private javax.swing.JLabel lblTemperatureIndex;
-    private javax.swing.JLabel lblTime;
+    public javax.swing.JLabel lblTemperatureIndex;
+    private static javax.swing.JLabel lblTime;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblYear;
-    private javax.swing.JTextField txtSearch;
+    public static javax.swing.JLabel lblYear;
+    public javax.swing.JTextArea txaDescription;
     // End of variables declaration//GEN-END:variables
 }

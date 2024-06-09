@@ -6,6 +6,7 @@ package umbrella.hospital.p04.ui;
 
 import javax.swing.JOptionPane;
 import umbrella.hospital.p04.controller.UserManager;
+import umbrella.hospital.p04.system.InputValidation;
 
 /**
  *
@@ -17,6 +18,7 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
      * Creates new form LoginInterface
      */
     public SignupInterfaceDoctor() {
+        setUndecorated(true);
         initComponents();
         UserManager.restorePatientList();
         UserManager.restoreDoctorList();
@@ -85,7 +87,7 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.jpg")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\Logo.png")); // NOI18N
         jLabel5.setToolTipText("");
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -144,11 +146,11 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
             SignupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SignupLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addGroup(SignupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(SignupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(SignupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,19 +187,19 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(lblPassword)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpwPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jpwPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addGroup(SignupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSignup)
+                            .addComponent(btnCancel)))
                     .addGroup(SignupLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addGap(1, 1, 1)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(8, 8, 8)
-                .addGroup(SignupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSignup)
-                    .addComponent(btnCancel))
+                        .addComponent(jLabel6)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -215,7 +217,7 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addComponent(Signup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -233,6 +235,7 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -249,6 +252,14 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String address = txtAddress.getText();
         String password = String.valueOf(jpwPassword.getPassword());
+        if (!InputValidation.checkEmail(txtEmail)) {
+            JOptionPane.showMessageDialog(this, "Invalid email", "Message", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!InputValidation.checkCharacterCount(jpwPassword, 8)) {
+            JOptionPane.showMessageDialog(this, "Password must be at least 8 characters", "Message", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in Name");

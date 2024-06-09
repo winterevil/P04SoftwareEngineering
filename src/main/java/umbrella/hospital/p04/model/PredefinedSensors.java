@@ -1,14 +1,29 @@
-public class PredefinedSensors {
+package umbrella.hospital.p04.model;
+
+import java.io.Serializable;
+import java.util.Arrays;
+
+public class PredefinedSensors implements Serializable {
 
     private float temperature;
     private float systolicPressure;
     private float diastolicPressure;
+    private float[] bloodPressure;
     private int heartRate;
+    private Patient patient;
 
-    public PredefinedSensors(float temperature, float systolicPressure, float diastolicPressure, int heartRate) {
+    public PredefinedSensors(float temperature, float systolicPressure, float diastolicPressure, int heartRate, Patient patient) {
         this.temperature = temperature;
         this.systolicPressure = systolicPressure;
         this.diastolicPressure = diastolicPressure;
+        bloodPressure = new float[]{systolicPressure, diastolicPressure};
+        this.heartRate = heartRate;
+        this.patient = patient;
+    }
+
+    public PredefinedSensors(float temperature, float[] bloodPressure, int heartRate) {
+        this.temperature = temperature;
+        this.bloodPressure = bloodPressure;
         this.heartRate = heartRate;
     }
 
@@ -16,58 +31,52 @@ public class PredefinedSensors {
         return temperature;
     }
 
+    public void setTemperature(float temperature) {
+        this.temperature = temperature;
+    }
+
     public float getSystolicPressure() {
         return systolicPressure;
+    }
+
+    public void setSystolicPressure(float systolicPressure) {
+        this.systolicPressure = systolicPressure;
     }
 
     public float getDiastolicPressure() {
         return diastolicPressure;
     }
 
+    public void setDiastolicPressure(float diastolicPressure) {
+        this.diastolicPressure = diastolicPressure;
+    }
+
     public int getHeartRate() {
         return heartRate;
     }
 
-    public void setTemperature(float newTemperature) throws InvalidSensorDataException {
-        if (newTemperature < 30 || newTemperature > 42) {
-            throw new InvalidSensorDataException("Temperature out of range (30-42 degrees Celsius)");
-        }
-        this.temperature = newTemperature;
+    public void setHeartRate(int heartRate) {
+        this.heartRate = heartRate;
     }
 
-    public void setSystolicPressure(float systolicPressure) throws InvalidSensorDataException {
-        if (systolicPressure < 80 || systolicPressure > 200) {
-            throw new InvalidSensorDataException("Systolic pressure out of range (80-200 mmHg)");
-        }
-        this.systolicPressure = systolicPressure;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setDiastolicPressure(float diastolicPressure) throws InvalidSensorDataException {
-        if (diastolicPressure < 40 || diastolicPressure > 120) {
-            throw new InvalidSensorDataException("Diastolic pressure out of range (40-120 mmHg)");
-        }
-        this.diastolicPressure = diastolicPressure;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
-    public void setHeartRate(int newHeartRate) throws InvalidSensorDataException {
-        if (newHeartRate < 40 || newHeartRate > 200) {
-            throw new InvalidSensorDataException("Heart rate out of range (40-200 bpm)");
-        }
-        this.heartRate = newHeartRate;
+    public float[] getBloodPressure() {
+        return bloodPressure;
     }
 
-    // Calibration method (implementation depends on specific sensor hardware/software)
-    public void calibrate() {
-        // Simulate calibration process (replace with actual calibration logic)
-        System.out.println("Calibration initiated...");
-        // ... (perform calibration steps)
-        System.out.println("Calibration complete.");
+    public void setBloodPressure(float[] bloodPressure) {
+        this.bloodPressure = bloodPressure;
+    }
+
+    @Override
+    public String toString() {
+        return temperature + "," + Arrays.toString(bloodPressure) + "," + heartRate + "," + "\n";
     }
 }
-
-class InvalidSensorDataException extends Exception {
-    public InvalidSensorDataException(String message) {
-        super(message);
-    }
-}
-

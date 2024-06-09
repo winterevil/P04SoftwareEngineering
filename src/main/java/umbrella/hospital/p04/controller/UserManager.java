@@ -8,7 +8,8 @@ import umbrella.hospital.p04.model.Patient;
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class UserManager {
 
@@ -90,18 +91,26 @@ public class UserManager {
     public static String login(String email, String password) {
         Patient patient = loginPatient(email, password);
         if (patient != null) {
-            return "Patient";
+            if (assignedDoctor(patient)) {
+                return "Patient";
+            } else {
+                return "No Doctor";
+            }
         }
         Doctor doctor = loginDoctor(email, password);
         if (doctor != null) {
-            return "Doctor";
+            if(getPatient(doctor)){
+                return "Doctor";
+            } else{
+                return "No Patient";
+            }
         }
         return null;
     }
 
     public static Patient loginPatient(String email, String password) {
         String hashedPassword = hashPasswordWithMD5(password);
-        restorePatientList();
+        //restorePatientList();
         for (Patient patient : patientList) {
             if (patient.getEmail().equals(email) && patient.getPassword().equals(hashedPassword)) {
                 return patient;
@@ -112,7 +121,7 @@ public class UserManager {
 
     public static Doctor loginDoctor(String email, String password) {
         String hashedPassword = hashPasswordWithMD5(password);
-        restoreDoctorList();
+        //restoreDoctorList();
         for (Doctor doctor : doctorList) {
             if (doctor.getEmail().equals(email) && doctor.getPassword().equals(hashedPassword)) {
                 return doctor;
@@ -169,11 +178,11 @@ public class UserManager {
     }
 
     public static void savePatientList() {
-        PatientDAO.getInstance().Save(patientList);
+        PatientDAO.savePatients(patientList);
     }
 
     public static void saveDoctorList() {
-        DoctorDAO.getInstance().Save(doctorList);
+        DoctorDAO.saveDoctors(doctorList);
     }
 
     public static void restoreDoctorList() {
@@ -198,5 +207,64 @@ public class UserManager {
 
     public static void setDoctorList(ArrayList doctorList) {
         UserManager.doctorList = doctorList;
+    }
+
+    public static boolean assignedDoctor(Patient patient) {
+        if (doctorList.isEmpty()) {
+            return false;
+        }
+
+        if (patient.getAssignedDoctor() != null) {
+            return true;
+        }
+
+        for (Doctor doctor : doctorList) {
+            if (doctor.getAssignedPatient() == null) {
+                doctor.setAssignedPatient(patient);
+                patient.setAssignedDoctor(doctor);
+                saveDoctorList();
+                savePatientList();
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static void deleteAssignedDoctor(Patient patient) {
+        if (patient.getAssignedDoctor() != null) {
+            patient.setAssignedDoctor(null);
+            saveDoctorList();
+            savePatientList();
+        }
+    }
+
+    public static void deleteAssignedPatient(Doctor doctor) {
+        if (doctor.getAssignedPatient() != null) {
+            doctor.setAssignedPatient(null);
+            saveDoctorList();
+            savePatientList();
+        }
+    }
+
+    private static boolean getPatient(Doctor doctor) {
+        if (patientList.isEmpty()) {
+            return false;
+        }
+        if (doctor.getAssignedPatient() != null) {
+            return true;
+        }
+
+        for (Patient patient : patientList) {
+            if (patient.getAssignedDoctor() == null) {
+                doctor.setAssignedPatient(patient);
+                patient.setAssignedDoctor(doctor);
+                saveDoctorList();
+                savePatientList();
+                return true;
+            }
+        }
+
+        return false;
     }
 }
