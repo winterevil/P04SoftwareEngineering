@@ -483,10 +483,11 @@ public class Server extends javax.swing.JFrame {
 
                 while (true) {
                     Socket clientSock = serverSock.accept();
-                    if (connectedClients >= 2) {
-                        dataStored.append("Connection limit reached. Waiting for a client to disconnect.\n");
-                        continue;
-                    }
+//                    if (connectedClients >= 2) {
+//                        dataStored.append("Connection limit reached. Waiting for a client to disconnect.\n");
+//                        continue;
+//                    }
+                    
 
                     PrintWriter writer = new PrintWriter(clientSock.getOutputStream());
                     clientOutputStreams.add(writer);

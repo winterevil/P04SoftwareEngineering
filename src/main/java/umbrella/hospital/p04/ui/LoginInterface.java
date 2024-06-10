@@ -13,6 +13,7 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import umbrella.hospital.p04.chat.Client;
 
 import umbrella.hospital.p04.model.Doctor;
 import umbrella.hospital.p04.model.Patient;
@@ -28,9 +29,12 @@ public class LoginInterface extends javax.swing.JFrame {
     /**
      * Creates new form LoginInterface
      */
+    private Object currentUser;
+    Client client;
     public LoginInterface() {
         //setUndecorated(true);
         initComponents();
+        
     }
 
     /**
@@ -264,6 +268,8 @@ public class LoginInterface extends javax.swing.JFrame {
                 }
             }
             patientmf.startSensorMachineSimulation();
+            patientmf.client.client_Name.setText(pt.getName()+" (patient)");
+            currentUser = pt;
         } else if (Objects.equals(UserManager.login(email, password), "Doctor")) {
             this.setVisible(false);
             DoctorMainInterface doctormf = new DoctorMainInterface();
@@ -287,6 +293,9 @@ public class LoginInterface extends javax.swing.JFrame {
             doctormf.setDoctor(dt);
             doctormf.startSensorMachineSimulation();
             doctormf.startTime();
+            currentUser = dt;
+            doctormf.client.client_Name.setText(dt.getName()+" (doctor)");
+            doctormf.client.Connect();
         } else if (Objects.equals(UserManager.login(email, password), "No Doctor")) {
             JOptionPane.showMessageDialog(this, "No Doctor available", "Message", JOptionPane.ERROR_MESSAGE);
         } else if (Objects.equals(UserManager.login(email, password), "No Patient")) {
@@ -294,6 +303,8 @@ public class LoginInterface extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "You have entered an invalid username or password", "Message", JOptionPane.ERROR_MESSAGE);
         }
+        
+        client = new Client(currentUser);
     }//GEN-LAST:event_btnSigninActionPerformed
 
     private void chkShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkShowActionPerformed

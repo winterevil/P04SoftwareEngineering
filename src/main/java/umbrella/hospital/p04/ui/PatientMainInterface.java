@@ -640,6 +640,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
             float fee = patient.getFee() + 20;
             patient.setFee(fee);
             UserManager.savePatientList();
+            client.Connect();
         }
 
     }//GEN-LAST:event_btnConsultActionPerformed
