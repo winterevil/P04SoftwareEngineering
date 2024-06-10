@@ -4,6 +4,8 @@
  */
 package umbrella.hospital.p04.ui;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 import umbrella.hospital.p04.controller.UserManager;
@@ -34,7 +36,7 @@ public class LoginInterface extends javax.swing.JFrame {
     public LoginInterface() {
         //setUndecorated(true);
         initComponents();
-        
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.png"));
     }
 
     /**

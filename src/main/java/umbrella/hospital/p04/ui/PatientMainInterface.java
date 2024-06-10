@@ -4,6 +4,7 @@
  */
 package umbrella.hospital.p04.ui;
 
+import java.awt.Toolkit;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +19,7 @@ import umbrella.hospital.p04.monitor.SensorMachineSimulation;
  * @author Admin
  */
 public class PatientMainInterface extends javax.swing.JFrame {
-    
+
     private static Patient patient = null;
     public SensorMachineSimulation ssMc = new SensorMachineSimulation();
     Client client = new Client();
@@ -29,6 +30,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
     public PatientMainInterface() {
         //setUndecorated(true);
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.png"));
     }
 
     /**
@@ -700,7 +702,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public void startSensorMachineSimulation() {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         Runnable updateDataTask = new Runnable() {
@@ -722,7 +724,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
         int intervalSeconds = 2;
         scheduler.scheduleAtFixedRate(updateDataTask, 0, intervalSeconds, TimeUnit.SECONDS);
     }
-    
+
     public void setPatient(Patient patient) {
         this.patient = patient;
     }

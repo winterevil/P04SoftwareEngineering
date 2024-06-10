@@ -1,5 +1,6 @@
 package umbrella.hospital.p04.chat;
 
+import java.awt.Toolkit;
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -49,7 +50,6 @@ public class Server extends javax.swing.JFrame {
 //                client.flush();
 //                return;
 //            }
-
             String message, chat = "Chat";
             String[] data;
 
@@ -90,6 +90,8 @@ public class Server extends javax.swing.JFrame {
 
     public Server() {
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.png"));
+
     }
 
     /**
@@ -487,7 +489,6 @@ public class Server extends javax.swing.JFrame {
 //                        dataStored.append("Connection limit reached. Waiting for a client to disconnect.\n");
 //                        continue;
 //                    }
-                    
 
                     PrintWriter writer = new PrintWriter(clientSock.getOutputStream());
                     clientOutputStreams.add(writer);

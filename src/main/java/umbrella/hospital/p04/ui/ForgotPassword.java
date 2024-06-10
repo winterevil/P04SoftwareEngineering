@@ -4,6 +4,7 @@
  */
 package umbrella.hospital.p04.ui;
 
+import java.awt.Toolkit;
 import java.util.concurrent.*;
 import javax.swing.JOptionPane;
 import umbrella.hospital.p04.controller.UserManager;
@@ -28,6 +29,7 @@ public class ForgotPassword extends javax.swing.JFrame {
     public ForgotPassword() {
         //setUndecorated(true);
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.png"));
     }
 
     /**
@@ -356,7 +358,7 @@ public class ForgotPassword extends javax.swing.JFrame {
                 isBtnSendEnabled = true;
             }, BUTTON_COOLDOWN, TimeUnit.SECONDS);
         } else {
-            
+
             JOptionPane.showMessageDialog(this, "Please wait 1 minute");
         }
     }//GEN-LAST:event_btnSendActionPerformed

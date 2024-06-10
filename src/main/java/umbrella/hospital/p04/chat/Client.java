@@ -1,6 +1,8 @@
 package umbrella.hospital.p04.chat;
 
 import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -104,6 +106,8 @@ public class Client extends javax.swing.JFrame {
 
     public Client() {
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.png"));
+
     }
 
     public void Connect() {
@@ -196,9 +200,6 @@ public class Client extends javax.swing.JFrame {
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 MessageKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                MessageKeyTyped(evt);
             }
         });
 
@@ -447,8 +448,12 @@ public class Client extends javax.swing.JFrame {
     }//GEN-LAST:event_SendMouseClicked
 
     private void MessageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MessageKeyPressed
-        if (Message.getText().equals("Your messages"))
+        if (Message.getText().equals("Your messages")) {
             Message.setText("");
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            SendMouseClicked(null);
+        }
     }//GEN-LAST:event_MessageKeyPressed
 
     private void isConnnectedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_isConnnectedMouseEntered
@@ -516,13 +521,9 @@ public class Client extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MessageKeyReleased
 
-    private void MessageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MessageKeyTyped
-        // TODO add your handling code here:\
-
-    }//GEN-LAST:event_MessageKeyTyped
-
     private void MessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MessageActionPerformed
         // TODO add your handling code here:
+
 
     }//GEN-LAST:event_MessageActionPerformed
 
