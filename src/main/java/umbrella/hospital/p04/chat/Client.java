@@ -451,6 +451,9 @@ public class Client extends javax.swing.JFrame {
         if (Message.getText().equals("Your messages")) {
             Message.setText("");
         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            SendMouseClicked(null);
+        }
     }//GEN-LAST:event_MessageKeyPressed
 
     private void isConnnectedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_isConnnectedMouseEntered
