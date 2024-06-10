@@ -22,8 +22,8 @@ public class Client extends javax.swing.JFrame {
     Source OOP = new Source();
     String username, address = "localhost";
     ArrayList<String> users = new ArrayList();
-    private Patient patient = new Patient();
-    private Doctor doctor = new Doctor();
+    private Object user;
+    private String name;
 
     Boolean isConnected = false;
 
@@ -36,6 +36,18 @@ public class Client extends javax.swing.JFrame {
         this.theSocket = socket;
         isConnected = true; // Đánh dấu rằng đã kết nối
         ListenThread(); // Bắt đầu luồng lắng nghe tin nhắn
+    }
+
+    public Client(Object user) {
+        this.user = user;
+        initComponents();
+        if (user instanceof Doctor) {
+            Doctor doctor = (Doctor) user;
+            name = doctor.getName() + "(doctor)";
+        } else if (user instanceof Patient) {
+            Patient patient = (Patient) user;
+            name = patient.getName() + "(patient)";
+        }
     }
 
     public void ListenThread() {
@@ -94,6 +106,43 @@ public class Client extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void Connect() {
+        switch (client_Name.getText()) {
+            case "":
+                client_Name.setText(name);
+                break;
+            case "Input your name!!":
+                break;
+            default:
+
+                jLabel5.setForeground(Color.GREEN);
+                if (isConnected == false) {
+                    username = client_Name.getText();
+                    client_Name.setEditable(false);
+
+                    try {
+                        theSocket = new Socket(address, 2222);
+                        InputStreamReader streamreader = new InputStreamReader(theSocket.getInputStream());
+                        theReader = new BufferedReader(streamreader);
+                        theWriter = new PrintWriter(theSocket.getOutputStream());
+                        theWriter.println(username + ": has connected :Connect");
+                        theWriter.flush();
+                        isConnected = true;
+                    } catch (Exception ex) {
+                        sentMessage.append("Cannot Connect! Try Again. \n");
+                        client_Name.setEditable(true);
+                    }
+
+                    ListenThread();
+
+                } else if (isConnected == true) {
+                    sentMessage.append("You are connected. \n");
+                }
+
+        }
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -119,6 +168,7 @@ public class Client extends javax.swing.JFrame {
         isConnnected = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -211,10 +261,10 @@ public class Client extends javax.swing.JFrame {
                 .addComponent(disConnect))
         );
 
+        client_Name.setEditable(false);
         client_Name.setBackground(new java.awt.Color(240, 240, 240));
         client_Name.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         client_Name.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        client_Name.setText("Your name");
         client_Name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         client_Name.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
@@ -227,12 +277,6 @@ public class Client extends javax.swing.JFrame {
             }
         });
         client_Name.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                client_NameKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                client_NameKeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 client_NameKeyTyped(evt);
             }
@@ -367,44 +411,7 @@ public class Client extends javax.swing.JFrame {
 
     private void isConnnectedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_isConnnectedMouseClicked
         // TODO add your handling code here:
-
-        switch (client_Name.getText()) {
-            case "":
-                client_Name.setText("Input your name!!");
-                break;
-            case "Your name":
-                client_Name.setText("Input your name!!");
-                break;
-            case "Input your name!!":
-                break;
-            default:
-
-                jLabel5.setForeground(Color.GREEN);
-                if (isConnected == false) {
-                    username = client_Name.getText();
-                    client_Name.setEditable(false);
-
-                    try {
-                        theSocket = new Socket(address, 2222);
-                        InputStreamReader streamreader = new InputStreamReader(theSocket.getInputStream());
-                        theReader = new BufferedReader(streamreader);
-                        theWriter = new PrintWriter(theSocket.getOutputStream());
-                        theWriter.println(username + ": has connected :Connect");
-                        theWriter.flush();
-                        isConnected = true;
-                    } catch (Exception ex) {
-                        sentMessage.append("Cannot Connect! Try Again. \n");
-                        client_Name.setEditable(true);
-                    }
-
-                    ListenThread();
-
-                } else if (isConnected == true) {
-                    sentMessage.append("You are connected. \n");
-                }
-
-        }
-
+        Connect();
 
     }//GEN-LAST:event_isConnnectedMouseClicked
 
@@ -422,10 +429,6 @@ public class Client extends javax.swing.JFrame {
             case "Your messages":
                 Message.setText("Type your message here");
                 Message.requestFocus();
-                break;
-            case "Your name":
-                break;
-            case "Input your name":
                 break;
             default:
                 try {
@@ -447,12 +450,6 @@ public class Client extends javax.swing.JFrame {
         if (Message.getText().equals("Your messages"))
             Message.setText("");
     }//GEN-LAST:event_MessageKeyPressed
-
-    private void client_NameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_client_NameKeyPressed
-        // TODO add your handling code here:
-        if (client_Name.getText().equals("Your name"))
-            client_Name.setText("");
-    }//GEN-LAST:event_client_NameKeyPressed
 
     private void isConnnectedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_isConnnectedMouseEntered
         // TODO add your handling code here:
@@ -487,7 +484,7 @@ public class Client extends javax.swing.JFrame {
     private void client_NameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_client_NameKeyTyped
         // TODO add your handling code here:     
         switch (client_Name.getText()) {
-            case "Your name":
+            case "":
                 client_Name.setText("");
                 break;
             case "Input your name!!":
@@ -495,20 +492,6 @@ public class Client extends javax.swing.JFrame {
             default:
         }
     }//GEN-LAST:event_client_NameKeyTyped
-
-    private void client_NameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_client_NameKeyReleased
-        // TODO add your handling code here:
-        switch (client_Name.getText()) {
-            case "":
-                client_Name.setText("Your name");
-                break;
-            default:
-                String name = client_Name.getText();
-                String result = name.substring(0, 1).toUpperCase() + name.substring(1);
-                client_Name.setText(result);
-        }
-
-    }//GEN-LAST:event_client_NameKeyReleased
 
     private void SendMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseEntered
         // TODO add your handling code here:
@@ -588,7 +571,7 @@ public class Client extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Message;
     private javax.swing.JLabel Send;
-    private javax.swing.JTextField client_Name;
+    public javax.swing.JTextField client_Name;
     private javax.swing.JLabel disConnect;
     private javax.swing.JLabel isConnnected;
     private javax.swing.JLabel jLabel4;

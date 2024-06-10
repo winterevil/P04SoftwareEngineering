@@ -48,7 +48,7 @@ public class SendEmail {
 
             mess.setFrom(new InternetAddress(fromEmail));
             mess.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-            mess.setSubject("Savoria Account Verification Code");
+            mess.setSubject("Umbrella Hospital Account Verification Code");
             String code;
             if (doctor != null) {
                 code = doctor.getCode();

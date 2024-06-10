@@ -43,12 +43,12 @@ public class Server extends javax.swing.JFrame {
         @Override
         public void run() {
 
-            if (connectedClients >= 2) {
-                // Gửi tin nhắn cho client rằng kết nối không được chấp nhận
-                client.println("Server: Connection not accepted. Server is not accepting new connections.");
-                client.flush();
-                return;
-            }
+//            if (connectedClients >= 2) {
+//                // Gửi tin nhắn cho client rằng kết nối không được chấp nhận
+//                client.println("Server: Connection not accepted. Server is not accepting new connections.");
+//                client.flush();
+//                return;
+//            }
 
             String message, chat = "Chat";
             String[] data;
@@ -115,6 +115,7 @@ public class Server extends javax.swing.JFrame {
         server = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -402,10 +403,10 @@ public class Server extends javax.swing.JFrame {
     }
 
     public void userAdd(String data) {
-        if (connectedClients >= 2) {
-            dataStored.append("Connection limit reached. Cannot add more users.\n");
-            return;
-        }
+//        if (connectedClients >= 2) {
+//            dataStored.append("Connection limit reached. Cannot add more users.\n");
+//            return;
+//        }
         connectedClients++;
         String message, add = ": :Connect", done = "Server: :Done", name = data;
         //dataStored.append("Before " + name + " added. \n");
@@ -482,10 +483,11 @@ public class Server extends javax.swing.JFrame {
 
                 while (true) {
                     Socket clientSock = serverSock.accept();
-                    if (connectedClients >= 2) {
-                        dataStored.append("Connection limit reached. Waiting for a client to disconnect.\n");
-                        continue;
-                    }
+//                    if (connectedClients >= 2) {
+//                        dataStored.append("Connection limit reached. Waiting for a client to disconnect.\n");
+//                        continue;
+//                    }
+                    
 
                     PrintWriter writer = new PrintWriter(clientSock.getOutputStream());
                     clientOutputStreams.add(writer);
