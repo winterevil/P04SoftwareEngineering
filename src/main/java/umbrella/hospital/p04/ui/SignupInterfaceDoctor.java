@@ -4,6 +4,7 @@
  */
 package umbrella.hospital.p04.ui;
 
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import umbrella.hospital.p04.controller.UserManager;
 import umbrella.hospital.p04.system.InputValidation;
@@ -20,6 +21,7 @@ public class SignupInterfaceDoctor extends javax.swing.JFrame {
     public SignupInterfaceDoctor() {
         //setUndecorated(true);
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.png"));
         UserManager.restorePatientList();
         UserManager.restoreDoctorList();
     }

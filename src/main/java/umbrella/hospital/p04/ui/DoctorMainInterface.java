@@ -5,6 +5,7 @@
 package umbrella.hospital.p04.ui;
 
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -29,6 +30,7 @@ public class DoctorMainInterface extends javax.swing.JFrame {
     public DoctorMainInterface() {
         //setUndecorated(true);
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.png"));
         client.setVisible(true);
     }
 
@@ -751,7 +753,7 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DoctorMainInterface().setVisible(true);
-                
+
             }
         });
     }

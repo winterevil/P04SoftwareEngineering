@@ -4,6 +4,7 @@
  */
 package umbrella.hospital.p04.ui;
 
+import java.awt.Toolkit;
 import umbrella.hospital.p04.controller.UserManager;
 import umbrella.hospital.p04.model.Doctor;
 import umbrella.hospital.p04.model.Patient;
@@ -24,8 +25,9 @@ public class Payment extends javax.swing.JFrame {
     public Payment(Patient patient) {
         //setUndecorated(true);
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\CSE305\\P04SoftwareEngineering\\src\\main\\icons\\umhos.png"));
         this.patient = patient;
-        
+
         lblYear.setText(gDI.getYear());
         lblDate.setText(gDI.getDay());
         lblName.setText(patient.getName());
@@ -296,7 +298,7 @@ public class Payment extends javax.swing.JFrame {
         patient.setFee(0);
         Doctor doctor = UserManager.findDoctorByEmail(patient.getAssignedDoctor().getEmail());
         UserManager.deleteAssignedPatient(doctor);
-        UserManager.deleteAssignedDoctor(patient); 
+        UserManager.deleteAssignedDoctor(patient);
         UserManager.saveDoctorList();
         UserManager.savePatientList();
         this.dispose();
