@@ -27,7 +27,7 @@ public class PatientMainInterface extends javax.swing.JFrame {
      * Creates new form PatientMainInterface
      */
     public PatientMainInterface() {
-        setUndecorated(true);
+        //setUndecorated(true);
         initComponents();
     }
 
@@ -99,7 +99,8 @@ public class PatientMainInterface extends javax.swing.JFrame {
         lblSample3 = new javax.swing.JLabel();
         lblLogout = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(239, 239, 239));

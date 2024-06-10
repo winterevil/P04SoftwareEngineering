@@ -29,7 +29,7 @@ public class LoginInterface extends javax.swing.JFrame {
      * Creates new form LoginInterface
      */
     public LoginInterface() {
-        setUndecorated(true);
+        //setUndecorated(true);
         initComponents();
     }
 
@@ -57,7 +57,8 @@ public class LoginInterface extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(240, 244, 249));
         jPanel1.setMaximumSize(new java.awt.Dimension(577, 426));

@@ -22,7 +22,7 @@ public class Payment extends javax.swing.JFrame {
     GetDateInformation gDI = new GetDateInformation();
 
     public Payment(Patient patient) {
-        setUndecorated(true);
+        //setUndecorated(true);
         initComponents();
         this.patient = patient;
         
@@ -65,7 +65,8 @@ public class Payment extends javax.swing.JFrame {
         lblDate = new javax.swing.JLabel();
         lblYear = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(239, 239, 239));
 

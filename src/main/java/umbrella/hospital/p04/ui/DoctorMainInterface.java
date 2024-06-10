@@ -27,7 +27,7 @@ public class DoctorMainInterface extends javax.swing.JFrame {
      * Creates new form DoctorMainInterface
      */
     public DoctorMainInterface() {
-        setUndecorated(true);
+        //setUndecorated(true);
         initComponents();
         client.setVisible(true);
     }
@@ -98,7 +98,8 @@ public class DoctorMainInterface extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         Main.setBackground(new java.awt.Color(215, 238, 254));
 
@@ -520,7 +521,6 @@ public class DoctorMainInterface extends javax.swing.JFrame {
                     .addGroup(ProfileLayout.createSequentialGroup()
                         .addComponent(jLabel21)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblAvatarDoctor)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

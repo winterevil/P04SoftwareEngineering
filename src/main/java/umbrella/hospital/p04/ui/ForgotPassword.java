@@ -23,7 +23,7 @@ public class ForgotPassword extends javax.swing.JFrame {
     private Patient patient = null;
 
     public ForgotPassword() {
-        setUndecorated(true);
+        //setUndecorated(true);
         initComponents();
     }
 
@@ -53,7 +53,8 @@ public class ForgotPassword extends javax.swing.JFrame {
         btnSend = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(240, 244, 249));
         jPanel1.setMaximumSize(new java.awt.Dimension(577, 426));
