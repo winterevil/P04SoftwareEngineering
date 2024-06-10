@@ -43,12 +43,12 @@ public class Server extends javax.swing.JFrame {
         @Override
         public void run() {
 
-            if (connectedClients >= 2) {
-                // Gửi tin nhắn cho client rằng kết nối không được chấp nhận
-                client.println("Server: Connection not accepted. Server is not accepting new connections.");
-                client.flush();
-                return;
-            }
+//            if (connectedClients >= 2) {
+//                // Gửi tin nhắn cho client rằng kết nối không được chấp nhận
+//                client.println("Server: Connection not accepted. Server is not accepting new connections.");
+//                client.flush();
+//                return;
+//            }
 
             String message, chat = "Chat";
             String[] data;
@@ -403,10 +403,10 @@ public class Server extends javax.swing.JFrame {
     }
 
     public void userAdd(String data) {
-        if (connectedClients >= 2) {
-            dataStored.append("Connection limit reached. Cannot add more users.\n");
-            return;
-        }
+//        if (connectedClients >= 2) {
+//            dataStored.append("Connection limit reached. Cannot add more users.\n");
+//            return;
+//        }
         connectedClients++;
         String message, add = ": :Connect", done = "Server: :Done", name = data;
         //dataStored.append("Before " + name + " added. \n");

@@ -37,6 +37,7 @@ public class Client extends javax.swing.JFrame {
         isConnected = true; // Đánh dấu rằng đã kết nối
         ListenThread(); // Bắt đầu luồng lắng nghe tin nhắn
     }
+    
 
     public void ListenThread() {
         Thread IncomingReader = new Thread(new Message());
@@ -369,6 +370,12 @@ public class Client extends javax.swing.JFrame {
     private void isConnnectedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_isConnnectedMouseClicked
         // TODO add your handling code here:
 
+        if (doctor!=null){
+            client_Name.setText(doctor.getName()+"(doctor)");
+        } else {
+            client_Name.setText(patient.getName()+"(patient)");
+        }
+        
         switch (client_Name.getText()) {
             case "":
                 client_Name.setText("Input your name!!");
@@ -379,7 +386,7 @@ public class Client extends javax.swing.JFrame {
             case "Input your name!!":
                 break;
             default:
-
+                
                 jLabel5.setForeground(Color.GREEN);
                 if (isConnected == false) {
                     username = client_Name.getText();

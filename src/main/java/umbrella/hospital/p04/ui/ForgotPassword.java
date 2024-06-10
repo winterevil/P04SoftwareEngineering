@@ -4,6 +4,7 @@
  */
 package umbrella.hospital.p04.ui;
 
+import java.util.concurrent.*;
 import javax.swing.JOptionPane;
 import umbrella.hospital.p04.controller.UserManager;
 import umbrella.hospital.p04.login.SendEmail;
@@ -21,6 +22,8 @@ public class ForgotPassword extends javax.swing.JFrame {
      */
     private Doctor doctor = null;
     private Patient patient = null;
+    private boolean isBtnSendEnabled = true;
+    private static final int BUTTON_COOLDOWN = 60;
 
     public ForgotPassword() {
         //setUndecorated(true);
@@ -332,26 +335,37 @@ public class ForgotPassword extends javax.swing.JFrame {
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         // TODO add your handling code here:
-        System.out.println("Notice");
-        String emailId = txtEmail.getText();
+        if (isBtnSendEnabled) {
+            String emailId = txtEmail.getText();
 
-        SendEmail sm = new SendEmail();
-        String code = sm.getRandom();
-        doctor = UserManager.findDoctorByEmail(emailId);
-        patient = UserManager.findPatientByEmail(emailId);
-        if (doctor != null) {
-            doctor.setCode(code);
+            SendEmail sm = new SendEmail();
+            String code = sm.getRandom();
+            doctor = UserManager.findDoctorByEmail(emailId);
+            patient = UserManager.findPatientByEmail(emailId);
+            if (doctor != null) {
+                doctor.setCode(code);
+            } else {
+                assert patient != null;
+                patient.setCode(code);
+            }
+            sm.sendEmail(doctor, patient);
+
+            isBtnSendEnabled = false;
+            ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+            scheduler.schedule(() -> {
+                isBtnSendEnabled = true;
+            }, BUTTON_COOLDOWN, TimeUnit.SECONDS);
         } else {
-            assert patient != null;
-            patient.setCode(code);
+            
+            JOptionPane.showMessageDialog(this, "Please wait 1 minute");
         }
-        sm.sendEmail(doctor, patient);
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void txtCodeActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         jpwPassword.requestFocusInWindow();
     }
+
     /**
      * @param args the command line arguments
      */
